@@ -1,0 +1,26 @@
+{
+  "name": "TaskManager",
+  "version": "1.0.0",
+  "description": "Task Manager",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack serve --open",
+    "webpack": "webpack"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "latest",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "latest",
+    "progress-bar-webpack-plugin": "latest",
+    "raw-loader": "^4.0.2",
+    "style-loader": "latest",
+    "ts-loader": "latest",
+    "typescript": "latest",
+    "webpack": "latest",
+    "webpack-cli": "latest",
+    "webpack-dev-server": "latest"
+  }
+}
