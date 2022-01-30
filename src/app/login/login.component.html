@@ -1,0 +1,19 @@
+<p>login works!</p>
+<button (click)="logout()">logout</button>
+
+username:
+<input type="text" #username>
+password:
+<input type="text" #password>
+
+<button (click)="login(username.value, password.value)">login</button>
+
+
+// registration
+
+username:
+<input type="text" #username2>
+password:
+<input type="text" #password2>
+
+<button (click)="registration(username2.value, password2.value)">registrate</button>
