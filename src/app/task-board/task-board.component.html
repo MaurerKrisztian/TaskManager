@@ -1,0 +1,17 @@
+<div class="board" *ngIf="board">
+  <div>
+    add task:
+   title: <input type="text" #titleInput>
+    description: <input type="text" #descriptionInput>
+    <button (click)="addTask({title: titleInput.value, description: descriptionInput.value})">add</button>
+  </div>
+  <div class="board-name">\
+    {{board.name}}
+  </div>
+
+  <div *ngFor="let task of board.tasks">
+    <div class="task-wrapper">  <app-task [task]="task"></app-task> <div class="taskButtons"><button (click)="removeTask(task)">remove</button></div></div>
+  </div>
+
+
+</div>

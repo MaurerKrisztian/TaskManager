@@ -1,0 +1,24 @@
+<ng-container [ngTemplateOutlet]="enableEdit ? editTemplate: normalTemplate"></ng-container>
+
+
+<ng-template #normalTemplate>
+  <div class="task" [ngClass]="task?.isCompleted ? 'completed-task': ''">
+    <hr>
+    <p>title: {{task?.title}}</p>
+    <p>desc: {{task?.description}}</p>
+    <button (click)="changeComplete()">complete</button>
+    <button (click)="edit()">edit</button>
+    <hr>
+  </div>
+</ng-template>
+
+<ng-template #editTemplate>
+  <div class="task" [ngClass]="task?.isCompleted ? 'completed-task': ''">
+    <hr>
+    <p>title: <input #titleInput type="text" [value] = "task?.title"></p>
+    <p>desc: <input #descriptionInput type="text" [value] = "task?.description"></p>
+    <button (click)="changeComplete()">complete</button>
+    <button (click)="save({ title: titleInput.value, description: descriptionInput.value} )">save</button>
+    <hr>
+  </div>
+</ng-template>
