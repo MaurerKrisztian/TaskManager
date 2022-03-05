@@ -1,5 +1,9 @@
 <p>dashboard works!</p>
 
+title: <input type="text" #titleInput>
+<button (click)="createBoard(titleInput.value)">create board</button>
 
-<app-task-board [board]="board"></app-task-board>
-<app-task-board [board]="board2"></app-task-board>
+<div *ngFor="let board of boards">
+  <app-task-board [board]="board"></app-task-board>
+
+</div>

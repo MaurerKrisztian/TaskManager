@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ITask} from "../task/ITask";
+import {ApiService} from "../../serrvices/api.service";
+import {ITask} from "../dashboard/dashboard.component";
 
 @Component({
   selector: 'app-task-board',
@@ -12,7 +13,7 @@ export class TaskBoardComponent implements OnInit {
     // @ts-ignore
   board: IBoard
 
-  constructor() {
+  constructor(private readonly api: ApiService) {
   }
 
   ngOnInit(): void {
@@ -24,17 +25,31 @@ export class TaskBoardComponent implements OnInit {
     })
   }
 
+
+  async createBoardTask(task: ITask) {
+    await this.api.post(ApiService.ENDPOINTS.tasks, task).toPromise()
+  }
+
   addTask(task: { description: string; title: string }) {
-    this.board.tasks = [{
+    console.log("ez a board", this.board)
+    this.createBoardTask({
+      boardId: this.board._id || '',
       title: task.title,
       description: task.description,
       createdAt: new Date(),
       isCompleted: false
-    }, ...this.board.tasks]
+    })
+    //   this.board.tasks = [{
+    //     title: task.title,
+    //     description: task.description,
+    //     createdAt: new Date(),
+    //     isCompleted: false
+    //   }, ...this.board.tasks]
   }
 }
 
 export interface IBoard {
+  _id?: string,
   name: string,
   tasks: ITask[]
 }

@@ -1,6 +1,6 @@
-export interface ITask {
-  title: string,
-  description: string,
-  createdAt: Date,
-  isCompleted: boolean
-}
+// export interface ITask {
+//   title: string,
+//   description: string,
+//   createdAt: Date,
+//   isCompleted: boolean
+// }

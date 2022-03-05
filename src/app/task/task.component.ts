@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ITask} from "./ITask";
+import {ITask} from "../dashboard/dashboard.component";
+
 
 @Component({
   selector: 'app-task',
@@ -29,7 +30,7 @@ export class TaskComponent implements OnInit {
     this.task.isCompleted = !this.task.isCompleted
   }
 
-  save(editFields: {title: string, description: string}) {
+  save(editFields: { title: string, description: string }) {
     this.task.title = editFields.title
     this.task.description = editFields.description
     this.enableEdit = false

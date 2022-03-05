@@ -10,7 +10,7 @@ export class AuthService {
   constructor(private api: ApiService) {
   }
 
-  isAuth(): boolean {
+  static isAuth(): boolean {
     return (localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== null);
   }
 
@@ -18,19 +18,19 @@ export class AuthService {
     return this.api.get('user/' + localStorage.getItem('userId'));
   }
 
-  getLocalStorageElement(element: string): string {
+  static getLocalStorageElement(element: string): string {
     return localStorage[element];
   }
 
-  getToken(): string | null {
+  static getToken(): string | null {
     return localStorage.getItem('token');
   }
 
-  getUserId(): string | null {
+  static getUserId(): string | null {
     return localStorage.getItem('userId');
   }
 
-  logout(): void {
+  static logout(): void {
     localStorage.removeItem('login');
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
