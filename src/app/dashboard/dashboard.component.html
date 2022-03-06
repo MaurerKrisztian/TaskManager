@@ -4,6 +4,6 @@ title: <input type="text" #titleInput>
 <button (click)="createBoard(titleInput.value)">create board</button>
 
 <div *ngFor="let board of boards">
-  <app-task-board [board]="board"></app-task-board>
+  <app-task-board [board]="board" [boardEvent]="boardEvent"></app-task-board>
 
 </div>

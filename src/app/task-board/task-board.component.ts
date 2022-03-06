@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import {ApiService} from "../../serrvices/api.service";
 import {ITask} from "../dashboard/dashboard.component";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-task-board',
@@ -13,21 +14,23 @@ export class TaskBoardComponent implements OnInit {
     // @ts-ignore
   board: IBoard
 
-  constructor(private readonly api: ApiService) {
+  @Input()
+    // @ts-ignore
+  boardEvent: EventEmitter<any>
+
+  // @ts-ignore
+  dialogRef: MatDialogRef<unknown, any>
+
+
+  constructor(private readonly api: ApiService, public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
   }
 
-  removeTask(removableTask: ITask) {
-    this.board.tasks = this.board?.tasks.filter(task => {
-      return task != removableTask
-    })
-  }
-
-
   async createBoardTask(task: ITask) {
     await this.api.post(ApiService.ENDPOINTS.tasks, task).toPromise()
+    this.boardEvent.emit('rerender')
   }
 
   addTask(task: { description: string; title: string }) {
@@ -39,12 +42,20 @@ export class TaskBoardComponent implements OnInit {
       createdAt: new Date(),
       isCompleted: false
     })
-    //   this.board.tasks = [{
-    //     title: task.title,
-    //     description: task.description,
-    //     createdAt: new Date(),
-    //     isCompleted: false
-    //   }, ...this.board.tasks]
+    this.dialogRef?.close()
+  }
+
+  async deleteBoard() {
+    await this.api.del(ApiService.ENDPOINTS.boards + "/" + this.board._id).toPromise()
+    this.boardEvent.emit('rerender')
+  }
+
+  openAddTaskDialog(template: any) {
+    // const dialogRef = this.dialog.open(template);
+    this.dialogRef = this.dialog.open(template);
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
 

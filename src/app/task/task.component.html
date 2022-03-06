@@ -1,24 +1,29 @@
 <ng-container [ngTemplateOutlet]="enableEdit ? editTemplate: normalTemplate"></ng-container>
 
-
 <ng-template #normalTemplate>
   <div class="task" [ngClass]="task?.isCompleted ? 'completed-task': ''">
-    <hr>
-    <p>title: {{task?.title}}</p>
-    <p>desc: {{task?.description}}</p>
-    <button (click)="changeComplete()">complete</button>
-    <button (click)="edit()">edit</button>
-    <hr>
+
+    <h3><p>{{task?.title}}</p></h3>
+    <p>{{task?.description}}</p>
+    <ng-container [ngTemplateOutlet]="taskButtons"></ng-container>
+
   </div>
 </ng-template>
 
 <ng-template #editTemplate>
   <div class="task" [ngClass]="task?.isCompleted ? 'completed-task': ''">
-    <hr>
-    <p>title: <input #titleInput type="text" [value] = "task?.title"></p>
-    <p>desc: <input #descriptionInput type="text" [value] = "task?.description"></p>
+
+    <p><input #titleInput type="text" [value]="task?.title"></p>
+    <p>desc: <input #descriptionInput type="text" [value]="task?.description"></p>
     <button (click)="changeComplete()">complete</button>
     <button (click)="save({ title: titleInput.value, description: descriptionInput.value} )">save</button>
-    <hr>
+
   </div>
+</ng-template>
+
+
+<ng-template #taskButtons>
+  <img (click)="changeComplete()" src="assets/svg/complete.svg" alt="Kiwi standing on oval" class="icon">
+  <img (click)="editMode()" src="assets/svg/edit.svg" alt="Kiwi standing on oval" class="icon">
+  <img (click)="delete()" src="assets/svg/trash.svg" alt="Kiwi standing on oval" class="icon">
 </ng-template>

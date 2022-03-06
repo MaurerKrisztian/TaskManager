@@ -11,7 +11,8 @@ import {TokenInterceptorService} from "../serrvices/token-interceptor.service";
 import {ApiService} from "../serrvices/api.service";
 import {RouterModule} from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

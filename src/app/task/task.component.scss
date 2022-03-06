@@ -1,10 +1,23 @@
 .completed-task {
   text-decoration: line-through;
 }
+
+
 .task {
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.41);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(11.9px);
+  -webkit-backdrop-filter: blur(11.9px);
+  border: 1px solid rgba(255, 255, 255, 0.37);
+
   display: inline-block;
-  background: #d37e7e;
+  //background: #d37e7e;
   width: 80%;
-  border-style: dotted;
-  border-width: 5px;
+  //border-style: dotted;
+  //border-width: 5px;
+  margin: 11px;
+  padding: 11px;
 }
+

@@ -1,15 +1,20 @@
 .board {
   border-style: solid;
   border-width: 5px;
-  background: antiquewhite;
   width: 700px;
-  padding: 3px;
-  margin: 3px;
+  padding: 11px;
+  margin: 11px;
+  background-image:
+    -webkit-linear-gradient(60deg,rgba(218, 169, 215, 0.637),rgba(128, 174, 235, 0.904));
+
 }
 
 .board-name {
   align-content: center;
-  background: burlywood;
+  background: -webkit-linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: -o-linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: -moz-linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
+  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
 }
 
 

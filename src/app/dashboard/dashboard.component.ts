@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
 import {IBoard} from "../task-board/task-board.component";
 import {ApiService} from "../../serrvices/api.service";
 import {AuthService} from "../../serrvices/auth.service";
@@ -13,6 +13,8 @@ export class DashboardComponent implements OnInit {
 
   boards: IBoard[] = []
 
+  boardEvent: EventEmitter<any> = new EventEmitter<any>();
+
 
   constructor(private api: ApiService, private readonly router: Router) {
   }
@@ -23,13 +25,18 @@ export class DashboardComponent implements OnInit {
       await this.router.navigate(['/login']);
     }
 
-    const boards = await this.api.get(ApiService.ENDPOINTS.boards).toPromise();
-    console.log(boards)
-    this.boards = boards
+    this.boardEvent.subscribe( ()=> {this.rerender()})
+
+    await this.rerender();
+  }
+
+  async rerender() {
+    this.boards = await this.api.get(ApiService.ENDPOINTS.boards).toPromise();
   }
 
   async createBoard(name: string) {
     await this.api.post(ApiService.ENDPOINTS.boards, {name: name}).toPromise();
+    await this.rerender()
   }
 
   async getBoardTask(boardId: string) {
@@ -42,6 +49,8 @@ export class DashboardComponent implements OnInit {
 
 
 export interface ITask {
+  _id?: string
+
   title: string;
 
   description: string;

@@ -1,6 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import {ITask} from "../dashboard/dashboard.component";
-
+import {ApiService} from "../../serrvices/api.service";
 
 @Component({
   selector: 'app-task',
@@ -14,25 +14,46 @@ export class TaskComponent implements OnInit {
     // @ts-ignore
   task: ITask
 
-  constructor() {
+  @Input("boardEvent")
+    // @ts-ignore
+  boardEvent: EventEmitter<any>
+
+  constructor(private readonly api: ApiService) {
   }
 
   ngOnInit(): void {
   }
 
 
-  edit() {
+  editMode() {
     this.enableEdit = true
   }
 
-  changeComplete() {
+  async changeComplete() {
     if (!this.task) return
-    this.task.isCompleted = !this.task.isCompleted
+    // this.task.isCompleted = !this.task.isCompleted
+
+    await this.api.patch('task/' + this.task._id || "", {
+      isCompleted: !this.task.isCompleted,
+    }).toPromise()
+
+
+    this.boardEvent.emit("completeTask")
   }
 
-  save(editFields: { title: string, description: string }) {
-    this.task.title = editFields.title
-    this.task.description = editFields.description
+  async save(editFields: { title: string, description: string }) {
+    await this.api.patch('task/'+this.task._id || "", {
+      title: editFields.title,
+      description: editFields.description
+    }).toPromise()
+    // this.task.title = editFields.title
+    // this.task.description = editFields.description
     this.enableEdit = false
+    this.boardEvent.emit("saveTask")
+  }
+
+  async delete() {
+    await this.api.del('task/' + this.task._id || "").toPromise()
+    this.boardEvent.emit("deleteTask")
   }
 }
