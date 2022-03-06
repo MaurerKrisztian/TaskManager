@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit} from '@angular/core';
-import {ApiService} from "../../serrvices/api.service";
+import {ApiService} from "../../services/api.service";
 import {ITask} from "../dashboard/dashboard.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 

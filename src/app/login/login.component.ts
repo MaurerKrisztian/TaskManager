@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from "../../serrvices/api.service";
+import {ApiService} from "../../services/api.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -45,11 +45,7 @@ export class LoginComponent implements OnInit {
     }).toPromise()
   }
 
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('username');
-    localStorage.removeItem('userId');
-  }
+
 }
 
 export interface SuccessfulLoginResult {

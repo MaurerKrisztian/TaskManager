@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
 import {IBoard} from "../task-board/task-board.component";
-import {ApiService} from "../../serrvices/api.service";
-import {AuthService} from "../../serrvices/auth.service";
+import {ApiService} from "../../services/api.service";
+import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({

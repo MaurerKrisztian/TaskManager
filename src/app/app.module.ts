@@ -7,12 +7,13 @@ import {TaskBoardComponent} from './task-board/task-board.component';
 import {TaskComponent} from './task/task.component';
 import {LoginComponent} from './login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {TokenInterceptorService} from "../serrvices/token-interceptor.service";
-import {ApiService} from "../serrvices/api.service";
+import {TokenInterceptorService} from "../services/token-interceptor.service";
+import {ApiService} from "../services/api.service";
 import {RouterModule} from "@angular/router";
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
+import {AuthService} from "../services/auth.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     BrowserAnimationsModule,
     MatDialogModule
   ],
-  providers: [{
+  providers: [
+    AuthService,
+    {
     provide: HTTP_INTERCEPTORS,
     useClass: TokenInterceptorService,
     multi: true
