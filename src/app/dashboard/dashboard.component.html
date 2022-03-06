@@ -1,9 +1,12 @@
-<p>dashboard works!</p>
+<div class="background">
 
-title: <input type="text" #titleInput>
-<button (click)="createBoard(titleInput.value)">create board</button>
+  title: <input type="text" #titleInput class="createBoard">
+  <button (click)="createBoard(titleInput.value)" class="createBoardButton">create board</button>
 
-<div *ngFor="let board of boards">
-  <app-task-board [board]="board" [boardEvent]="boardEvent"></app-task-board>
+  <div *ngFor="let board of boards">
+    <app-task-board [board]="board" [boardEvent]="boardEvent"></app-task-board>
+
+  </div>
+
 
 </div>

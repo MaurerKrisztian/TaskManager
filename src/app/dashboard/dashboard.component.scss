@@ -1,0 +1,24 @@
+.background{
+  margin: 0;
+  padding: 0;
+  //display: flex;
+  //justify-content: center;
+  //align-items: center;
+  min-height: 100vh;
+  font-family: 'Jost', sans-serif;
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+}
+
+.createBoard {
+  //width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.createBoardButton {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  background-image: linear-gradient(#6be8d9, #0f6975);
+}

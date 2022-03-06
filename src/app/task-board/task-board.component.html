@@ -3,10 +3,11 @@
     <h2><b> {{board.name}}</b>
       <!--      <button (click)="deleteBoard()">delete board</button>-->
 
-      <img (click)="deleteBoard()" src="assets/svg/trash.svg" alt="Kiwi standing on oval" class="icon">
-    </h2>
+      <img  style="float: right" (click)="deleteBoard()" src="assets/svg/trash.svg" alt="Kiwi standing on oval" class="icon">
 
-    <button mat-button (click)="openAddTaskDialog(addTaskDialog)">Add task</button>
+
+      <button class="addTask" style="float: right" mat-button (click)="openAddTaskDialog(addTaskDialog)">Add task</button>
+    </h2>
   </div>
 
   <div *ngFor="let task of board.tasks">
