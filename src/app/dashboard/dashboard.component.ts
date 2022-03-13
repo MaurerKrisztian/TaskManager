@@ -3,6 +3,7 @@ import {IBoard} from "../task-board/task-board.component";
 import {ApiService} from "../../services/api.service";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from '@angular/router';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 
 @Component({
   selector: 'app-dashboard',
@@ -19,13 +20,38 @@ export class DashboardComponent implements OnInit {
   constructor(private api: ApiService, private readonly router: Router) {
   }
 
+  async drop(event: CdkDragDrop<ITask[]>, board: IBoard) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+      await this.move(event.container.data[event.currentIndex]._id || '', board._id || '', event.currentIndex)
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+
+      await this.move(event.container.data[event.currentIndex]._id || '', board._id || '', event.currentIndex) // todo
+    }
+  }
+
+  move(taskId: string, boardId: string, index: number) {
+    return this.api.patch('taskboard/' + boardId + '/movetask', {
+      taskId: taskId,
+      toBoard: boardId,
+      index: index
+    }).toPromise()
+  }
 
   async ngOnInit() {
     if (!AuthService.isAuth()) {
       await this.router.navigate(['/login']);
     }
 
-    this.boardEvent.subscribe( ()=> {this.rerender()})
+    this.boardEvent.subscribe(() => {
+      this.rerender()
+    })
 
     await this.rerender();
   }

@@ -1,16 +1,18 @@
-<div class="board" *ngIf="board">
+<div class="board resizable" *ngIf="board">
   <div class="board-name">
     <h2><b> {{board.name}}</b>
       <!--      <button (click)="deleteBoard()">delete board</button>-->
 
-      <img  style="float: right" (click)="deleteBoard()" src="assets/svg/trash.svg" alt="Kiwi standing on oval" class="icon">
+      <img style="float: right" (click)="deleteBoard()" src="assets/svg/trash.svg" alt="Kiwi standing on oval"
+           class="icon">
 
 
-      <button class="addTask" style="float: right" mat-button (click)="openAddTaskDialog(addTaskDialog)">Add task</button>
+      <button class="addTask" style="float: right" mat-button (click)="openAddTaskDialog(addTaskDialog)">Add task
+      </button>
     </h2>
   </div>
 
-  <div *ngFor="let task of board.tasks">
+  <div *ngFor="let task of board.tasks" cdkDrag>
     <div class="task-wrapper">
       <app-task [boardEvent]="boardEvent" [task]="task"></app-task>
     </div>

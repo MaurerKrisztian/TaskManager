@@ -2,10 +2,11 @@
 
   title: <input type="text" #titleInput class="createBoard">
   <button (click)="createBoard(titleInput.value)" class="createBoardButton">create board</button>
+  <div class="boards" cdkDropListGroup>
+    <ng-container *ngFor="let board of boards">
+      <app-task-board cdkDropList (cdkDropListDropped)="drop($event, board)" [cdkDropListData]="board.tasks" [board]="board" [boardEvent]="boardEvent"></app-task-board>
 
-  <div *ngFor="let board of boards">
-    <app-task-board [board]="board" [boardEvent]="boardEvent"></app-task-board>
-
+    </ng-container>
   </div>
 
 

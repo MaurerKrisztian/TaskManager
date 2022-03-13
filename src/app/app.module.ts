@@ -14,6 +14,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import {AuthService} from "../services/auth.service";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,14 +23,15 @@ import {AuthService} from "../services/auth.service";
     LoginComponent,
     DashboardComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    RouterModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    MatDialogModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        RouterModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        MatDialogModule,
+        DragDropModule
+    ],
   providers: [
     AuthService,
     {
