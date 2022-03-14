@@ -79,7 +79,9 @@ export class DashboardComponent implements OnInit {
   async setupEmail(time: string) {
     const h = Number.parseInt(time.split(":")[0])
     const m = Number.parseInt(time.split(":")[1])
-    await this.api.post("email/setupeveryday", {hour: h, minute: m}).toPromise();
+    const date = new Date()
+    date.setHours(h, m)
+    await this.api.post("email/setupeveryday", { date: date}).toPromise();
     this.dialogRef.close()
   }
 
