@@ -21,6 +21,7 @@ export class TaskBoardComponent implements OnInit {
   // @ts-ignore
   dialogRef: MatDialogRef<unknown, any>
 
+  showCompleted = true
 
   constructor(private readonly api: ApiService, public dialog: MatDialog) {
   }
@@ -28,17 +29,30 @@ export class TaskBoardComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showCompletedChange() {
+    this.showCompleted = !this.showCompleted
+    if (!this.showCompleted) {
+      this.board.tasks = this.board.tasks.filter((task) => {
+        return !task.isCompleted
+      })
+    }else {
+      this.boardEvent.emit("")
+    }
+  }
+
   async createBoardTask(task: ITask) {
     await this.api.post(ApiService.ENDPOINTS.tasks, task).toPromise()
     this.boardEvent.emit('rerender')
   }
 
-  addTask(task: { description: string; title: string }) {
+  addTask(task: { description: string; title: string, startAt?: string, labels?: string[] }) {
     console.log("ez a board", this.board)
     this.createBoardTask({
       boardId: this.board._id || '',
       title: task.title,
       description: task.description,
+      startAt: task.startAt ? new Date(task.startAt) : undefined,
+      labels: task.labels,
       createdAt: new Date(),
       isCompleted: false
     })

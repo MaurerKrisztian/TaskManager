@@ -5,6 +5,9 @@
 
     <h3><p>{{task?.title}}</p></h3>
     <p>{{task?.description}}</p>
+    <p *ngIf="task?.startAt" class="startAt"><i>{{task?.startAt | date:'yyyy-MM-dd, hh:mm'}}</i> </p>
+    <p *ngIf="task?.startAt" class="remainingTime">remaining: {{getRemainingTime(task.startAt).d + "d " + getRemainingTime(task.startAt).h + "h " + getRemainingTime(task.startAt).m + "m"}}</p>
+    <p> <i class="labels">{{task?.labels}}</i></p>
     <ng-container [ngTemplateOutlet]="taskButtons"></ng-container>
 
   </div>

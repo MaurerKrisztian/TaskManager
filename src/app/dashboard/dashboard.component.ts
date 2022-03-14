@@ -86,4 +86,8 @@ export interface ITask {
   isCompleted: boolean;
 
   boardId: string
+
+  startAt?: Date;
+
+  labels?: string[];
 }

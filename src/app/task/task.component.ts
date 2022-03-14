@@ -24,6 +24,22 @@ export class TaskComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getRemainingTime(startDate: Date | any){
+
+    const dateFuture = new Date(startDate).getTime();
+    const dateNow = new Date().getTime();
+
+    let seconds = Math.floor((dateFuture - (dateNow))/1000);
+    let minutes = Math.floor(seconds/60);
+    let hours = Math.floor(minutes/60);
+    let days = Math.floor(hours/24);
+
+    hours = hours-(days*24);
+    minutes = minutes-(days*24*60)-(hours*60);
+    seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
+    return {d: days, h: hours, m: minutes}
+  }
+
 
   editMode() {
     this.enableEdit = true

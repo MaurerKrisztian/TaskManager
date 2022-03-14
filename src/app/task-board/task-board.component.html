@@ -1,14 +1,14 @@
 <div class="board resizable" *ngIf="board">
   <div class="board-name">
     <h2><b> {{board.name}}</b>
-      <!--      <button (click)="deleteBoard()">delete board</button>-->
 
-      <img style="float: right" (click)="deleteBoard()" src="assets/svg/trash.svg" alt="Kiwi standing on oval"
-           class="icon">
+      <b mat-menu-item style="float: right" [matMenuTriggerFor]="menu">***</b>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="deleteBoard()"> delete</button>
+        <button mat-menu-item (click)="showCompletedChange()">show completed</button>
+      </mat-menu>
 
-
-      <button class="addTask" style="float: right" mat-button (click)="openAddTaskDialog(addTaskDialog)">Add task
-      </button>
+      <img src="/assets/svg/add.svg" class="icon" style="float: right" mat-button (click)="openAddTaskDialog(addTaskDialog)">
     </h2>
   </div>
 
@@ -23,9 +23,14 @@
 
 <ng-template #addTaskDialog>
   <div>
-    add task:
-    title: <input type="text" #titleInput>
-    description: <input type="text" #descriptionInput>
-    <button (click)="addTask({title: titleInput.value, description: descriptionInput.value});">add</button>
+    <h3>Add task </h3>
+    <p>Title*: <input type="text" #titleInput></p>
+    <p>Description*: <input type="text" #descriptionInput></p>
+    <p>StartAt: <input type="datetime-local" #startAtInput></p>
+    <p>Label: <input type="text" #labelInput></p>
+    <button
+      (click)="addTask({title: titleInput.value, description: descriptionInput.value, startAt: startAtInput.value, labels: [labelInput.value]});">
+      add
+    </button>
   </div>
 </ng-template>
