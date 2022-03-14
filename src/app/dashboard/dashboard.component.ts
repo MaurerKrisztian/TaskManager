@@ -4,6 +4,7 @@ import {ApiService} from "../../services/api.service";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from '@angular/router';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
+import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,7 @@ export class DashboardComponent implements OnInit {
   boardEvent: EventEmitter<any> = new EventEmitter<any>();
 
 
-  constructor(private api: ApiService, private readonly router: Router) {
+  constructor(private api: ApiService, private readonly router: Router, public dialog: MatDialog) {
   }
 
   async drop(event: CdkDragDrop<ITask[]>, board: IBoard) {
@@ -71,6 +72,26 @@ export class DashboardComponent implements OnInit {
     return boardTasks
   }
 
+  async getEmail() {
+    await this.api.get("email/todaytasks").toPromise();
+  }
+
+  async setupEmail(time: string) {
+    const h = Number.parseInt(time.split(":")[0])
+    const m = Number.parseInt(time.split(":")[1])
+    await this.api.post("email/setupeveryday", {hour: h, minute: m}).toPromise();
+    this.dialogRef.close()
+  }
+
+  // @ts-ignore
+  dialogRef: MatDialogRef<unknown, any>
+
+  openDialog(template: any) {
+    this.dialogRef = this.dialog.open(template);
+    this.dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
 
 
