@@ -26,15 +26,15 @@
   <div>
     <h3>Add task </h3>
     <p>Title*: <input type="text" #titleInput></p>
-    <p>Description*: <input type="text" #descriptionInput></p>
-    <p>StartAt: <input type="datetime-local" #startAtInput></p>
+    <p>Description*: <textarea type="text" #descriptionInput></textarea></p>
+    <p>Start at: <input type="datetime-local" #startAtInput></p>
     <p>Label: <input type="text" #labelInput></p>
     <input type="file"
            multiple
            id="file"
            (change)="handleFileInput($event.target)">
-    <button
-      (click)="addTask({title: titleInput.value, description: descriptionInput.value, startAt: startAtInput.value, labels: [labelInput.value]});">
+    <button class="addButton"
+            (click)="addTask({title: titleInput.value, description: descriptionInput.value, startAt: startAtInput.value, labels: [labelInput.value]});">
       add
     </button>
   </div>
