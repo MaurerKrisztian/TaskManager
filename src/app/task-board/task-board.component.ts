@@ -1,7 +1,8 @@
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from "../../services/api.service";
 import {ITask} from "../dashboard/dashboard.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-task-board',
@@ -35,7 +36,7 @@ export class TaskBoardComponent implements OnInit {
       this.board.tasks = this.board.tasks.filter((task) => {
         return !task.isCompleted
       })
-    }else {
+    } else {
       this.boardEvent.emit("")
     }
   }
@@ -45,19 +46,48 @@ export class TaskBoardComponent implements OnInit {
     this.boardEvent.emit('rerender')
   }
 
-  addTask(task: { description: string; title: string, startAt?: string, labels?: string[] }) {
-    console.log("ez a board", this.board)
-    this.createBoardTask({
+  async addTask(task: { description: string; title: string, startAt?: string, labels?: string[], fileIds?: string[] }) {
+    if (this.tmpFiles) {
+      task.fileIds = await this.uploadFile()
+    }
+    await this.createBoardTask({
       boardId: this.board._id || '',
       title: task.title,
       description: task.description,
       startAt: task.startAt ? new Date(task.startAt) : undefined,
       labels: task.labels,
       createdAt: new Date(),
-      isCompleted: false
+      isCompleted: false,
+      fileIds: task?.fileIds || []
     })
+
     this.dialogRef?.close()
   }
+
+  async uploadFile(file: FileList = this.tmpFiles) {
+    const headers = {
+      'authorisation': AuthService.getToken()
+    }
+
+    const ids = []
+
+    if (file) {
+      for (let i = 0; i < file.length; i++) {
+        let requestFormData: FormData = new FormData();
+        // @ts-ignore
+        requestFormData.append('file', file.item(i), file.item(i).name);
+        requestFormData.append('body', JSON.stringify({}));
+        const id = await this.api.post('files', requestFormData, {headers: headers}).toPromise();
+        ids.push(id)
+      }
+    }
+    //
+    // requestFormData.append('body', JSON.stringify({}));
+    // const res = await this.api.post('files', requestFormData, {headers: headers}).toPromise();
+
+    return ids
+  }
+
 
   async deleteBoard() {
     await this.api.del(ApiService.ENDPOINTS.boards + "/" + this.board._id).toPromise()
@@ -70,6 +100,13 @@ export class TaskBoardComponent implements OnInit {
     this.dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  // @ts-ignore
+  tmpFiles: FileList
+
+  handleFileInput(event: any) {
+    this.tmpFiles = event.files
   }
 }
 

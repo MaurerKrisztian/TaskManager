@@ -10,13 +10,16 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TokenInterceptorService} from "../services/token-interceptor.service";
 import {ApiService} from "../services/api.service";
 import {RouterModule} from "@angular/router";
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DashboardComponent} from './dashboard/dashboard.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatDialogModule} from '@angular/material/dialog';
 import {AuthService} from "../services/auth.service";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
+import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,15 +37,17 @@ import {MatMenuModule} from "@angular/material/menu";
     MatDialogModule,
     DragDropModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    CommonModule,
+    FormsModule
   ],
   providers: [
     AuthService,
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass: TokenInterceptorService,
-    multi: true
-  }, ApiService],
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -2,6 +2,18 @@ import {Component, EventEmitter, Input, OnInit} from '@angular/core';
 import {ITask} from "../dashboard/dashboard.component";
 import {ApiService} from "../../services/api.service";
 
+export interface FileInfoVm {
+  length: number;
+
+  chunkSize: number;
+
+  filename: string;
+
+  md5: string;
+
+  contentType: string;
+}
+
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
@@ -18,25 +30,41 @@ export class TaskComponent implements OnInit {
     // @ts-ignore
   boardEvent: EventEmitter<any>
 
+
+  files: { downloadLink: string, filename: string }[] = []
+
   constructor(private readonly api: ApiService) {
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    for (const id of this.task?.fileIds || []) {
+      const fileInfo = await this.getFileInfo(id);
+      this.files.push({downloadLink: this.getFileDownloadLink(id), filename: fileInfo.filename})
+    }
   }
 
-  getRemainingTime(startDate: Date | any){
+
+  getFileDownloadLink(fileId: string) {
+    return `${this.api.HOST}files/${fileId}`
+  }
+
+  async getFileInfo(fileId: string): Promise<FileInfoVm> {
+    return await this.api.get(`files/${fileId}/info`).toPromise() as FileInfoVm
+  }
+
+  getRemainingTime(startDate: Date | any) {
 
     const dateFuture = new Date(startDate).getTime();
     const dateNow = new Date().getTime();
 
-    let seconds = Math.floor((dateFuture - (dateNow))/1000);
-    let minutes = Math.floor(seconds/60);
-    let hours = Math.floor(minutes/60);
-    let days = Math.floor(hours/24);
+    let seconds = Math.floor((dateFuture - (dateNow)) / 1000);
+    let minutes = Math.floor(seconds / 60);
+    let hours = Math.floor(minutes / 60);
+    let days = Math.floor(hours / 24);
 
-    hours = hours-(days*24);
-    minutes = minutes-(days*24*60)-(hours*60);
-    seconds = seconds-(days*24*60*60)-(hours*60*60)-(minutes*60);
+    hours = hours - (days * 24);
+    minutes = minutes - (days * 24 * 60) - (hours * 60);
+    seconds = seconds - (days * 24 * 60 * 60) - (hours * 60 * 60) - (minutes * 60);
     return {d: days, h: hours, m: minutes}
   }
 
@@ -58,7 +86,7 @@ export class TaskComponent implements OnInit {
   }
 
   async save(editFields: { title: string, description: string }) {
-    await this.api.patch('task/'+this.task._id || "", {
+    await this.api.patch('task/' + this.task._id || "", {
       title: editFields.title,
       description: editFields.description
     }).toPromise()

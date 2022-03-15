@@ -8,7 +8,8 @@
         <button mat-menu-item (click)="showCompletedChange()">show completed</button>
       </mat-menu>
 
-      <img src="assets/svg/add.svg" class="icon" style="float: right" mat-button (click)="openAddTaskDialog(addTaskDialog)">
+      <img src="assets/svg/add.svg" class="icon" style="float: right" mat-button
+           (click)="openAddTaskDialog(addTaskDialog)">
     </h2>
   </div>
 
@@ -28,6 +29,10 @@
     <p>Description*: <input type="text" #descriptionInput></p>
     <p>StartAt: <input type="datetime-local" #startAtInput></p>
     <p>Label: <input type="text" #labelInput></p>
+    <input type="file"
+           multiple
+           id="file"
+           (change)="handleFileInput($event.target)">
     <button
       (click)="addTask({title: titleInput.value, description: descriptionInput.value, startAt: startAtInput.value, labels: [labelInput.value]});">
       add

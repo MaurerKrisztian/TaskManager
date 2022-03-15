@@ -68,7 +68,6 @@ export class DashboardComponent implements OnInit {
 
   async getBoardTask(boardId: string) {
     const boardTasks = await this.api.get(ApiService.ENDPOINTS.tasks + '/board/' + boardId).toPromise()
-    console.log(boardTasks)
     return boardTasks
   }
 
@@ -81,7 +80,7 @@ export class DashboardComponent implements OnInit {
     const m = Number.parseInt(time.split(":")[1])
     const date = new Date()
     date.setHours(h, m)
-    await this.api.post("email/setupeveryday", { date: date}).toPromise();
+    await this.api.post("email/setupeveryday", {date: date}).toPromise();
     this.dialogRef.close()
   }
 
@@ -113,4 +112,6 @@ export interface ITask {
   startAt?: Date;
 
   labels?: string[];
+
+  fileIds?: string[]
 }
