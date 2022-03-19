@@ -5,8 +5,8 @@
 
     <div class="signup">
 
-      <label for="chk" aria-hidden="true">Login</label>
-      <input #username type="email" name="email" placeholder="Email" required="">
+      <label for="chk" aria-hidden="true" #loginLabel>Login</label>
+      <input  #username type="email" name="email" placeholder="Email" required="">
       <input #password type="password" name="pswd" placeholder="Password" required="">
       <button (click)="login(username.value, password.value)">Login</button>
     </div>
@@ -17,7 +17,7 @@
       <input #username2 type="email" name="txt" placeholder="Email" required="">
       <!--      <input  type="email" name="email" placeholder="Email" required="">-->
       <input #password2 type="password" name="pswd" placeholder="Password" required="">
-      <button (click)="registration(username2.value, password2.value)">Sign up</button>
+      <button (click)="registration(username2.value, password2.value); ">Sign up</button>
     </div>
   </div>
 

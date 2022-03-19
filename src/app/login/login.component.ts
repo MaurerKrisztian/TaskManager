@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from "../../services/api.service";
 import {Router} from "@angular/router";
 
@@ -8,6 +8,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  // @ts-ignore
+  @ViewChild('loginLabel') loginEmail: ElementRef;
 
   constructor(private api: ApiService, private readonly router: Router) {
   }
@@ -39,10 +41,12 @@ export class LoginComponent implements OnInit {
   }
 
   async registration(username: string, password: string) {
-    return await this.api.post('user/', {
+    this.api.post('user/', {
       username: username,
       password: password
-    }).toPromise()
+    }).toPromise().then(() => {
+      this.loginEmail.nativeElement.click()
+    })
   }
 
 
