@@ -5,11 +5,10 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {TimelinetasksComponent} from "./timelinetasks/timelinetasks.component";
 
 const routes: Routes = [
-  {
-    path: 'taskboards', component: DashboardComponent,
-  },
+  {path: 'taskboards', component: DashboardComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'timeline', component: TimelinetasksComponent}
+  {path: 'timeline', component: TimelinetasksComponent},
+  {path: '', component: TimelinetasksComponent}
 ];
 
 @NgModule({
