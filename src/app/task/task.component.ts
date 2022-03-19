@@ -14,6 +14,17 @@ export interface FileInfoVm {
   contentType: string;
 }
 
+
+export interface IWorkSession {
+
+  taskId: string;
+
+  start: Date;
+
+  end: Date;
+}
+
+
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
@@ -21,6 +32,9 @@ export interface FileInfoVm {
 })
 export class TaskComponent implements OnInit {
   enableEdit = false
+
+
+  isWorkSessionStarted = false;
 
   @Input("task")
     // @ts-ignore
@@ -41,6 +55,39 @@ export class TaskComponent implements OnInit {
       const fileInfo = await this.getFileInfo(id);
       this.files.push({downloadLink: this.getFileDownloadLink(id), filename: fileInfo.filename})
     }
+    this.isWorkSessionStarted = await this.getIsWorkSessionStarted()
+
+    await this.getWorkedTime()
+  }
+
+  startTask() {
+    this.api.post('workedtime/start', {start: new Date(), taskId: this.task._id}).toPromise()
+    this.boardEvent.emit('')
+  }
+
+  async getIsWorkSessionStarted() {
+    const activeSessison = await this.api.get('workedtime/activeWorkSession/' + this.task._id).toPromise()
+    return activeSessison?.length > 0
+  }
+
+
+  async endTask() {
+    await this.api.post('workedtime/end/' + this.task._id, {end: new Date(), taskId: this.task._id}).toPromise()
+    this.boardEvent.emit('')
+  }
+
+
+  workedMinutes: { minutes: number, workSession: IWorkSession }[] = []
+
+  async getWorkedTime() {
+    const workSessions: IWorkSession[] = await this.api.get('workedtime/task/' + this.task._id).toPromise()
+    for (const workSession of workSessions) {
+      const minutes = Math.abs(new Date(workSession.end).getTime() - new Date(workSession.start).getTime()) / (1000 * 60) % 60
+      this.workedMinutes.push({
+        minutes: minutes, workSession: workSession
+      })
+      // console.log("worked minutes " + this.task.title, minutes)
+    }
   }
 
 
@@ -57,7 +104,7 @@ export class TaskComponent implements OnInit {
     let dateFuture = new Date(startDate).getTime();
     let dateNow = new Date().getTime();
 
-    if (dateFuture < dateNow){
+    if (dateFuture < dateNow) {
       const tmp = dateFuture
       dateFuture = dateNow
       dateNow = tmp
