@@ -2,11 +2,10 @@
 
   <div class="main">
     <input type="checkbox" id="chk" aria-hidden="true">
-
     <div class="signup">
-
       <label for="chk" aria-hidden="true" #loginLabel>Login</label>
-      <input  #username type="email" name="email" placeholder="Email" required="">
+      <div class="error">{{loginError}}</div>
+      <input #username type="email" name="email" placeholder="Email" required="">
       <input #password type="password" name="pswd" placeholder="Password" required="">
       <button (click)="login(username.value, password.value)">Login</button>
     </div>
@@ -14,6 +13,7 @@
     <div class="login">
 
       <label for="chk" aria-hidden="true">Sign up</label>
+      <div class="error">{{registrationError}}</div>
       <input #username2 type="email" name="txt" placeholder="Email" required="">
       <!--      <input  type="email" name="email" placeholder="Email" required="">-->
       <input #password2 type="password" name="pswd" placeholder="Password" required="">

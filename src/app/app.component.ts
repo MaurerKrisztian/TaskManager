@@ -9,6 +9,7 @@ import {AuthService} from "../services/auth.service";
 export class AppComponent {
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
     localStorage.removeItem('username');
     localStorage.removeItem('userId');
   }

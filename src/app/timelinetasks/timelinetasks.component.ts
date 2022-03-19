@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
 import {ApiService} from "../../services/api.service";
 import {IBoard} from "../task-board/task-board.component";
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-timelinetasks',
@@ -13,10 +15,14 @@ export class TimelinetasksComponent implements OnInit {
   board: IBoard
 
   boardEvent: EventEmitter<any> = new EventEmitter()
-  constructor(private readonly api: ApiService) {
+  constructor(private readonly api: ApiService, private readonly router: Router) {
   }
 
   async ngOnInit() {
+    if (!AuthService.isAuth()) {
+      await this.router.navigate(['/login']);
+    }
+
     await this.getTasks()
     this.boardEvent.subscribe(async () => {
       await this.getTasks()

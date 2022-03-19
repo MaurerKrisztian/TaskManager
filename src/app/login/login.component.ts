@@ -11,6 +11,8 @@ export class LoginComponent implements OnInit {
   // @ts-ignore
   @ViewChild('loginLabel') loginEmail: ElementRef;
 
+  loginError = '';
+  registrationError = ''
   constructor(private api: ApiService, private readonly router: Router) {
   }
 
@@ -27,10 +29,12 @@ export class LoginComponent implements OnInit {
             await this.router.navigate(['/taskboards']);
             resolve(response.token);
           } else {
+            this.loginError = 'Wrong email / password'
             reject('wrong email / password');
           }
 
         }).catch((err) => {
+          this.loginError = 'Wrong email / password'
           reject('wrong email / password');
         });
       }
@@ -46,6 +50,8 @@ export class LoginComponent implements OnInit {
       password: password
     }).toPromise().then(() => {
       this.loginEmail.nativeElement.click()
+    }).catch((err) => {
+      this.registrationError = 'Email is not available!';
     })
   }
 
