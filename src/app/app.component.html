@@ -1,7 +1,8 @@
 <div>
-  <a  [routerLink]="'login'"> login </a> |
-  <a  (click)="logout()"  [routerLink]="'login'"> logout </a> |
-  <a [routerLink]="''"> tasks </a>
+  <a class="menu-item" [routerLink]="'login'"> login </a> |
+  <a class="menu-item" (click)="logout()" [routerLink]="'login'"> logout </a> |
+  <a class="menu-item" [routerLink]="'taskboards'"> tasks </a>
+  <a class="menu-item" [routerLink]="'timeline'"> timeline </a>
 
 </div>
 <router-outlet></router-outlet>

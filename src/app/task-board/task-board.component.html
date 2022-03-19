@@ -13,12 +13,25 @@
     </h2>
   </div>
 
-  <div *ngFor="let task of board.tasks" cdkDrag>
-    <div class="task-wrapper">
-      <app-task [boardEvent]="boardEvent" [task]="task"></app-task>
-    </div>
-  </div>
 
+  <ng-container *ngIf="dragable">
+
+    <div *ngFor="let task of board.tasks" cdkDrag>
+      <div class="task-wrapper">
+        <app-task [boardEvent]="boardEvent" [task]="task"></app-task>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!dragable">
+
+    <div *ngFor="let task of board.tasks">
+      <div class="task-wrapper">
+        <app-task [boardEvent]="boardEvent" [task]="task"></app-task>
+      </div>
+    </div>
+
+  </ng-container>
 
 </div>
 

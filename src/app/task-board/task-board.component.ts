@@ -17,6 +17,10 @@ export class TaskBoardComponent implements OnInit {
 
   @Input()
     // @ts-ignore
+  dragable: boolean
+
+  @Input()
+    // @ts-ignore
   boardEvent: EventEmitter<any>
 
   // @ts-ignore
@@ -51,7 +55,7 @@ export class TaskBoardComponent implements OnInit {
       task.fileIds = await this.uploadFile()
     }
     await this.createBoardTask({
-      boardId: this.board._id || '',
+      boardId: this.board._id || undefined,
       title: task.title,
       description: task.description,
       startAt: task.startAt ? new Date(task.startAt) : undefined,

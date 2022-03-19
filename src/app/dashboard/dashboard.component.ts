@@ -107,7 +107,7 @@ export interface ITask {
 
   isCompleted: boolean;
 
-  boardId: string
+  boardId?: string
 
   startAt?: Date;
 

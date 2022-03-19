@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('token', response.token);
             localStorage.setItem('username', response.username);
             localStorage.setItem('userId', response.userId);
-            await this.router.navigate(['/']);
+            await this.router.navigate(['/taskboards']);
             resolve(response.token);
           } else {
             reject('wrong email / password');

@@ -7,8 +7,8 @@
   </button>
   <div class="boards" cdkDropListGroup>
     <ng-container *ngFor="let board of boards">
-      <app-task-board cdkDropList (cdkDropListDropped)="drop($event, board)" [cdkDropListData]="board.tasks"
-                      [board]="board" [boardEvent]="boardEvent"></app-task-board>
+      <app-task-board class="dahboard-bord" cdkDropList (cdkDropListDropped)="drop($event, board)" [cdkDropListData]="board.tasks"
+                      [dragable]="true" [board]="board" [boardEvent]="boardEvent"></app-task-board>
 
     </ng-container>
   </div>
