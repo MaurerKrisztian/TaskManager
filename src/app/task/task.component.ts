@@ -53,9 +53,16 @@ export class TaskComponent implements OnInit {
   }
 
   getRemainingTime(startDate: Date | any) {
+    let result = {d: 0, h: 0, m: 0, negative: false}
+    let dateFuture = new Date(startDate).getTime();
+    let dateNow = new Date().getTime();
 
-    const dateFuture = new Date(startDate).getTime();
-    const dateNow = new Date().getTime();
+    if (dateFuture < dateNow){
+      const tmp = dateFuture
+      dateFuture = dateNow
+      dateNow = tmp
+      result.negative = true
+    }
 
     let seconds = Math.floor((dateFuture - (dateNow)) / 1000);
     let minutes = Math.floor(seconds / 60);
@@ -65,7 +72,10 @@ export class TaskComponent implements OnInit {
     hours = hours - (days * 24);
     minutes = minutes - (days * 24 * 60) - (hours * 60);
     seconds = seconds - (days * 24 * 60 * 60) - (hours * 60 * 60) - (minutes * 60);
-    return {d: days, h: hours, m: minutes}
+    result.d = days
+    result.h = hours
+    result.m = minutes
+    return result
   }
 
 
