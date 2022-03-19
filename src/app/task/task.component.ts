@@ -78,6 +78,7 @@ export class TaskComponent implements OnInit {
 
 
   workedMinutes: { minutes: number, workSession: IWorkSession }[] = []
+  allWorkedMinutes = 0;
 
   async getWorkedTime() {
     const workSessions: IWorkSession[] = await this.api.get('workedtime/task/' + this.task._id).toPromise()
@@ -86,6 +87,7 @@ export class TaskComponent implements OnInit {
       this.workedMinutes.push({
         minutes: minutes, workSession: workSession
       })
+      this.allWorkedMinutes += minutes
       // console.log("worked minutes " + this.task.title, minutes)
     }
   }
