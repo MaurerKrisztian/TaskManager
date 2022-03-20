@@ -20,6 +20,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import { TimelinetasksComponent } from './timelinetasks/timelinetasks.component';
+import { LogsComponent } from './logs/logs.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TimelinetasksComponent } from './timelinetasks/timelinetasks.component'
     TaskComponent,
     LoginComponent,
     DashboardComponent,
-    TimelinetasksComponent
+    TimelinetasksComponent,
+    LogsComponent
   ],
   imports: [
     BrowserModule,

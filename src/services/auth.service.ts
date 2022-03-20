@@ -2,6 +2,12 @@ import {Injectable} from '@angular/core';
 import {ApiService} from './api.service';
 import {Observable} from 'rxjs';
 
+export interface IUser {
+  username: string;
+  password: string;
+  role: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,8 +20,18 @@ export class AuthService {
     return (localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== null);
   }
 
-  getCurrentUser(): Observable<any> {
-    return this.api.get('user/' + localStorage.getItem('userId'));
+  getCurrentUser() {
+    return this.api.get('user/' + localStorage.getItem('userId')).toPromise();
+  }
+
+  async getCurrentUserRole() {
+    const user: IUser = await this.getCurrentUser()
+    return user.role
+  }
+
+  async isAdmin() {
+    const user: IUser = await this.getCurrentUser()
+    return user.role == 'admin'
   }
 
   static getLocalStorageElement(element: string): string {

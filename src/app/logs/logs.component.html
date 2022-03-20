@@ -1,0 +1,8 @@
+<p>logs works!</p>
+
+
+<div *ngFor="let log of logs">
+  <p class="log">{{log.type}} : {{log.userId.username}}
+    : {{(log.type == 'login') ? (log.content | date:'yyyy-MM-dd, hh:mm'): log.content}}</p>
+  <hr>
+</div>
