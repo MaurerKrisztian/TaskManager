@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, TemplateRef} from '@angular/core';
 import {ITask} from "../dashboard/dashboard.component";
 import {ApiService} from "../../services/api.service";
+import {MatDialog} from "@angular/material/dialog";
 
 export interface FileInfoVm {
   length: number;
@@ -47,7 +48,7 @@ export class TaskComponent implements OnInit {
 
   files: { downloadLink: string, filename: string }[] = []
 
-  constructor(private readonly api: ApiService) {
+  constructor(private readonly api: ApiService, public dialog: MatDialog) {
   }
 
   async ngOnInit() {
@@ -158,5 +159,9 @@ export class TaskComponent implements OnInit {
   async delete() {
     await this.api.del('task/' + this.task._id || "").toPromise()
     this.boardEvent.emit("deleteTask")
+  }
+
+  openExtendedDialog(template: TemplateRef<any>) {
+    this.dialog.open(template);
   }
 }

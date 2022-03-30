@@ -1,4 +1,22 @@
-<ng-container [ngTemplateOutlet]="enableEdit ? editTemplate: normalTemplate"></ng-container>
+<ng-container [ngTemplateOutlet]="enableEdit ? editTemplate: shortTemplate"></ng-container>
+<ng-template #shortTemplate>
+  <div class="task" [ngClass]="task?.isCompleted ? 'completed-task': ''">
+<!--    <button (click)="openExtendedDialog(normalTemplate)">details</button>-->
+    <div (click)="openExtendedDialog(normalTemplate)" class="contet">
+    <h3><p>{{task?.title}}</p></h3>
+    <p *ngIf="task?.startAt" class="remainingTime">
+      Remaining
+      time: {{(getRemainingTime(task.startAt).negative ? "- " : "") + getRemainingTime(task.startAt).d + "d " + getRemainingTime(task.startAt).h + "h " + getRemainingTime(task.startAt).m + "m"}}</p>
+    <p><i class="labels">{{task?.labels}}</i></p>
+  </div>
+
+    <button *ngIf="!isWorkSessionStarted" (click)="startTask()"> start</button>
+    <button *ngIf="isWorkSessionStarted" (click)="endTask()"> end</button>
+    <ng-container [ngTemplateOutlet]="taskButtonsShort"></ng-container>
+  </div>
+
+
+</ng-template>
 
 <ng-template #normalTemplate>
   <div class="task" [ngClass]="task?.isCompleted ? 'completed-task': ''">
@@ -43,5 +61,11 @@
 <ng-template #taskButtons>
   <img (click)="changeComplete()" src="assets/svg/complete.svg" alt="Kiwi standing on oval" class="icon">
   <img (click)="editMode()" src="assets/svg/edit.svg" alt="Kiwi standing on oval" class="icon">
+  <img (click)="delete()" src="assets/svg/trash.svg" alt="Kiwi standing on oval" class="icon">
+</ng-template>
+
+
+<ng-template #taskButtonsShort>
+  <img (click)="changeComplete()" src="assets/svg/complete.svg" alt="Kiwi standing on oval" class="icon">
   <img (click)="delete()" src="assets/svg/trash.svg" alt="Kiwi standing on oval" class="icon">
 </ng-template>
