@@ -2,7 +2,7 @@ name: Connect to Linode
 
 on:
   push:
-    branches: [master]
+    branches: [main]
 
 jobs:
   build:
