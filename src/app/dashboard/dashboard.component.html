@@ -3,7 +3,7 @@
   title: <input type="text" #titleInput class="createBoard">
   <button (click)="createBoard(titleInput.value)" class="createBoardButton">create board</button>
   <button (click)="openDialog(setupEveryDay)" class="setupEmail">
-    setup daily email
+    Setup daily email
   </button>
   <div class="boards" cdkDropListGroup>
     <ng-container *ngFor="let board of boards">
