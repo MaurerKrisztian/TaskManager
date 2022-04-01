@@ -17,7 +17,7 @@ import {AuthService} from "../services/auth.service";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
-import {CommonModule} from "@angular/common";
+import {CommonModule, HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import { TimelinetasksComponent } from './timelinetasks/timelinetasks.component';
 import { LogsComponent } from './logs/logs.component';
@@ -51,7 +51,9 @@ import { LogsComponent } from './logs/logs.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }, ApiService],
+    }, ApiService,
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
