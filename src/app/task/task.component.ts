@@ -162,6 +162,6 @@ export class TaskComponent implements OnInit {
   }
 
   openExtendedDialog(template: TemplateRef<any>) {
-    this.dialog.open(template);
+    this.dialog.open(template, { width: "80%", maxWidth: "80%", height: "90%", maxHeight: "90%"});
   }
 }

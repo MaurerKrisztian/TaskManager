@@ -51,11 +51,12 @@ export class TaskBoardComponent implements OnInit {
     this.boardEvent.emit('rerender')
   }
 
-  async addTask(task: { description: string; title: string, startAt?: string, labels?: string[], fileIds?: string[] }) {
+  async addTask(task: { description: string; title: string, startAt?: string, labels: string[], fileIds?: string[] }) {
     console.log(task.description)
     if (this.tmpFiles) {
       task.fileIds = await this.uploadFile()
     }
+
     await this.createBoardTask({
       boardId: this.board._id || undefined,
       title: task.title,
@@ -102,7 +103,7 @@ export class TaskBoardComponent implements OnInit {
 
   openAddTaskDialog(template: any) {
     // const dialogRef = this.dialog.open(template);
-    this.dialogRef = this.dialog.open(template);
+    this.dialogRef = this.dialog.open(template, { width: "80%", maxWidth: "80%", height: "90%", maxHeight: "90%"});
     this.dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

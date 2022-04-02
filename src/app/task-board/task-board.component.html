@@ -48,7 +48,7 @@
            id="file"
            (change)="handleFileInput($event.target)">
     <button class="addButton"
-            (click)="addTask({title: titleInput.value, description: textEditor.getHtml(), startAt: startAtInput.value, labels: [labelInput.value]});">
+            (click)="addTask({title: titleInput.value, description: textEditor.getHtml(), startAt: startAtInput.value, labels: (labelInput.value && labelInput.value != '')?[labelInput.value]:[]});">
       add
     </button>
   </div>
