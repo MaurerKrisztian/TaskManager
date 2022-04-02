@@ -39,7 +39,8 @@
   <div>
     <h3>Add task </h3>
     <p>Title*: <input type="text" #titleInput></p>
-    <p>Description*: <textarea type="text" #descriptionInput></textarea></p>
+
+    <ejs-richtexteditor #textEditor></ejs-richtexteditor>
     <p>Start at: <input type="datetime-local" #startAtInput></p>
     <p>Label: <input type="text" #labelInput></p>
     <input type="file"
@@ -47,7 +48,7 @@
            id="file"
            (change)="handleFileInput($event.target)">
     <button class="addButton"
-            (click)="addTask({title: titleInput.value, description: descriptionInput.value, startAt: startAtInput.value, labels: [labelInput.value]});">
+            (click)="addTask({title: titleInput.value, description: textEditor.getHtml(), startAt: startAtInput.value, labels: [labelInput.value]});">
       add
     </button>
   </div>

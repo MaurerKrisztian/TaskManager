@@ -22,7 +22,7 @@
   <div class="task" [ngClass]="task?.isCompleted ? 'completed-task': ''">
 
     <h3><p>{{task?.title}}</p></h3>
-    <p>{{task?.description}}</p>
+    <div [innerHTML]="task?.description"></div>
     <p *ngIf="task?.startAt" class="startAt"><i>{{task?.startAt | date:'yyyy-MM-dd, hh:mm'}}</i></p>
     <p *ngIf="task?.startAt" class="remainingTime">
       Remaining

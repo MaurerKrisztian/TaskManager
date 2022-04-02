@@ -21,6 +21,7 @@ import {CommonModule, HashLocationStrategy, LocationStrategy} from "@angular/com
 import {FormsModule} from "@angular/forms";
 import { TimelinetasksComponent } from './timelinetasks/timelinetasks.component';
 import { LogsComponent } from './logs/logs.component';
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { LogsComponent } from './logs/logs.component';
     LogsComponent
   ],
   imports: [
+    RichTextEditorAllModule,
     BrowserModule,
     AppRoutingModule,
     RouterModule,

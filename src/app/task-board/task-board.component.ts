@@ -3,6 +3,7 @@ import {ApiService} from "../../services/api.service";
 import {ITask} from "../dashboard/dashboard.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AuthService} from "../../services/auth.service";
+import {RichTextEditorComponent} from "@syncfusion/ej2-angular-richtexteditor";
 
 @Component({
   selector: 'app-task-board',
@@ -51,6 +52,7 @@ export class TaskBoardComponent implements OnInit {
   }
 
   async addTask(task: { description: string; title: string, startAt?: string, labels?: string[], fileIds?: string[] }) {
+    console.log(task.description)
     if (this.tmpFiles) {
       task.fileIds = await this.uploadFile()
     }
@@ -112,6 +114,7 @@ export class TaskBoardComponent implements OnInit {
   handleFileInput(event: any) {
     this.tmpFiles = event.files
   }
+
 }
 
 export interface IBoard {
