@@ -28,6 +28,7 @@ import { IdeasComponent } from './ideas/ideas.component';
 import { ButtonCp2Component } from './elements/button-cp2/button-cp2.component';
 import { NotfoundComponent } from './elements/notfound/notfound.component';
 import { ProgressBarComponent } from './elements/progress-bar/progress-bar.component';
+import { MenuComponent } from './elements/menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ProgressBarComponent } from './elements/progress-bar/progress-bar.compo
     IdeasComponent,
     ButtonCp2Component,
     NotfoundComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    MenuComponent
   ],
   imports: [
     RichTextEditorAllModule,

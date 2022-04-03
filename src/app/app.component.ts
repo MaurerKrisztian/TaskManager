@@ -7,10 +7,5 @@ import {AuthService} from "../services/auth.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  logout() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('username');
-    localStorage.removeItem('userId');
-  }
+
 }
