@@ -5,6 +5,7 @@ import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from '@angular/router';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {IWorkSession} from "../task/task.component";
 
 @Component({
   selector: 'app-dashboard',
@@ -114,4 +115,6 @@ export interface ITask {
   labels?: string[];
 
   fileIds?: string[]
+
+  workedTimes: IWorkSession[]
 }

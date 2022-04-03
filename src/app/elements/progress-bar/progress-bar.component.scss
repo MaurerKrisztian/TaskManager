@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Odibee Sans', cursive;
+}
+
+body,
+html {
+  padding: 0;
+  margin: 0;
+  background: #111;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+$progress-height: 1.4em;
+$progress-width: 300px;
+$progress-padding: 0.3em;
+$progress-value-color: #03fcc2;
+$value-color: #fc0349;
+$value-size: 1.2em;
+
+.bar {
+  -webkit-appearance: none;
+  height: $progress-height;
+  width: $progress-width;
+
+  &::-webkit-progress-bar {
+    padding: $progress-padding;
+    border-radius: calc(#{$progress-height} / 2);
+    background: lighten(#111, 5);
+  }
+  &::-webkit-progress-value {
+    background: $progress-value-color;
+    box-shadow: 0 0 0.6em lighten($progress-value-color, 2),
+    0 0 0.8em lighten($progress-value-color, 4);
+    border-radius: calc(#{$progress-height}/2);
+  }
+}
+
+.bar__value {
+  color: $value-color;
+  font-size: $value-size;
+  line-height: $progress-height;
+  letter-spacing: 1px;
+  text-shadow: 0 0 .3em darken($value-color, 1),
+  0 0 .6em darken($value-color, 6);
+  margin-left:.5em;
+}

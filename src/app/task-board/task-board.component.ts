@@ -65,7 +65,8 @@ export class TaskBoardComponent implements OnInit {
       labels: task.labels,
       createdAt: new Date(),
       isCompleted: false,
-      fileIds: task?.fileIds || []
+      fileIds: task?.fileIds || [],
+      workedTimes: []
     })
 
     this.dialogRef?.close()
