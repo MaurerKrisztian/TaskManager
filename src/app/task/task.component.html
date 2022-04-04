@@ -1,68 +1,9 @@
-<ng-container [ngTemplateOutlet]="enableEdit ? editTemplate: shortTemplate"></ng-container>
+<ng-container *ngTemplateOutlet=" shortTemplate"></ng-container>
 <ng-template #shortTemplate>
-  <div class="task"  (click)="openExtendedDialog(normalTemplate)" [ngClass]="task?.isCompleted ? 'completed-task': ''">
-    <!--    <button (click)="openExtendedDialog(normalTemplate)">details</button>-->
-<!--    <div (click)="openExtendedDialog(normalTemplate)" class="contet">-->
-      <h3>{{task?.title}}</h3>
-      <i *ngIf="task.labels && task.labels.length > 0" class="labels">{{task?.labels}}</i>
-<!--    </div>-->
-
-<!--    <button *ngIf="!isWorkSessionStarted" (click)="startTask()"> start</button>-->
-<!--    <button *ngIf="isWorkSessionStarted" (click)="endTask()"> end</button>-->
-<!--    <ng-container [ngTemplateOutlet]="taskButtonsShort"></ng-container>-->
+  <div class="task" (click)="openExtendedDialog()" [ngClass]="task?.isCompleted ? 'completed-task': ''">
+    <h3>{{task?.title}}</h3>
+    <i *ngIf="task.labels && task.labels.length > 0" class="labels">{{task?.labels}}</i>
   </div>
 
 
-</ng-template>
-
-<ng-template #normalTemplate>
-  <div class="task" [ngClass]="task?.isCompleted ? 'completed-task': ''">
-
-    <h3><p>{{task?.title}}</p></h3>
-    <div [innerHTML]="task?.description"></div>
-    <p *ngIf="task?.startAt" class="startAt"><i>{{task?.startAt | date:'yyyy-MM-dd, hh:mm'}}</i></p>
-    <p *ngIf="task?.startAt" class="remainingTime">
-      Remaining
-      time: {{(getRemainingTime(task.startAt).negative ? "- " : "") + getRemainingTime(task.startAt).d + "d " + getRemainingTime(task.startAt).h + "h " + getRemainingTime(task.startAt).m + "m"}}</p>
-    <p><i class="labels">{{task?.labels}}</i></p>
-    <ng-container *ngFor="let file of files">
-      <p><a [href]="file.downloadLink"> {{file.filename}}</a></p>
-    </ng-container>
-    <div *ngFor="let workedMinute of workedMinutes">
-      worked: <span class="minutes"> {{workedMinute.minutes.toFixed(2)}} </span> minutes,
-      started {{workedMinute.workSession.start | date:'yyyy-MM-dd, hh:mm'}},
-      end: {{workedMinute.workSession.end | date:'yyyy-MM-dd, hh:mm'}}
-      <hr>
-    </div>
-    <div *ngIf="allWorkedMinutes>0" class="minutes">All worked: {{allWorkedMinutes.toFixed(2)}} minutes.</div>
-
-    <button *ngIf="!isWorkSessionStarted" (click)="startTask()"> start</button>
-    <button *ngIf="isWorkSessionStarted" (click)="endTask()"> end</button>
-    <ng-container [ngTemplateOutlet]="taskButtons"></ng-container>
-
-  </div>
-</ng-template>
-
-<ng-template #editTemplate>
-  <div class="task" [ngClass]="task?.isCompleted ? 'completed-task': ''">
-
-    <p><input #titleInput type="text" [value]="task?.title"></p>
-    <p>desc: <input #descriptionInput type="text" [value]="task?.description"></p>
-    <button (click)="changeComplete()">complete</button>
-    <button (click)="save({ title: titleInput.value, description: descriptionInput.value} )">save</button>
-
-  </div>
-</ng-template>
-
-
-<ng-template #taskButtons>
-  <img (click)="changeComplete()" src="assets/svg/complete.svg" alt="Kiwi standing on oval" class="icon">
-  <img (click)="editMode()" src="assets/svg/edit.svg" alt="Kiwi standing on oval" class="icon">
-  <img (click)="delete()" src="assets/svg/trash.svg" alt="Kiwi standing on oval" class="icon">
-</ng-template>
-
-
-<ng-template #taskButtonsShort>
-  <img (click)="changeComplete()" src="assets/svg/complete.svg" alt="Kiwi standing on oval" class="icon">
-  <img (click)="delete()" src="assets/svg/trash.svg" alt="Kiwi standing on oval" class="icon">
 </ng-template>

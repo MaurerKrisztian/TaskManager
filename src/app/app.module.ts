@@ -29,6 +29,8 @@ import { ButtonCp2Component } from './elements/button-cp2/button-cp2.component';
 import { NotfoundComponent } from './elements/notfound/notfound.component';
 import { ProgressBarComponent } from './elements/progress-bar/progress-bar.component';
 import { MenuComponent } from './elements/menu/menu.component';
+import { TaskModalComponent } from './task-modal/task-modal.component';
+import {TaskMangerApi} from "../services/task-manger.api";
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { MenuComponent } from './elements/menu/menu.component';
     ButtonCp2Component,
     NotfoundComponent,
     ProgressBarComponent,
-    MenuComponent
+    MenuComponent,
+    TaskModalComponent
   ],
   imports: [
     RichTextEditorAllModule,
@@ -67,7 +70,7 @@ import { MenuComponent } from './elements/menu/menu.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }, ApiService,
+    }, ApiService,TaskMangerApi,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
