@@ -1,31 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, TemplateRef} from '@angular/core';
-import {ITask} from "../dashboard/dashboard.component";
 import {ApiService} from "../../services/api.service";
 import {MatDialog} from "@angular/material/dialog";
 import {IModalData, TaskModalComponent} from "../task-modal/task-modal.component";
-
-export interface FileInfoVm {
-  length: number;
-
-  chunkSize: number;
-
-  filename: string;
-
-  md5: string;
-
-  contentType: string;
-}
-
-
-export interface IWorkSession {
-
-  taskId: string;
-
-  start: Date;
-
-  end: Date;
-}
-
 
 @Component({
   selector: 'app-task',

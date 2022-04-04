@@ -3,6 +3,18 @@ import {AuthService} from "../../auth.service";
 import {FileInfo} from "@angular-devkit/build-angular/src/utils/index-file/augment-index-html";
 import {Injectable} from "@angular/core";
 
+export interface FileInfoVm {
+  length: number;
+
+  chunkSize: number;
+
+  filename: string;
+
+  md5: string;
+
+  contentType: string;
+}
+
 @Injectable()
 export class FileEndpoints {
   endpoint: string = 'file';

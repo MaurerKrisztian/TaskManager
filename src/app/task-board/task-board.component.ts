@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from "../../services/api.service";
-import {ITask} from "../dashboard/dashboard.component";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AuthService} from "../../services/auth.service";
-import {RichTextEditorComponent} from "@syncfusion/ej2-angular-richtexteditor";
+import {IBoard} from "../../services/task-manager-client/endpoints/board.endpoints";
+import {ITask} from "../../services/task-manager-client/endpoints/task.endpoints";
 
 @Component({
   selector: 'app-task-board',
@@ -117,10 +117,4 @@ export class TaskBoardComponent implements OnInit {
     this.tmpFiles = event.files
   }
 
-}
-
-export interface IBoard {
-  _id?: string,
-  name: string,
-  tasks: ITask[]
 }

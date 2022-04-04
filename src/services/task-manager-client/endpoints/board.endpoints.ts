@@ -1,6 +1,12 @@
 import {RESTEndpoints} from "../services/REST.endpoints";
-import {IBoard} from "../../../app/task-board/task-board.component";
 import {Injectable} from "@angular/core";
+import {ITask} from "./task.endpoints";
+
+export interface IBoard {
+  _id?: string,
+  name: string,
+  tasks: ITask[]
+}
 
 @Injectable()
 export class BoardEndpoints extends RESTEndpoints<IBoard> {

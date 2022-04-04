@@ -1,6 +1,5 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
 import {ApiService} from "../../services/api.service";
-import {IBoard} from "../task-board/task-board.component";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
 

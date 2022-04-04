@@ -1,6 +1,16 @@
 import {ApiService} from "../../api.service";
 import {Injectable} from "@angular/core";
 
+export interface IWorkSession {
+
+  taskId: string;
+
+  start: Date;
+
+  end: Date;
+}
+
+
 @Injectable()
 export class WorkedtimeEndpoints {
   endpoint: string = 'workedtime'

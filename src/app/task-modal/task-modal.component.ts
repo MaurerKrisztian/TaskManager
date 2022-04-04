@@ -1,9 +1,9 @@
 import {Component, EventEmitter, Inject, OnInit, TemplateRef} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ITask} from "../dashboard/dashboard.component";
 import {ApiService} from "../../services/api.service";
-import {FileInfoVm, IWorkSession} from "../task/task.component";
 import {TaskMangerClientApi} from "../../services/task-manager-client/task-manger-client.api";
+import {IWorkSession} from "../../services/task-manager-client/endpoints/workedtime.endpoints";
+import {FileInfoVm} from "../../services/task-manager-client/endpoints/file.endpoints";
 
 export interface IModalData {
   taskId: string

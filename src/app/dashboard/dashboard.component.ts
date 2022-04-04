@@ -1,11 +1,12 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
-import {IBoard} from "../task-board/task-board.component";
 import {ApiService} from "../../services/api.service";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from '@angular/router';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {IWorkSession} from "../task/task.component";
+import {IBoard} from "../../services/task-manager-client/endpoints/board.endpoints";
+import {IWorkSession} from "../../services/task-manager-client/endpoints/workedtime.endpoints";
+import {ITask} from "../../services/task-manager-client/endpoints/task.endpoints";
 
 @Component({
   selector: 'app-dashboard',
@@ -94,27 +95,4 @@ export class DashboardComponent implements OnInit {
       console.log(`Dialog result: ${result}`);
     });
   }
-}
-
-
-export interface ITask {
-  _id?: string
-
-  title: string;
-
-  description: string;
-
-  createdAt: Date;
-
-  isCompleted: boolean;
-
-  boardId?: string
-
-  startAt?: Date;
-
-  labels?: string[];
-
-  fileIds?: string[]
-
-  workedTimes: IWorkSession[]
 }

@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {ApiService} from "../../services/api.service";
 import {Router} from "@angular/router";
+import {SuccessfulLoginResult} from "../../services/task-manager-client/endpoints/auth.endpoints";
 
 @Component({
   selector: 'app-login',
@@ -58,8 +59,3 @@ export class LoginComponent implements OnInit {
 
 }
 
-export interface SuccessfulLoginResult {
-  token: string;
-  username: string;
-  userId: string;
-}
