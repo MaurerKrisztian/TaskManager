@@ -1,6 +1,5 @@
 import {ApiService} from "../../api.service";
 import {AuthService} from "../../auth.service";
-import {FileInfo} from "@angular-devkit/build-angular/src/utils/index-file/augment-index-html";
 import {Injectable} from "@angular/core";
 
 export interface FileInfoVm {
@@ -33,7 +32,7 @@ export class FileEndpoints {
     return this.api.get(`${this.endpoint}/${id}`).toPromise()
   }
 
-  getFileInfo(id: string): Promise<FileInfo> {
+  getFileInfo(id: string): Promise<FileInfoVm> {
     return this.api.get(`${this.endpoint}/${id}/info`).toPromise()
   }
 

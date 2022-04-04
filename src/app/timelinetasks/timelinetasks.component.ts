@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit} from '@angular/core';
-import {ApiService} from "../../services/api.service";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
+import {TaskMangerClientApi} from "../../services/task-manager-client/task-manger-client.api";
 
 @Component({
   selector: 'app-timelinetasks',
@@ -14,7 +14,8 @@ export class TimelinetasksComponent implements OnInit {
   board: IBoard
 
   boardEvent: EventEmitter<any> = new EventEmitter()
-  constructor(private readonly api: ApiService, private readonly router: Router) {
+
+  constructor(private readonly api: TaskMangerClientApi, private readonly router: Router) {
   }
 
   async ngOnInit() {
@@ -29,7 +30,7 @@ export class TimelinetasksComponent implements OnInit {
   }
 
   async getTasks() {
-    const tasks = (await this.api.get('task').toPromise())
+    const tasks = await this.api.task.getAll()
     this.board = {
       name: 'tasks',
       tasks: tasks,

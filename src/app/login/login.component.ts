@@ -1,7 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ApiService} from "../../services/api.service";
 import {Router} from "@angular/router";
 import {SuccessfulLoginResult} from "../../services/task-manager-client/endpoints/auth.endpoints";
+import {TaskMangerClientApi} from "../../services/task-manager-client/task-manger-client.api";
 
 @Component({
   selector: 'app-login',
@@ -14,15 +14,16 @@ export class LoginComponent implements OnInit {
 
   loginError = '';
   registrationError = ''
-  constructor(private api: ApiService, private readonly router: Router) {
+
+  constructor(private readonly api: TaskMangerClientApi, private readonly router: Router) {
   }
 
   login(username: string, password: string): Promise<any> {
     return new Promise((resolve, reject) => {
-        this.api.post('auth/login', {
+        this.api.auth.login({
           username: username,
           password: password
-        }).toPromise().then(async (response: SuccessfulLoginResult) => {
+        }).then(async (response: SuccessfulLoginResult) => {
           if (response.token !== undefined) {
             localStorage.setItem('token', response.token);
             localStorage.setItem('username', response.username);
@@ -46,10 +47,10 @@ export class LoginComponent implements OnInit {
   }
 
   async registration(username: string, password: string) {
-    this.api.post('user/', {
+    this.api.user.create({
       username: username,
       password: password
-    }).toPromise().then(() => {
+    }).then(() => {
       this.loginEmail.nativeElement.click()
     }).catch((err) => {
       this.registrationError = 'Email is not available!';

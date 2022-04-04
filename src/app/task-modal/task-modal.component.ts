@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Inject, OnInit, TemplateRef} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ApiService} from "../../services/api.service";
 import {TaskMangerClientApi} from "../../services/task-manager-client/task-manger-client.api";
 import {IWorkSession} from "../../services/task-manager-client/endpoints/workedtime.endpoints";
 import {FileInfoVm} from "../../services/task-manager-client/endpoints/file.endpoints";
@@ -24,7 +23,6 @@ export class TaskModalComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<TaskModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: IModalData,
-              private readonly api: ApiService,
               private readonly apiClient: TaskMangerClientApi) {
   }
 
@@ -86,12 +84,11 @@ export class TaskModalComponent implements OnInit {
         minutes: minutes, workSession: workSession
       })
       this.allWorkedMinutes += minutes
-      // console.log("worked minutes " + this.task.title, minutes)
     }
   }
 
   async getFileInfo(fileId: string): Promise<FileInfoVm> {
-    return await this.api.get(`files/${fileId}/info`).toPromise() as FileInfoVm
+    return this.apiClient.file.getFileInfo(fileId)
   }
 
   getRemainingTime(startDate: Date | any) {

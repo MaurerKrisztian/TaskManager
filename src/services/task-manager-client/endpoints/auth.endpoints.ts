@@ -15,8 +15,8 @@ export class AuthEndpoints {
   constructor(private readonly api: ApiService) {
   }
 
-  login(user: {username: string, password: string}){
-    this.api.post(`${this.endpoint}/login`, user)
+  login(user: { username: string, password: string }) {
+    return this.api.post(`${this.endpoint}/login`, user).toPromise()
   }
 
 }

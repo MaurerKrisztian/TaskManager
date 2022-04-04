@@ -23,7 +23,7 @@ export class TaskComponent implements OnInit {
 
   files: { downloadLink: string, filename: string }[] = []
 
-  constructor(private readonly api: ApiService, public dialog: MatDialog) {
+  constructor( public dialog: MatDialog) {
   }
 
   async ngOnInit() {
