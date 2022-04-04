@@ -3,7 +3,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ITask} from "../dashboard/dashboard.component";
 import {ApiService} from "../../services/api.service";
 import {FileInfoVm, IWorkSession} from "../task/task.component";
-import {TaskMangerApi} from "../../services/task-manger.api";
+import {TaskMangerClientApi} from "../../services/task-manager-client/task-manger-client.api";
 
 export interface IModalData {
   taskId: string
@@ -25,16 +25,15 @@ export class TaskModalComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<TaskModalComponent>,
               @Inject(MAT_DIALOG_DATA) public data: IModalData,
               private readonly api: ApiService,
-              private readonly taskApi: TaskMangerApi) {
+              private readonly apiClient: TaskMangerClientApi) {
   }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-
   async getTask(id: string) {
-    this.task = await this.api.get('task/' + id).toPromise();
+    this.task = await this.apiClient.task.findById(id)
     return this.task;
   }
 
@@ -46,7 +45,7 @@ export class TaskModalComponent implements OnInit {
 
     for (const id of this.task?.fileIds || []) {
       const fileInfo = await this.getFileInfo(id);
-      this.files.push({downloadLink: this.getFileDownloadLink(id), filename: fileInfo.filename})
+      this.files.push({downloadLink: this.apiClient.file.getFileDownloadLink(id), filename: fileInfo.filename})
     }
     this.isWorkSessionStarted = await this.getIsWorkSessionStarted()
 
@@ -54,23 +53,21 @@ export class TaskModalComponent implements OnInit {
   }
 
   async startTask() {
-    await this.api.post('workedtime/start', {start: new Date(), taskId: this.task._id}).toPromise()
+    await this.apiClient.workedTimes.start({start: new Date(), taskId: this.data.taskId})
     this.data.boardEvent.emit('')
-    console.log(await this.getIsWorkSessionStarted())
     this.isWorkSessionStarted = await this.getIsWorkSessionStarted()
   }
 
   async getIsWorkSessionStarted() {
-    const activeSessison = await this.api.get('workedtime/activeWorkSession/' + this.task._id).toPromise()
+    const activeSessison = await this.apiClient.workedTimes.getActiveWorkSession(this.data.taskId)
     return activeSessison?.length > 0
   }
 
 
   async endTask() {
-    await this.api.post('workedtime/end/' + this.task._id, {
-      end: new Date(),
-      taskId: this.task._id
-    }).toPromise()
+    await this.apiClient.workedTimes.end(this.data.taskId, {
+      end: new Date()
+    })
     this.data.boardEvent.emit('')
     this.isWorkSessionStarted = await this.getIsWorkSessionStarted()
     this.getWorkedTime()
@@ -82,7 +79,7 @@ export class TaskModalComponent implements OnInit {
 
   async getWorkedTime() {
     this.workedMinutes = []
-    const workSessions: IWorkSession[] = await this.api.get('workedtime/task/' + this.task._id).toPromise()
+    const workSessions: IWorkSession[] = await this.apiClient.workedTimes.getWorkedtimeByTask(this.data.taskId);
     for (const workSession of workSessions) {
       const minutes = Math.abs(new Date(workSession.end).getTime() - new Date(workSession.start).getTime()) / (1000 * 60) % 60
       this.workedMinutes.push({
@@ -91,11 +88,6 @@ export class TaskModalComponent implements OnInit {
       this.allWorkedMinutes += minutes
       // console.log("worked minutes " + this.task.title, minutes)
     }
-  }
-
-
-  getFileDownloadLink(fileId: string) {
-    return `${this.api.HOST}files/${fileId}`
   }
 
   async getFileInfo(fileId: string): Promise<FileInfoVm> {
@@ -137,32 +129,33 @@ export class TaskModalComponent implements OnInit {
 
     if (!this.task) return
 
-    await this.api.patch('task/' + this.task._id || "", {
+
+    await this.apiClient.task.update(this.data.taskId, {
       isCompleted: !this.task.isCompleted,
-    }).toPromise()
+    })
 
 
     this.data.boardEvent.emit("completeTask")
   }
 
   async save(editFields: { title: string, description: string }) {
-    await this.api.patch('task/' + this.task._id || "", {
+    await this.apiClient.task.update(this.data.taskId, {
       title: editFields.title,
       description: editFields.description
-    }).toPromise()
+    })
+
     this.enableEdit = false
     this.data.boardEvent.emit("saveTask")
   }
 
   async delete() {
-    await this.api.del('task/' + this.task._id || "").toPromise()
+    await this.apiClient.task.deleteById(this.data.taskId)
     this.data.boardEvent.emit("deleteTask")
   }
 
   dateToValue(date: any) {
     return new Date(date).toISOString()?.slice(0, 16)
   }
-
 
   tmpFiles: any
 
@@ -171,20 +164,17 @@ export class TaskModalComponent implements OnInit {
   }
 
   async saveTask(task: { description: string; title: string, startAt?: string, labels: string[], fileIds?: string[] }) {
-    if (this.tmpFiles) {
-      task.fileIds = await this.taskApi.uploadFile(this.tmpFiles)
-    }
+    task.fileIds = await this.apiClient.file.uploadFiles(this.tmpFiles)
     task.fileIds?.push(...this.task.fileIds || [])
     if (task.startAt == "") task.startAt = undefined
 
-    console.log("gggggggggggggggre", task)
-
-    await this.api.patch('task/' + this.task._id || "", {
+    await this.apiClient.task.update(this.data.taskId, {
       title: task.title,
       description: task.description,
       startAt: task.startAt,
       labels: task.labels,
       fileIds: task.fileIds
-    }).toPromise()
+    })
+    this.dialogRef.close();
   }
 }

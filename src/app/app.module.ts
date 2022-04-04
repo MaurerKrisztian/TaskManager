@@ -19,18 +19,24 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatMenuModule} from "@angular/material/menu";
 import {CommonModule, HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-import { TimelinetasksComponent } from './timelinetasks/timelinetasks.component';
-import { LogsComponent } from './logs/logs.component';
-import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
-import { ExitbuttonComponent } from './elements/exitbutton/exitbutton.component';
-import { ButtonCpComponent } from './elements/button-cp/button-cp.component';
-import { IdeasComponent } from './ideas/ideas.component';
-import { ButtonCp2Component } from './elements/button-cp2/button-cp2.component';
-import { NotfoundComponent } from './elements/notfound/notfound.component';
-import { ProgressBarComponent } from './elements/progress-bar/progress-bar.component';
-import { MenuComponent } from './elements/menu/menu.component';
-import { TaskModalComponent } from './task-modal/task-modal.component';
-import {TaskMangerApi} from "../services/task-manger.api";
+import {TimelinetasksComponent} from './timelinetasks/timelinetasks.component';
+import {LogsComponent} from './logs/logs.component';
+import {RichTextEditorAllModule} from '@syncfusion/ej2-angular-richtexteditor';
+import {ExitbuttonComponent} from './elements/exitbutton/exitbutton.component';
+import {ButtonCpComponent} from './elements/button-cp/button-cp.component';
+import {IdeasComponent} from './ideas/ideas.component';
+import {ButtonCp2Component} from './elements/button-cp2/button-cp2.component';
+import {NotfoundComponent} from './elements/notfound/notfound.component';
+import {ProgressBarComponent} from './elements/progress-bar/progress-bar.component';
+import {MenuComponent} from './elements/menu/menu.component';
+import {TaskModalComponent} from './task-modal/task-modal.component';
+import {TaskMangerClientApi} from "../services/task-manager-client/task-manger-client.api";
+import {BoardEndpoints} from "../services/task-manager-client/endpoints/board.endpoints";
+import {AuthEndpoints} from "../services/task-manager-client/endpoints/auth.endpoints";
+import {FileEndpoints} from "../services/task-manager-client/endpoints/file.endpoints";
+import {TaskEndpoints} from "../services/task-manager-client/endpoints/task.endpoints";
+import {UserEndpoints} from "../services/task-manager-client/endpoints/user.endpoints";
+import {WorkedtimeEndpoints} from "../services/task-manager-client/endpoints/workedtime.endpoints";
 
 @NgModule({
   declarations: [
@@ -70,7 +76,7 @@ import {TaskMangerApi} from "../services/task-manger.api";
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }, ApiService,TaskMangerApi,
+    }, ApiService, TaskMangerClientApi, BoardEndpoints, AuthEndpoints, FileEndpoints, TaskEndpoints, UserEndpoints, WorkedtimeEndpoints,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]
