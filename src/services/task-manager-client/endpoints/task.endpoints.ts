@@ -30,4 +30,7 @@ export interface ITask {
 export class TaskEndpoints extends RESTEndpoints<ITask>{
   endpoint: string = 'task';
 
+  async getBoardTask(boardId: string): Promise<ITask> {
+    return this.api.get(`${this.endpoint}/${boardId}`).toPromise()
+  }
 }

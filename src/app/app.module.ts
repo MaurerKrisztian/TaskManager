@@ -37,6 +37,7 @@ import {FileEndpoints} from "../services/task-manager-client/endpoints/file.endp
 import {TaskEndpoints} from "../services/task-manager-client/endpoints/task.endpoints";
 import {UserEndpoints} from "../services/task-manager-client/endpoints/user.endpoints";
 import {WorkedtimeEndpoints} from "../services/task-manager-client/endpoints/workedtime.endpoints";
+import {EmailEndpoints} from "../services/task-manager-client/endpoints/email.endpoints";
 
 @NgModule({
   declarations: [
@@ -76,7 +77,7 @@ import {WorkedtimeEndpoints} from "../services/task-manager-client/endpoints/wor
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }, ApiService, TaskMangerClientApi, BoardEndpoints, AuthEndpoints, FileEndpoints, TaskEndpoints, UserEndpoints, WorkedtimeEndpoints,
+    }, ApiService, TaskMangerClientApi, BoardEndpoints, AuthEndpoints, FileEndpoints, TaskEndpoints, UserEndpoints, WorkedtimeEndpoints,EmailEndpoints,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]

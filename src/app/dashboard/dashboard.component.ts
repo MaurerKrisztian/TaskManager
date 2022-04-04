@@ -7,6 +7,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {IBoard} from "../../services/task-manager-client/endpoints/board.endpoints";
 import {IWorkSession} from "../../services/task-manager-client/endpoints/workedtime.endpoints";
 import {ITask} from "../../services/task-manager-client/endpoints/task.endpoints";
+import {TaskMangerClientApi} from "../../services/task-manager-client/task-manger-client.api";
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,7 @@ export class DashboardComponent implements OnInit {
   boardEvent: EventEmitter<any> = new EventEmitter<any>();
 
 
-  constructor(private api: ApiService, private readonly router: Router, public dialog: MatDialog) {
+  constructor(private api: TaskMangerClientApi, private readonly router: Router, public dialog: MatDialog) {
   }
 
   async drop(event: CdkDragDrop<ITask[]>, board: IBoard) {
@@ -40,11 +41,11 @@ export class DashboardComponent implements OnInit {
   }
 
   move(taskId: string, boardId: string, index: number) {
-    return this.api.patch('taskboard/' + boardId + '/movetask', {
+    return this.api.board.modeTask(boardId, {
       taskId: taskId,
       toBoard: boardId,
       index: index
-    }).toPromise()
+    })
   }
 
   async ngOnInit() {
@@ -60,21 +61,16 @@ export class DashboardComponent implements OnInit {
   }
 
   async rerender() {
-    this.boards = await this.api.get(ApiService.ENDPOINTS.boards).toPromise();
+    this.boards = await this.api.board.getAll()
   }
 
   async createBoard(name: string) {
-    await this.api.post(ApiService.ENDPOINTS.boards, {name: name}).toPromise();
+    await this.api.board.create({name: name});
     await this.rerender()
   }
 
-  async getBoardTask(boardId: string) {
-    const boardTasks = await this.api.get(ApiService.ENDPOINTS.tasks + '/board/' + boardId).toPromise()
-    return boardTasks
-  }
-
   async getEmail() {
-    await this.api.get("email/todaytasks").toPromise();
+    await this.api.email.getEmail();
   }
 
   async setupEmail(time: string) {
@@ -82,7 +78,7 @@ export class DashboardComponent implements OnInit {
     const m = Number.parseInt(time.split(":")[1])
     const date = new Date()
     date.setHours(h, m)
-    await this.api.post("email/setupeveryday", {date: date}).toPromise();
+    await this.api.email.setupDailyEmail({date: date})
     this.dialogRef.close()
   }
 

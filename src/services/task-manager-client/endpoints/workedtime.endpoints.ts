@@ -23,7 +23,7 @@ export class WorkedtimeEndpoints {
   }
 
   end(taskId: string, body: { end: Date }) {
-    return this.api.post(`${this.endpoint}/${taskId}`, body).toPromise()
+    return this.api.post(`${this.endpoint}/end/${taskId}`, body).toPromise()
   }
 
   getWorkedtimeByTask(taskId: string) {
@@ -31,7 +31,7 @@ export class WorkedtimeEndpoints {
   }
 
   getActiveWorkSession(id: string) {
-    return this.api.get(`${this.endpoint}/getActiveWorkSession/${id}`).toPromise();
+    return this.api.get(`${this.endpoint}/activeWorkSession/${id}`).toPromise();
   }
 
 }

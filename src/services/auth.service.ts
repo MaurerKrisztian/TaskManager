@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ApiService} from './api.service';
+import {TaskMangerClientApi} from "./task-manager-client/task-manger-client.api";
 
 export interface IUser {
   username: string;
@@ -12,7 +12,7 @@ export interface IUser {
 })
 export class AuthService {
 
-  constructor(private api: ApiService) {
+  constructor(private api: TaskMangerClientApi) {
   }
 
   static isAuth(): boolean {
@@ -20,7 +20,8 @@ export class AuthService {
   }
 
   getCurrentUser() {
-    return this.api.get('user/' + localStorage.getItem('userId')).toPromise();
+    // @ts-ignore
+    return this.api.user.deleteById(localStorage.getItem('userId'))
   }
 
   async getCurrentUserRole() {

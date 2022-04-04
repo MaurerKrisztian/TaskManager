@@ -11,4 +11,8 @@ export interface IBoard {
 @Injectable()
 export class BoardEndpoints extends RESTEndpoints<IBoard> {
   endpoint: string = "taskboard";
+
+  modeTask(boardId: string, body: { toBoard: string; index: number; taskId: string }) {
+    return this.api.patch(`taskboard/${boardId}/movetask`, body).toPromise()
+  }
 }

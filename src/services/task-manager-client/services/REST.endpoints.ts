@@ -8,7 +8,7 @@ export abstract class RESTEndpoints<Entity> {
   constructor(readonly api: ApiService) {
   }
 
-  create(data: Entity): Promise<Entity> {
+  create(data: Partial<Entity>): Promise<Entity> {
     return this.api.post(this.endpoint, data).toPromise()
   }
 
