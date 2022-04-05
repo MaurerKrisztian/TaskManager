@@ -1,10 +1,9 @@
-import {RESTEndpoints} from "../services/REST.endpoints";
-import {Injectable} from "@angular/core";
-import {IWorkSession} from "./workedtime.endpoints";
-
+import { RESTEndpoints } from '../services/REST.endpoints';
+import { Injectable } from '@angular/core';
+import { IWorkSession } from './workedtime.endpoints';
 
 export interface ITask {
-  _id?: string
+  _id?: string;
 
   title: string;
 
@@ -14,23 +13,22 @@ export interface ITask {
 
   isCompleted: boolean;
 
-  boardId?: string
+  boardId?: string;
 
   startAt?: Date;
 
   labels?: string[];
 
-  fileIds?: string[]
+  fileIds?: string[];
 
-  workedTimes: IWorkSession[]
+  workedTimes: IWorkSession[];
 }
 
-
 @Injectable()
-export class TaskEndpoints extends RESTEndpoints<ITask>{
-  endpoint: string = 'task';
+export class TaskEndpoints extends RESTEndpoints<ITask> {
+  endpoint = 'task';
 
   async getBoardTask(boardId: string): Promise<ITask> {
-    return this.api.get(`${this.endpoint}/${boardId}`).toPromise()
+    return this.api.get(`${this.endpoint}/${boardId}`).toPromise();
   }
 }

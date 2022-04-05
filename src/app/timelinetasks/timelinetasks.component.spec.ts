@@ -8,9 +8,8 @@ describe('TimelinetasksComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimelinetasksComponent ]
-    })
-    .compileComponents();
+      declarations: [TimelinetasksComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -3,19 +3,18 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-progress-bar',
   templateUrl: './progress-bar.component.html',
-  styleUrls: ['./progress-bar.component.scss']
+  styleUrls: ['./progress-bar.component.scss'],
 })
 export class ProgressBarComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    const progressBar = document.querySelector(".bar"),
+    const progressBar = document.querySelector('.bar'),
       progressBarValue = document.querySelector('.bar__value');
     let value = 0;
     const max = 100;
 
-    let anim = setInterval(() => {
+    const anim = setInterval(() => {
       if (value == max) {
         clearInterval(anim);
       } else {
@@ -26,7 +25,5 @@ export class ProgressBarComponent implements OnInit {
         progressBarValue.innerText = value + '%';
       }
     }, 80);
-
   }
-
 }

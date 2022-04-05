@@ -1,6 +1,6 @@
-import {ApiService} from "../../api.service";
-import {AuthService} from "../../auth.service";
-import {Injectable} from "@angular/core";
+import { ApiService } from '../../api.service';
+import { AuthService } from '../../auth.service';
+import { Injectable } from '@angular/core';
 
 export interface FileInfoVm {
   length: number;
@@ -16,42 +16,46 @@ export interface FileInfoVm {
 
 @Injectable()
 export class FileEndpoints {
-  endpoint: string = 'file';
+  endpoint = 'file';
 
-  constructor(private readonly api: ApiService) {
-  }
+  constructor(private readonly api: ApiService) {}
 
   upload(requestFormData: FormData, options?: any): Promise<string> {
     const headers = {
-      'authorisation': AuthService.getToken()
-    }
-    return this.api.post(this.endpoint, requestFormData, {...{headers: headers}, ...options}).toPromise();
+      authorisation: AuthService.getToken(),
+    };
+    return this.api
+      .post(this.endpoint, requestFormData, {
+        ...{ headers: headers },
+        ...options,
+      })
+      .toPromise();
   }
 
   getFileStream(id: string): any {
-    return this.api.get(`${this.endpoint}/${id}`).toPromise()
+    return this.api.get(`${this.endpoint}/${id}`).toPromise();
   }
 
   getFileInfo(id: string): Promise<FileInfoVm> {
-    return this.api.get(`${this.endpoint}/${id}/info`).toPromise()
+    return this.api.get(`${this.endpoint}/${id}/info`).toPromise();
   }
 
   async uploadFiles(file: FileList): Promise<string[]> {
-    const ids = []
+    const ids = [];
     if (file) {
       for (let i = 0; i < file.length; i++) {
-        let requestFormData: FormData = new FormData();
+        const requestFormData: FormData = new FormData();
         // @ts-ignore
         requestFormData.append('file', file.item(i), file.item(i).name);
         requestFormData.append('body', JSON.stringify({}));
-        const id = await this.upload(requestFormData)
-        ids.push(id)
+        const id = await this.upload(requestFormData);
+        ids.push(id);
       }
     }
-    return ids
+    return ids;
   }
 
   getFileDownloadLink(fileId: string): string {
-    return `${this.api.HOST}files/${fileId}`
+    return `${this.api.HOST}files/${fileId}`;
   }
 }

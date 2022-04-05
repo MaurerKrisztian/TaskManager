@@ -8,9 +8,8 @@ describe('DailyEmailComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DailyEmailComponent ]
-    })
-    .compileComponents();
+      declarations: [DailyEmailComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

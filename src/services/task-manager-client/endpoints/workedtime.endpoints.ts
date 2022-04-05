@@ -1,8 +1,7 @@
-import {ApiService} from "../../api.service";
-import {Injectable} from "@angular/core";
+import { ApiService } from '../../api.service';
+import { Injectable } from '@angular/core';
 
 export interface IWorkSession {
-
   taskId: string;
 
   start: Date;
@@ -10,28 +9,25 @@ export interface IWorkSession {
   end: Date;
 }
 
-
 @Injectable()
 export class WorkedtimeEndpoints {
-  endpoint: string = 'workedtime'
+  endpoint = 'workedtime';
 
-  constructor(private readonly api: ApiService) {
-  }
+  constructor(private readonly api: ApiService) {}
 
-  start(startData: { start: Date, taskId: string }) {
-    return this.api.post(`${this.endpoint}/start`, startData).toPromise()
+  start(startData: { start: Date; taskId: string }) {
+    return this.api.post(`${this.endpoint}/start`, startData).toPromise();
   }
 
   end(taskId: string, body: { end: Date }) {
-    return this.api.post(`${this.endpoint}/end/${taskId}`, body).toPromise()
+    return this.api.post(`${this.endpoint}/end/${taskId}`, body).toPromise();
   }
 
   getWorkedtimeByTask(taskId: string) {
-    return this.api.get(`${this.endpoint}/task/${taskId}`).toPromise()
+    return this.api.get(`${this.endpoint}/task/${taskId}`).toPromise();
   }
 
   getActiveWorkSession(id: string) {
     return this.api.get(`${this.endpoint}/activeWorkSession/${id}`).toPromise();
   }
-
 }

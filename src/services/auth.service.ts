@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {TaskMangerClientApi} from "./task-manager-client/task-manger-client.api";
+import { Injectable } from '@angular/core';
+import { TaskMangerClientApi } from './task-manager-client/task-manger-client.api';
 
 export interface IUser {
   username: string;
@@ -8,34 +8,38 @@ export interface IUser {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  constructor(private api: TaskMangerClientApi) {
-  }
+  constructor(private api: TaskMangerClientApi) {}
 
   static isAuth(): boolean {
-    return (localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== null);
+    return (
+      localStorage.getItem('token') !== undefined &&
+      localStorage.getItem('token') !== null
+    );
   }
 
   isAuth(): boolean {
-    return (localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== null);
+    return (
+      localStorage.getItem('token') !== undefined &&
+      localStorage.getItem('token') !== null
+    );
   }
 
   getCurrentUser() {
     // @ts-ignore
-    return this.api.user.deleteById(localStorage.getItem('userId'))
+    return this.api.user.deleteById(localStorage.getItem('userId'));
   }
 
   async getCurrentUserRole() {
-    const user: IUser = await this.getCurrentUser()
-    return user.role
+    const user: IUser = await this.getCurrentUser();
+    return user.role;
   }
 
   async isAdmin() {
-    const user: IUser = await this.getCurrentUser()
-    return user.role == 'admin'
+    const user: IUser = await this.getCurrentUser();
+    return user.role == 'admin';
   }
 
   static getLocalStorageElement(element: string): string {
@@ -55,5 +59,4 @@ export class AuthService {
     localStorage.removeItem('token');
     localStorage.removeItem('userId');
   }
-
 }

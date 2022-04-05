@@ -1,5 +1,5 @@
-import {ApiService} from "../../api.service";
-import {Injectable} from "@angular/core";
+import { ApiService } from '../../api.service';
+import { Injectable } from '@angular/core';
 
 export interface SuccessfulLoginResult {
   token: string;
@@ -7,16 +7,13 @@ export interface SuccessfulLoginResult {
   userId: string;
 }
 
-
 @Injectable()
 export class AuthEndpoints {
-  endpoint: string = 'auth'
+  endpoint = 'auth';
 
-  constructor(private readonly api: ApiService) {
+  constructor(private readonly api: ApiService) {}
+
+  login(user: { username: string; password: string }) {
+    return this.api.post(`${this.endpoint}/login`, user).toPromise();
   }
-
-  login(user: { username: string, password: string }) {
-    return this.api.post(`${this.endpoint}/login`, user).toPromise()
-  }
-
 }

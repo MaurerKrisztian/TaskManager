@@ -1,14 +1,12 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   static ENDPOINTS = {
     boards: 'taskboard',
@@ -19,7 +17,6 @@ export class ApiService {
   // HOST = 'http://localhost:3000/api/';
   // HOST = 'https://taskmanager-mk.herokuapp.com/';
   HOST = 'https://mytaskplan.me/api/';
-
 
   get(endpoint: string): Observable<any> {
     return this.http.get(this.HOST + endpoint);
