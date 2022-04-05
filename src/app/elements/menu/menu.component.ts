@@ -1,6 +1,8 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {TaskMangerClientApi} from "../../../services/task-manager-client/task-manger-client.api";
+import {AuthService} from "../../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-menu',
@@ -10,7 +12,7 @@ import {TaskMangerClientApi} from "../../../services/task-manager-client/task-ma
 export class MenuComponent implements OnInit {
   // @ts-ignore
   @ViewChild('toggleMenu') toggleMenu: ElementRef;
-  constructor() { }
+  constructor(readonly auth: AuthService, private readonly router: Router) { }
 
   ngOnInit(): void {
 
@@ -25,6 +27,8 @@ export class MenuComponent implements OnInit {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('username');
     localStorage.removeItem('userId');
+
+    this.router.navigate(['/login'])
   }
 
 }

@@ -19,6 +19,10 @@ export class AuthService {
     return (localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== null);
   }
 
+  isAuth(): boolean {
+    return (localStorage.getItem('token') !== undefined && localStorage.getItem('token') !== null);
+  }
+
   getCurrentUser() {
     // @ts-ignore
     return this.api.user.deleteById(localStorage.getItem('userId'))
