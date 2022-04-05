@@ -1,14 +1,13 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { IBoard } from '../../services/task-manager-client/endpoints/board.endpoints';
-import { IWorkSession } from '../../services/task-manager-client/endpoints/workedtime.endpoints';
 import { ITask } from '../../services/task-manager-client/endpoints/task.endpoints';
 import { TaskMangerClientApi } from '../../services/task-manager-client/task-manger-client.api';
 import { Analytics } from '../../services/Analytics';

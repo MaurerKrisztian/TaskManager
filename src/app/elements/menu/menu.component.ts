@@ -1,6 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { TaskMangerClientApi } from '../../../services/task-manager-client/task-manger-client.api';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
 

@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Inject,
-  OnInit,
-  TemplateRef,
-} from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TaskMangerClientApi } from '../../services/task-manager-client/task-manger-client.api';
 import { IWorkSession } from '../../services/task-manager-client/endpoints/workedtime.endpoints';

@@ -1,5 +1,4 @@
 import { ApiService } from '../api.service';
-import { AuthService } from '../auth.service';
 import { Injectable } from '@angular/core';
 import { BoardEndpoints } from './endpoints/board.endpoints';
 import { UserEndpoints } from './endpoints/user.endpoints';
