@@ -14,12 +14,17 @@
     <ng-container *ngFor="let file of files">
       <p><a [href]="file.downloadLink"> {{file.filename}}</a></p>
     </ng-container>
-    <div *ngFor="let workedMinute of workedMinutes">
-      worked: <span class="minutes"> {{workedMinute.minutes.toFixed(2)}} </span> minutes,
-      started {{workedMinute.workSession.start | date:'yyyy-MM-dd, hh:mm'}},
-      end: {{workedMinute.workSession.end | date:'yyyy-MM-dd, hh:mm'}}
-      <hr>
-    </div>
+
+
+    <button *ngIf="workedMinutes.length > 0" class="showWorkedSessions" (click)="toggleSessions()">show worked sessions</button>
+    <ng-container *ngIf="isSessionToggled">
+      <div *ngFor="let workedMinute of workedMinutes">
+        worked: <span class="minutes"> {{workedMinute.minutes.toFixed(2)}} </span> minutes,
+        started {{workedMinute.workSession.start | date:'yyyy-MM-dd, hh:mm'}},
+        end: {{workedMinute.workSession.end | date:'yyyy-MM-dd, hh:mm'}}
+        <hr>
+      </div>
+    </ng-container>
     <div *ngIf="allWorkedMinutes>0" class="minutes">All worked: {{allWorkedMinutes.toFixed(2)}} minutes.</div>
 
     <button *ngIf="!isWorkSessionStarted" (click)="startTask()"> start</button>
@@ -27,6 +32,8 @@
     <ng-container [ngTemplateOutlet]="taskButtons"></ng-container>
 
   </div>
+
+
 </ng-template>
 
 <ng-template #editTemplate>

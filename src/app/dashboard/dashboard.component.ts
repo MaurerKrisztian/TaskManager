@@ -7,6 +7,7 @@ import {IBoard} from "../../services/task-manager-client/endpoints/board.endpoin
 import {IWorkSession} from "../../services/task-manager-client/endpoints/workedtime.endpoints";
 import {ITask} from "../../services/task-manager-client/endpoints/task.endpoints";
 import {TaskMangerClientApi} from "../../services/task-manager-client/task-manger-client.api";
+import {Analytics} from "../../services/Analytics";
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,7 @@ export class DashboardComponent implements OnInit {
   boardEvent: EventEmitter<any> = new EventEmitter<any>();
 
 
-  constructor(private api: TaskMangerClientApi, private readonly router: Router, public dialog: MatDialog) {
+  constructor(private api: TaskMangerClientApi, private readonly router: Router, public dialog: MatDialog, readonly analytics: Analytics) {
   }
 
   async drop(event: CdkDragDrop<ITask[]>, board: IBoard) {
@@ -68,26 +69,5 @@ export class DashboardComponent implements OnInit {
     await this.rerender()
   }
 
-  async getEmail() {
-    await this.api.email.getEmail();
-  }
 
-  async setupEmail(time: string) {
-    const h = Number.parseInt(time.split(":")[0])
-    const m = Number.parseInt(time.split(":")[1])
-    const date = new Date()
-    date.setHours(h, m)
-    await this.api.email.setupDailyEmail({date: date})
-    this.dialogRef.close()
-  }
-
-  // @ts-ignore
-  dialogRef: MatDialogRef<unknown, any>
-
-  openDialog(template: any) {
-    this.dialogRef = this.dialog.open(template);
-    this.dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
 }

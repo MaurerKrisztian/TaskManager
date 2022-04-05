@@ -148,6 +148,7 @@ export class TaskModalComponent implements OnInit {
   async delete() {
     await this.apiClient.task.deleteById(this.data.taskId)
     this.data.boardEvent.emit("deleteTask")
+    this.dialogRef.close()
   }
 
   dateToValue(date: any) {
@@ -155,6 +156,7 @@ export class TaskModalComponent implements OnInit {
   }
 
   tmpFiles: any
+  isSessionToggled: boolean = false;
 
   handleFileInput(event: any) {
     this.tmpFiles = event.files
@@ -172,6 +174,12 @@ export class TaskModalComponent implements OnInit {
       labels: task.labels,
       fileIds: task.fileIds
     })
-    this.dialogRef.close();
+    this.data.boardEvent.emit('edit')
+    this.enableEdit = false;
+    // this.dialogRef.close();
+  }
+
+  toggleSessions() {
+    this.isSessionToggled = !this.isSessionToggled
   }
 }

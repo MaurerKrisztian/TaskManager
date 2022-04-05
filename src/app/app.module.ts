@@ -38,6 +38,8 @@ import {TaskEndpoints} from "../services/task-manager-client/endpoints/task.endp
 import {UserEndpoints} from "../services/task-manager-client/endpoints/user.endpoints";
 import {WorkedtimeEndpoints} from "../services/task-manager-client/endpoints/workedtime.endpoints";
 import {EmailEndpoints} from "../services/task-manager-client/endpoints/email.endpoints";
+import { DailyEmailComponent } from './daily-email/daily-email.component';
+import {Analytics} from "../services/Analytics";
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import {EmailEndpoints} from "../services/task-manager-client/endpoints/email.en
     NotfoundComponent,
     ProgressBarComponent,
     MenuComponent,
-    TaskModalComponent
+    TaskModalComponent,
+    DailyEmailComponent
   ],
   imports: [
     RichTextEditorAllModule,
@@ -77,7 +80,7 @@ import {EmailEndpoints} from "../services/task-manager-client/endpoints/email.en
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }, ApiService, TaskMangerClientApi, BoardEndpoints, AuthEndpoints, FileEndpoints, TaskEndpoints, UserEndpoints, WorkedtimeEndpoints,EmailEndpoints,
+    }, ApiService, TaskMangerClientApi,Analytics, BoardEndpoints, AuthEndpoints, FileEndpoints, TaskEndpoints, UserEndpoints, WorkedtimeEndpoints,EmailEndpoints,
     {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent]

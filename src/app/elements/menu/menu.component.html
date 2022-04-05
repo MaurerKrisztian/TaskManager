@@ -1,26 +1,30 @@
-<div class="nav-pc-container">
+<div class="top-bar">
+  <app-daily-email></app-daily-email>
+
+  <nav class="nav" role="navigation">
+    <div id="menuToggle">
+
+      <input type="checkbox" #toggleMenu/>
+
+      <span></span>
+      <span></span>
+      <span></span>
+      <ul id="menu">
+        <app-button-cp2 [text]="'Login'" (click)="toggle()" [routerLink]="'login'"></app-button-cp2>
+        <app-button-cp2 [text]="'Logout'" (click)="logout(); toggle()"></app-button-cp2>
+        <app-button-cp2 [text]="'Tasks'" (click)="toggle()" [routerLink]="'taskboards'"></app-button-cp2>
+        <app-button-cp2 [text]="'Timeline'" (click)="toggle()" [routerLink]="'timeline'"></app-button-cp2>
+        <a [href]="'https://blog.mytaskplan.me'">
+          <app-button-cp2 [text]="'Blog'" (click)="toggle()"></app-button-cp2>
+        </a>
+        <app-button-cp2 [text]="'Ideas'" (click)="toggle()" [routerLink]="'ideas'"></app-button-cp2>
+
+        <!--      <button (click)="openDialog(setupEveryDay)" class="setupEmail">-->
+        <!--        Setup daily email-->
+        <!--      </button>-->
+      </ul>
+    </div>
+  </nav>
 
 
 </div>
-
-
-<nav role="navigation">
-  <div id="menuToggle">
-
-    <input type="checkbox" #toggleMenu/>
-
-    <span></span>
-    <span></span>
-    <span></span>
-    <ul id="menu">
-      <app-button-cp2 [text]="'Login'" (click)="toggle()" [routerLink]="'login'"></app-button-cp2>
-      <app-button-cp2 [text]="'Logout'" (click)="logout(); toggle()"></app-button-cp2>
-      <app-button-cp2 [text]="'Tasks'" (click)="toggle()" [routerLink]="'taskboards'"></app-button-cp2>
-      <app-button-cp2 [text]="'Timeline'" (click)="toggle()" [routerLink]="'timeline'"></app-button-cp2>
-      <a [href]="'https://mytaskplan.me/blog'">
-        <app-button-cp2 [text]="'Blog'" (click)="toggle()"></app-button-cp2>
-      </a>
-      <app-button-cp2 [text]="'Ideas'" (click)="toggle()" [routerLink]="'ideas'"></app-button-cp2>
-    </ul>
-  </div>
-</nav>

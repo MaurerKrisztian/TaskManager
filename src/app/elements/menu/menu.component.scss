@@ -1,3 +1,12 @@
+
+.top-bar {
+  //background: rgb(2,0,36);
+  //background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 33%, rgb(25, 103, 119) 100%);
+  height: 60px;
+  width: 100%;
+  margin-bottom: 11px;
+}
+
 /*
  * Made by Erik Terwan
  * 24th of November 2015
@@ -20,12 +29,16 @@ body
   font-family: "Avenir Next", "Avenir", sans-serif;
 }
 
+.nav {
+  padding: 20px;
+}
+
 #menuToggle
 {
   display: block;
   position: relative;
-  top: 50px;
-  left: 50px;
+  //top: 50px;
+  //left: 50px;
 
   z-index: 1;
 

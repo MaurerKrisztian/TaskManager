@@ -4,6 +4,7 @@ import {MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {AuthService} from "../../services/auth.service";
 import {IBoard} from "../../services/task-manager-client/endpoints/board.endpoints";
 import {ITask} from "../../services/task-manager-client/endpoints/task.endpoints";
+import {Analytics} from "../../services/Analytics";
 
 @Component({
   selector: 'app-task-board',
@@ -29,7 +30,7 @@ export class TaskBoardComponent implements OnInit {
 
   showCompleted = true
 
-  constructor(private readonly api: ApiService, public dialog: MatDialog) {
+  constructor(private readonly api: ApiService, public dialog: MatDialog, public readonly analytics: Analytics) {
   }
 
   ngOnInit(): void {
@@ -104,7 +105,7 @@ export class TaskBoardComponent implements OnInit {
 
   openAddTaskDialog(template: any) {
     // const dialogRef = this.dialog.open(template);
-    this.dialogRef = this.dialog.open(template, { width: "80%", maxWidth: "80%", height: "90%", maxHeight: "90%"});
+    this.dialogRef = this.dialog.open(template, {width: "80%", maxWidth: "80%", height: "90%", maxHeight: "90%"});
     this.dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

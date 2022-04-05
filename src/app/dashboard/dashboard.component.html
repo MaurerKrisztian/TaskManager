@@ -1,13 +1,14 @@
 <div class="background">
 
-  title: <input type="text" #titleInput class="createBoard">
-  <button (click)="createBoard(titleInput.value)" class="createBoardButton">create board</button>
-  <button (click)="openDialog(setupEveryDay)" class="setupEmail">
-    Setup daily email
+  <input type="text" #titleInput class="createBoard">
+  <button (click)="createBoard(titleInput.value)" [ngClass]="[analytics.CREATE_BOARD, 'createBoardButton']">create
+    board
   </button>
+
   <div class="boards" cdkDropListGroup>
     <ng-container *ngFor="let board of boards">
-      <app-task-board class="dahboard-bord" cdkDropList (cdkDropListDropped)="drop($event, board)" [cdkDropListData]="board.tasks"
+      <app-task-board class="dahboard-bord" cdkDropList (cdkDropListDropped)="drop($event, board)"
+                      [cdkDropListData]="board.tasks"
                       [dragable]="true" [board]="board" [boardEvent]="boardEvent"></app-task-board>
 
     </ng-container>
@@ -16,12 +17,3 @@
 
 </div>
 
-
-<ng-template #setupEveryDay>
-  <div>
-    <button (click)="getEmail()"> send daily task email</button>
-    <h3>Send daily tasks every day: </h3>
-    <p><input type="time" value='08:00' #timeInput></p>
-    <button (click)="setupEmail(timeInput.value)"> setup everyt day</button>
-  </div>
-</ng-template>

@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {SuccessfulLoginResult} from "../../services/task-manager-client/endpoints/auth.endpoints";
 import {TaskMangerClientApi} from "../../services/task-manager-client/task-manger-client.api";
+import {Analytics} from "../../services/Analytics";
 
 @Component({
   selector: 'app-login',
@@ -15,11 +16,11 @@ export class LoginComponent implements OnInit {
   loginError = '';
   registrationError = ''
 
-  constructor(private readonly api: TaskMangerClientApi, private readonly router: Router) {
+  constructor(private readonly api: TaskMangerClientApi, private readonly router: Router, readonly analytics: Analytics) {
   }
 
   login(username: string, password: string): Promise<any> {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         this.api.auth.login({
           username: username,
           password: password
