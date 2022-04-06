@@ -20,7 +20,9 @@ export class LoginComponent implements OnInit {
     private readonly api: TaskMangerClientApi,
     private readonly router: Router,
     readonly analytics: Analytics
-  ) {}
+  ) {
+
+  }
 
   login(username: string, password: string): Promise<any> {
     return new Promise(async (resolve, reject) => {
@@ -48,7 +50,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  mydata = {}
+  async ngOnInit() {
+    this.mydata = await this.api.auth.getGoogleUserInfo()
+  }
 
   async registration(username: string, password: string) {
     this.api.user
@@ -62,5 +67,11 @@ export class LoginComponent implements OnInit {
       .catch((err) => {
         this.registrationError = 'Email is not available!';
       });
+  }
+
+
+  async googleLogin() {
+    const url = await this.api.auth.getGoogleAuthLink();
+    window.location.href = url.url;
   }
 }

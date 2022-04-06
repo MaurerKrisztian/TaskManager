@@ -1,5 +1,6 @@
-<div class="login-container">
 
+<div class="login-container">
+  mydata{{mydata | json}}
   <div class="main">
     <input type="checkbox" id="chk" aria-hidden="true">
     <div class="signup">
@@ -8,6 +9,7 @@
       <input #username type="email" name="email" placeholder="Email" required="">
       <input #password type="password" name="pswd" placeholder="Password" required="">
       <button [ngClass]="analytics.LOGIN_BTN" (click)="login(username.value, password.value)">Login</button>
+      <button [ngClass]="analytics.LOGIN_BTN" (click)="googleLogin()">Google Login</button>
     </div>
 
     <div class="login">

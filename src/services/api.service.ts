@@ -14,9 +14,8 @@ export class ApiService {
     login: 'task',
   };
 
-  // HOST = 'http://localhost:3000/api/';
-  // HOST = 'https://taskmanager-mk.herokuapp.com/';
-  HOST = 'https://mytaskplan.me/api/';
+  HOST = 'http://localhost:3000/api/';
+  // HOST = 'https://mytaskplan.me/api/';
 
   get(endpoint: string): Observable<any> {
     return this.http.get(this.HOST + endpoint);
