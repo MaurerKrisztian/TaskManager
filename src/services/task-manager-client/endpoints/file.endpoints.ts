@@ -16,7 +16,7 @@ export interface FileInfoVm {
 
 @Injectable()
 export class FileEndpoints {
-  endpoint = 'file';
+  endpoint = 'files';
 
   constructor(private readonly api: ApiService) {}
 
