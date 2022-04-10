@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('token', response.token);
             localStorage.setItem('username', response.username);
             localStorage.setItem('userId', response.userId);
-            await this.router.navigate(['/taskboards']);
+            await this.router.navigate(['/timeline']);
             resolve(response.token);
           } else {
             this.loginError = 'Wrong email / password';
