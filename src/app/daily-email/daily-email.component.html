@@ -6,6 +6,11 @@
 
 <ng-template #setupEveryDay>
   <div>
+    <div *ngIf="schedules.length > 0"> Current schedules: </div>
+    <div *ngFor="let schedule of schedules">
+      {{schedule.createOptions.type}} - {{schedule.createOptions.date | date:'mediumTime'}} <button (click)="remove(schedule._id)">remove</button>
+    </div>
+
     <button (click)="getEmail()" class="btn"> send daily task email</button>
     <h3>Send daily tasks every day: </h3>
     <p><input type="time" value='08:00' #timeInput></p>

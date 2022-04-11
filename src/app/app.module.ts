@@ -44,6 +44,7 @@ import { WorkedtimeEndpoints } from '../services/task-manager-client/endpoints/w
 import { EmailEndpoints } from '../services/task-manager-client/endpoints/email.endpoints';
 import { DailyEmailComponent } from './daily-email/daily-email.component';
 import { Analytics } from '../services/Analytics';
+import { SchedulesEndpoints } from '../services/task-manager-client/endpoints/schedules.endpoints';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { Analytics } from '../services/Analytics';
     UserEndpoints,
     WorkedtimeEndpoints,
     EmailEndpoints,
+    SchedulesEndpoints,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent],
