@@ -29,7 +29,7 @@ export class AuthService {
 
   getCurrentUser() {
     // @ts-ignore
-    return this.api.user.deleteById(localStorage.getItem('userId'));
+    return this.api.user.findById(localStorage.getItem('userId'));
   }
 
   async getCurrentUserRole() {
