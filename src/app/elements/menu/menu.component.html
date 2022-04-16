@@ -1,28 +1,101 @@
-<div class="top-bar">
-
-  <nav class="nav" role="navigation">
-    <div id="menuToggle">
-
-      <input type="checkbox" #toggleMenu/>
-
-      <span></span>
-      <span></span>
-      <span></span>
-      <ul id="menu">
-        <app-button-cp2 *ngIf="!auth.isAuth()"[text]="'Login'" (click)="toggle()" [routerLink]="'login'"></app-button-cp2>
-        <app-button-cp2 *ngIf="auth.isAuth()" [text]="'Logout'" (click)="logout(); toggle()"></app-button-cp2>
-        <app-button-cp2 *ngIf="auth.isAuth()" [text]="'Tasks'" (click)="toggle()" [routerLink]="'taskboards'"></app-button-cp2>
-        <app-button-cp2  *ngIf="auth.isAuth()" [text]="'Timeline'" (click)="toggle()" [routerLink]="'timeline'"></app-button-cp2>
-        <a [href]="'https://blog.mytaskplan.me'">
-          <app-button-cp2 [text]="'Blog'" (click)="toggle()"></app-button-cp2>
-        </a>
-        <app-button-cp2 *ngIf="auth.isAuth()" [text]="'Ideas'" (click)="toggle()" [routerLink]="'ideas'"></app-button-cp2>
-
-        <app-daily-email *ngIf="auth.isAuth()"></app-daily-email>
+<div class="sidebar close">
+  <div class="logo-details">
+    <i class='bx bx-task'></i>
+    <span class="logo_name">MyTask</span>
+  </div>
+  <ul class="nav-links">
+    <li *ngIf="auth.isAuth()">
+      <a [routerLink]="'timeline'" >
+        <i class='bx bx-grid-alt' ></i>
+        <span class="link_name">Timeline</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Timeline</a></li>
       </ul>
-    </div>
-  </nav>
-
-
+    </li>
+    <li *ngIf="auth.isAuth()">
+      <a [routerLink]="'taskboards'">
+        <i class='bx bx-chalkboard' ></i>
+        <span class="link_name">Task boards</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a [routerLink]="'taskboards'">Task boards</a></li>
+      </ul>
+    </li>
+    <li *ngIf="auth.isAuth()">
+      <a href="https://blog.mytaskplan.me/" target="_blank">
+        <i class='bx bx-book' ></i>
+        <span class="link_name">Blog</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="https://blog.mytaskplan.me/">Blog</a></li>
+      </ul>
+    </li>
+    <li *ngIf="auth.isAuth()">
+      <a [routerLink]="'soon'">
+        <i class='bx bx-pie-chart-alt-2' ></i>
+        <span class="link_name">Analytics</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" href="#">Analytics</a></li>
+      </ul>
+    </li>
+    <li *ngIf="auth.isAuth()">
+      <a [routerLink]="'soon'">
+        <i class='bx bx-history'></i>
+        <span class="link_name">History</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" [routerLink]="'soon'">History</a></li>
+      </ul>
+    </li>
+    <li>
+      <div class="iocn-link">
+        <a href="#">
+          <i class='bx bx-code-alt' ></i>
+          <span class="link_name">GitHub</span>
+        </a>
+        <i class='bx bxs-chevron-down arrow' ></i>
+      </div>
+      <ul class="sub-menu">
+        <li><a href="https://github.com/MaurerKrisztian/TaskManager" target="_blank">UI repository</a></li>
+        <li><a href="https://github.com/MaurerKrisztian/TaskManager-api" target="_blank" >API repository</a></li>
+        <li><a href="https://github.com/MaurerKrisztian/linode_configuration" target="_blank">CI-CD repository</a></li>
+      </ul>
+    </li>
+    <li *ngIf="auth.isAuth()">
+      <a [routerLink]="'soon'">
+        <i class='bx bx-cog' ></i>
+        <span class="link_name">Setting</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" [routerLink]="'soon'">Setting</a></li>
+      </ul>
+    </li>
+    <li *ngIf="!auth.isAuth()">
+      <a [routerLink]="'login'">
+        <i class='bx bx-cog' ></i>
+        <span class="link_name">Login</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" [routerLink]="'login'">Login</a></li>
+      </ul>
+    </li>
+    <li *ngIf="auth.isAuth()">
+      <div class="profile-details">
+        <div class="profile-content">
+          <!--<img src="image/profile.jpg" alt="profileImg">-->
+        </div>
+        <div class="name-job">
+          <div class="profile_name">User Name</div>
+          <div class="job">Role</div>
+        </div>
+        <i class='bx bx-log-out' (click)="logout(); toggle()" ></i>
+      </div>
+    </li>
+  </ul>
 </div>
-
+<section class="home-section">
+    <i class='bx bx-menu' ></i>
+    <router-outlet class="text"></router-outlet>
+</section>

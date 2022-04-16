@@ -12,7 +12,29 @@ export class MenuComponent implements OnInit {
   @ViewChild('toggleMenu') toggleMenu: ElementRef;
   constructor(readonly auth: AuthService, private readonly router: Router) {}
 
-  ngOnInit(): void {}
+  // todo refactor
+  ngOnInit(): void {
+    // @ts-ignore
+    let arrow = document.querySelectorAll(".arrow");
+    for (var i = 0; i < arrow.length; i++) {
+      arrow[i].addEventListener("click", (e)=>{
+        // @ts-ignore
+        let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+        // @ts-ignore
+        arrowParent.classList.toggle("showMenu");
+      });
+    }
+    // @ts-ignore
+    let sidebar = document.querySelector(".sidebar");
+    // @ts-ignore
+    let sidebarBtn = document.querySelector(".bx-menu");
+    console.log(sidebarBtn);
+    // @ts-ignore
+    sidebarBtn.addEventListener("click", ()=>{
+      // @ts-ignore
+      sidebar.classList.toggle("close");
+    });
+  }
 
   toggle() {
     this.toggleMenu.nativeElement.click();

@@ -45,6 +45,7 @@ import { EmailEndpoints } from '../services/task-manager-client/endpoints/email.
 import { DailyEmailComponent } from './daily-email/daily-email.component';
 import { Analytics } from '../services/Analytics';
 import { SchedulesEndpoints } from '../services/task-manager-client/endpoints/schedules.endpoints';
+import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SchedulesEndpoints } from '../services/task-manager-client/endpoints/sc
     MenuComponent,
     TaskModalComponent,
     DailyEmailComponent,
+    ComingSoonComponent,
   ],
   imports: [
     RichTextEditorAllModule,
