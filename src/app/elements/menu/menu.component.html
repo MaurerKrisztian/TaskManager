@@ -23,6 +23,15 @@
       </ul>
     </li>
     <li *ngIf="auth.isAuth()">
+      <a>
+        <i class='bx bx-envelope' ></i>
+        <app-daily-email class="link_name"></app-daily-email>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a><app-daily-email></app-daily-email></a></li>
+      </ul>
+    </li>
+    <li *ngIf="auth.isAuth()">
       <a href="https://blog.mytaskplan.me/" target="_blank">
         <i class='bx bx-book' ></i>
         <span class="link_name">Blog</span>
@@ -51,7 +60,7 @@
     </li>
     <li>
       <div class="iocn-link">
-        <a href="#">
+        <a>
           <i class='bx bx-code-alt' ></i>
           <span class="link_name">GitHub</span>
         </a>
