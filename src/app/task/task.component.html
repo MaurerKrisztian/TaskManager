@@ -1,9 +1,35 @@
-<ng-container *ngTemplateOutlet=" shortTemplate"></ng-container>
-<ng-template #shortTemplate>
-  <div class="task" (click)="openExtendedDialog()" [ngClass]="task?.isCompleted ? 'completed-task': ''">
-    <h3>{{task?.title}}</h3>
-    <i *ngIf="task.labels && task.labels.length > 0" class="labels">{{task?.labels}}</i>
+
+
+<div class="taskContainer" (click) ="openExtendedDialog()"> 
+
+  
+  <div class="labelContainer"> 
+<div class="taskLabel" >{{task.labels}} </div>
+     
+</div> 
+
+<div class="task">{{task.title}} </div>
+
+<div class="taskInfoContainer">
+
+
+  <div class="taskInfoIcon">
+    <img class="imgSvg" src="/assets/svg/boardTask/working.svg">  
   </div>
+  <div class="taskInfoText">1h 49m</div>
+ 
 
 
-</ng-template>
+
+<div class="taskInfoIcon"> <img  class="imgSvg" src="/assets/svg/boardTask/paperclip-solid.svg"> </div>
+<div class="taskInfoText">3</div>
+
+
+
+<div class="taskInfoIcon"><img class="imgSvg" src="/assets/svg/boardTask/hourglass-start-solid.svg"> </div>
+<div class="taskInfoText">2d 3h 5m</div>
+
+
+
+
+</div>
