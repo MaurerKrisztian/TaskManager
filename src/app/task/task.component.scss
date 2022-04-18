@@ -1,51 +1,76 @@
-.completed-task {
-  text-decoration: line-through;
+
+.taskContainer{
+display: grid;
+grid-gap: 5px;
+background-color: #222831;
+background-image:
+    linear-gradient(
+      #222831, #30475e
+    );
+border-radius: 20px;
+padding: 5px 10px;
+margin: 15px;
 }
 
 
-.task {
-  /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.41);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(11.9px);
-  -webkit-backdrop-filter: blur(11.9px);
-  border: 1px solid rgba(255, 255, 255, 0.37);
+/* LABEL START */
+.labelContainer{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 3px;
+}
 
-  display: inline-block;
-  //background: #d37e7e;
-  width: 80%;
-  //border-style: dotted;
-  //border-width: 5px;
-  margin: 11px;
-  padding: 11px;
+.taskLabel{
+  text-align: center;
+  color: #dddddd;
+max-height: 20px;
+background-color: #f05454;
+background-image:
+    linear-gradient(
+      to right, 
+      hsl(0, 91%, 59%), #f05454
+    );
+border-radius: 15px;
+font-size: 11px;
+padding: 3px;
+}
+/* LABEL END */
+
+/* TASK START */
+.task{
+display: grid;
+color: #dddddd;
+text-align: center;
+font-size: 17px;
+}
+
+/* TASK END */
+
+/* TASK INFO START */
+.taskInfoIcon{
+ 
+  width: 20px;
+  height: 20px;
+
+}
+
+.imgSvg{
+  width: 100%;
+  height: 100%;
+  filter: invert(100%) sepia(5%) saturate(7500%) hue-rotate(274deg) brightness(105%) contrast(116%);
+}
+
+.taskInfoContainer{
+  display: grid;
+  grid-template-columns: 23px 70px 23px 30px 23px 80px;
+font-size: 14px;
+color: #dddddd;
+}
+.taskInfo{
+  display: grid;
+
 }
 
 
-.labels {
-  animation-name: backgroundColorPalette;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-timing-function: linear;
-  border-radius: 5px;
-  padding: 8px;
-}
 
-@keyframes backgroundColorPalette {
-  0% {
-    background: #c5d9ee;
-  }
-
-  50% {
-    background: #89b5e5;
-  }
-
-  100% {
-    background: #96bae0;
-  }
-}
-
-.minutes {
-  color: green;
-}
+/* TASK INFO END */
