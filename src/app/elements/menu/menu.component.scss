@@ -25,7 +25,7 @@
   display: flex;
   align-items: center;
 }
-.sidebar .logo-details i{
+.sidebar .logo-details em{
   font-size: 30px;
   color: #fff;
   height: 50px;
@@ -72,7 +72,7 @@
 .sidebar.close .nav-links li .iocn-link{
   display: block
 }
-.sidebar .nav-links li i{
+.sidebar .nav-links li em{
   height: 50px;
   min-width: 78px;
   text-align: center;
@@ -82,10 +82,10 @@
   cursor: pointer;
   transition: all 0.3s ease;
 }
-.sidebar .nav-links li.showMenu i.arrow{
+.sidebar .nav-links li.showMenu em.arrow{
   transform: rotate(-180deg);
 }
-.sidebar.close .nav-links i.arrow{
+.sidebar.close .nav-links em.arrow{
   display: none;
 }
 .sidebar .nav-links li a{
@@ -200,7 +200,7 @@
   font-weight: 500;
   white-space: nowrap;
 }
-.sidebar.close .profile-details i,
+.sidebar.close .profile-details em,
 .sidebar.close .profile-details .profile_name,
 .sidebar.close .profile-details .job{
   display: none;

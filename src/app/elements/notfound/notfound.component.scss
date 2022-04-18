@@ -191,7 +191,7 @@ html, .error-container {
     transform: translate(-55%, $numVal);
   }
 }
-@keyframe pulse {
+@keyframes pulse {
   $faded: rgba($text, .3);
   from {
     text-shadow: 0 0 0 $text,

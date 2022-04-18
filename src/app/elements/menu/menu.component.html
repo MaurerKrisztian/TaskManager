@@ -1,12 +1,12 @@
 <div class="sidebar close">
   <div class="logo-details">
-    <i class='bx bx-task'></i>
+    <em class='bx bx-task'></em>
     <span class="logo_name">MyTask</span>
   </div>
   <ul class="nav-links">
     <li *ngIf="auth.isAuth()">
       <a [routerLink]="'timeline'" >
-        <i class='bx bx-grid-alt' ></i>
+        <em class='bx bx-grid-alt' ></em>
         <span class="link_name">Timeline</span>
       </a>
       <ul class="sub-menu blank">
@@ -15,7 +15,7 @@
     </li>
     <li *ngIf="auth.isAuth()">
       <a [routerLink]="'taskboards'">
-        <i class='bx bx-chalkboard' ></i>
+        <em class='bx bx-chalkboard' ></em>
         <span class="link_name">Task boards</span>
       </a>
       <ul class="sub-menu blank">
@@ -24,7 +24,7 @@
     </li>
     <li *ngIf="auth.isAuth()">
       <a>
-        <i class='bx bx-envelope' ></i>
+        <em class='bx bx-envelope' ></em>
         <app-daily-email class="link_name"></app-daily-email>
       </a>
       <ul class="sub-menu blank">
@@ -33,7 +33,7 @@
     </li>
     <li *ngIf="auth.isAuth()">
       <a href="https://blog.mytaskplan.me/" target="_blank">
-        <i class='bx bx-book' ></i>
+        <em class='bx bx-book' ></em>
         <span class="link_name">Blog</span>
       </a>
       <ul class="sub-menu blank">
@@ -42,7 +42,7 @@
     </li>
     <li *ngIf="auth.isAuth()">
       <a [routerLink]="'soon'">
-        <i class='bx bx-pie-chart-alt-2' ></i>
+        <em class='bx bx-pie-chart-alt-2' ></em>
         <span class="link_name">Analytics</span>
       </a>
       <ul class="sub-menu blank">
@@ -51,7 +51,7 @@
     </li>
     <li *ngIf="auth.isAuth()">
       <a [routerLink]="'soon'">
-        <i class='bx bx-history'></i>
+        <em class='bx bx-history'></em>
         <span class="link_name">History</span>
       </a>
       <ul class="sub-menu blank">
@@ -61,10 +61,10 @@
     <li>
       <div class="iocn-link">
         <a>
-          <i class='bx bx-code-alt' ></i>
+          <em class='bx bx-code-alt' ></em>
           <span class="link_name">GitHub</span>
         </a>
-        <i class='bx bxs-chevron-down arrow' ></i>
+        <em class='bx bxs-chevron-down arrow' ></em>
       </div>
       <ul class="sub-menu">
         <li><a href="https://github.com/MaurerKrisztian/TaskManager" target="_blank">UI repository</a></li>
@@ -74,7 +74,7 @@
     </li>
     <li *ngIf="auth.isAuth()">
       <a [routerLink]="'soon'">
-        <i class='bx bx-cog' ></i>
+        <em class='bx bx-cog' ></em>
         <span class="link_name">Setting</span>
       </a>
       <ul class="sub-menu blank">
@@ -83,7 +83,7 @@
     </li>
     <li *ngIf="!auth.isAuth()">
       <a [routerLink]="'login'">
-        <i class='bx bx-cog' ></i>
+        <em class='bx bx-cog' ></em>
         <span class="link_name">Login</span>
       </a>
       <ul class="sub-menu blank">
@@ -99,12 +99,12 @@
           <div class="profile_name">User Name</div>
           <div class="job">Role</div>
         </div>
-        <i class='bx bx-log-out' (click)="logout(); toggle()" ></i>
+        <em class='bx bx-log-out' (click)="logout(); toggle()" ></em>
       </div>
     </li>
   </ul>
 </div>
 <section class="home-section">
-    <i class='bx bx-menu' ></i>
+    <em class='bx bx-menu' ></em>
     <router-outlet class="text"></router-outlet>
 </section>
