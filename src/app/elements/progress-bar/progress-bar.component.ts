@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./progress-bar.component.scss'],
 })
 export class ProgressBarComponent implements OnInit {
-  constructor() {}
-
   ngOnInit(): void {
     const progressBar = document.querySelector('.bar'),
       progressBarValue = document.querySelector('.bar__value');

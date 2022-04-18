@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../services/auth.service';
@@ -11,7 +11,7 @@ import { Analytics } from '../../services/Analytics';
   templateUrl: './task-board.component.html',
   styleUrls: ['./task-board.component.scss'],
 })
-export class TaskBoardComponent implements OnInit {
+export class TaskBoardComponent {
   @Input()
   // @ts-ignore
   board: IBoard;
@@ -34,8 +34,6 @@ export class TaskBoardComponent implements OnInit {
     public dialog: MatDialog,
     public readonly analytics: Analytics
   ) {}
-
-  ngOnInit(): void {}
 
   showCompletedChange() {
     this.showCompleted = !this.showCompleted;
@@ -99,9 +97,6 @@ export class TaskBoardComponent implements OnInit {
         ids.push(id);
       }
     }
-    //
-    // requestFormData.append('body', JSON.stringify({}));
-    // const res = await this.api.post('files', requestFormData, {headers: headers}).toPromise();
 
     return ids;
   }
@@ -114,7 +109,6 @@ export class TaskBoardComponent implements OnInit {
   }
 
   openAddTaskDialog(template: any) {
-    // const dialogRef = this.dialog.open(template);
     this.dialogRef = this.dialog.open(template, {
       width: '80%',
       maxWidth: '80%',

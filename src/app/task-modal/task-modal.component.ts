@@ -106,7 +106,7 @@ export class TaskModalComponent implements OnInit {
   }
 
   getRemainingTime(startDate: Date | any) {
-    const result = { d: 0, h: 0, m: 0, negative: false };
+    const result = { d: 0, h: 0, m: 0, s: 0, negative: false };
     let dateFuture = new Date(startDate).getTime();
     let dateNow = new Date().getTime();
 
@@ -128,6 +128,8 @@ export class TaskModalComponent implements OnInit {
     result.d = days;
     result.h = hours;
     result.m = minutes;
+    result.s = seconds;
+
     return result;
   }
 
@@ -192,7 +194,6 @@ export class TaskModalComponent implements OnInit {
     });
     this.data.boardEvent.emit('edit');
     this.enableEdit = false;
-    // this.dialogRef.close();
   }
 
   toggleSessions() {

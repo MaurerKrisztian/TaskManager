@@ -7,7 +7,7 @@ import { AuthEndpoints } from './endpoints/auth.endpoints';
 import { FileEndpoints } from './endpoints/file.endpoints';
 import { WorkedtimeEndpoints } from './endpoints/workedtime.endpoints';
 import { EmailEndpoints } from './endpoints/email.endpoints';
-import {SchedulesEndpoints} from "./endpoints/schedules.endpoints";
+import { SchedulesEndpoints } from './endpoints/schedules.endpoints';
 
 //todo
 @Injectable()

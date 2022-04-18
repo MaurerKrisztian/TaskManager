@@ -16,7 +16,6 @@ export class DailyEmailComponent implements OnInit {
 
   schedules: ISchedules<any>[] = [];
 
-
   async ngOnInit() {
     await this.getSchedules();
   }
@@ -37,7 +36,6 @@ export class DailyEmailComponent implements OnInit {
     await this.api.email.setupDailyEmail({ date: date });
 
     await this.getSchedules();
-    // this.dialogRef.close();
   }
 
   // @ts-ignore

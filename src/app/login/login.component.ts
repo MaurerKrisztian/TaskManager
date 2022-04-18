@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { SuccessfulLoginResult } from '../../services/task-manager-client/endpoints/auth.endpoints';
 import { TaskMangerClientApi } from '../../services/task-manager-client/task-manger-client.api';
@@ -9,7 +9,7 @@ import { Analytics } from '../../services/Analytics';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   // @ts-ignore
   @ViewChild('loginLabel') loginEmail: ElementRef;
 
@@ -42,13 +42,12 @@ export class LoginComponent implements OnInit {
           }
         })
         .catch((err) => {
+          console.error(err);
           this.loginError = 'Wrong email / password';
           reject('wrong email / password');
         });
     });
   }
-
-  ngOnInit(): void {}
 
   async registration(username: string, password: string) {
     this.api.user
@@ -60,6 +59,7 @@ export class LoginComponent implements OnInit {
         this.loginEmail.nativeElement.click();
       })
       .catch((err) => {
+        console.error(err);
         this.registrationError = 'Email is not available!';
       });
   }

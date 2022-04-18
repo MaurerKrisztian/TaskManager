@@ -15,7 +15,6 @@
       <label for="chk" aria-hidden="true">Sign up</label>
       <div class="error">{{registrationError}}</div>
       <input #username2 type="email" name="txt" placeholder="Email" required="">
-      <!--      <input  type="email" name="email" placeholder="Email" required="">-->
       <input #password2 type="password" name="pswd" placeholder="Password" required="">
       <button [ngClass]="analytics.REGISTRATION_BTN" (click)="registration(username2.value, password2.value); ">Sign
         up

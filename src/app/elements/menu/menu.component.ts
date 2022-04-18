@@ -15,24 +15,24 @@ export class MenuComponent implements OnInit {
   // todo refactor
   ngOnInit(): void {
     // @ts-ignore
-    let arrow = document.querySelectorAll(".arrow");
-    for (var i = 0; i < arrow.length; i++) {
-      arrow[i].addEventListener("click", (e)=>{
+    const arrow = document.querySelectorAll('.arrow');
+    for (let i = 0; i < arrow.length; i++) {
+      arrow[i].addEventListener('click', (e) => {
         // @ts-ignore
-        let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+        const arrowParent = e.target.parentElement.parentElement; //selecting main parent of arrow
         // @ts-ignore
-        arrowParent.classList.toggle("showMenu");
+        arrowParent.classList.toggle('showMenu');
       });
     }
     // @ts-ignore
-    let sidebar = document.querySelector(".sidebar");
+    const sidebar = document.querySelector('.sidebar');
     // @ts-ignore
-    let sidebarBtn = document.querySelector(".bx-menu");
+    const sidebarBtn = document.querySelector('.bx-menu');
     console.log(sidebarBtn);
     // @ts-ignore
-    sidebarBtn.addEventListener("click", ()=>{
+    sidebarBtn.addEventListener('click', () => {
       // @ts-ignore
-      sidebar.classList.toggle("close");
+      sidebar.classList.toggle('close');
     });
   }
 
