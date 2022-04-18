@@ -26,10 +26,6 @@ import { FormsModule } from '@angular/forms';
 import { TimelinetasksComponent } from './timelinetasks/timelinetasks.component';
 import { LogsComponent } from './logs/logs.component';
 import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
-import { ExitbuttonComponent } from './elements/exitbutton/exitbutton.component';
-import { ButtonCpComponent } from './elements/button-cp/button-cp.component';
-import { IdeasComponent } from './ideas/ideas.component';
-import { ButtonCp2Component } from './elements/button-cp2/button-cp2.component';
 import { NotfoundComponent } from './elements/notfound/notfound.component';
 import { ProgressBarComponent } from './elements/progress-bar/progress-bar.component';
 import { MenuComponent } from './elements/menu/menu.component';
@@ -56,10 +52,6 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
     DashboardComponent,
     TimelinetasksComponent,
     LogsComponent,
-    ExitbuttonComponent,
-    ButtonCpComponent,
-    IdeasComponent,
-    ButtonCp2Component,
     NotfoundComponent,
     ProgressBarComponent,
     MenuComponent,
