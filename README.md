@@ -6,6 +6,21 @@ Demo link: https://mytaskplan.me/
 
 API: https://github.com/MaurerKrisztian/TaskManager-api
 
+[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/summary/new_code?id=MaurerKrisztian_TaskManager)
+
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=MaurerKrisztian_TaskManager&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=MaurerKrisztian_TaskManager)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=MaurerKrisztian_TaskManager&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=MaurerKrisztian_TaskManager)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=MaurerKrisztian_TaskManager&metric=bugs)](https://sonarcloud.io/summary/new_code?id=MaurerKrisztian_TaskManager)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=MaurerKrisztian_TaskManager&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=MaurerKrisztian_TaskManager)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=MaurerKrisztian_TaskManager&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=MaurerKrisztian_TaskManager)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=MaurerKrisztian_TaskManager&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=MaurerKrisztian_TaskManager)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=MaurerKrisztian_TaskManager&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=MaurerKrisztian_TaskManager)
+
+
+
+
+
+
 ## Features
 
 Users
