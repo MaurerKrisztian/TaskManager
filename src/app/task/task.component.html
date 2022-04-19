@@ -12,13 +12,13 @@
   <div class="taskInfoIcon">
     <img class="imgSvg" src="/assets/svg/boardTask/working.svg">
   </div>
-  <div class="taskInfoText">1h 49m</div>
+  <div class="taskInfoText">{{workedTime.toFixed(1)}} m</div>
 
 <div class="taskInfoIcon"> <img  class="imgSvg" src="/assets/svg/boardTask/paperclip-solid.svg"> </div>
 <div class="taskInfoText">{{task.fileIds?.length }}</div>
 
-<div class="taskInfoIcon"><img class="imgSvg" src="/assets/svg/boardTask/hourglass-start-solid.svg"> </div>
-<div class="taskInfoText">2d 3h 5m</div>
+<div class="taskInfoIcon" *ngIf="task.startAt"><img class="imgSvg" src="/assets/svg/boardTask/hourglass-start-solid.svg"> </div>
+<div class="taskInfoText" *ngIf="task.startAt">{{(getRemainingTime(task.startAt).negative ? "- " : "") + getRemainingTime(task.startAt).d + "d " + getRemainingTime(task.startAt).h + "h " + getRemainingTime(task.startAt).m + "m"}}</div>
 
 
 </div>
