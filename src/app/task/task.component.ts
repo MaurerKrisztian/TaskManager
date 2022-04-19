@@ -56,7 +56,6 @@ export class TaskComponent implements OnInit {
     return sum;
   }
 
-
   // todo duplication
   getRemainingTime(startDate: Date | any) {
     const result = { d: 0, h: 0, m: 0, s: 0, negative: false };
@@ -84,6 +83,11 @@ export class TaskComponent implements OnInit {
     result.s = seconds;
 
     return result;
+  }
+
+  getRemainingTimeText() {
+    const times = this.getRemainingTime(this.task.startAt);
+    return `${times.negative ? '- ' : ''}${times.d}d ${times.h}h ${times.m}m`;
   }
 
   openExtendedDialog() {

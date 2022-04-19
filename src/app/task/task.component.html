@@ -18,7 +18,7 @@
 <div class="taskInfoText">{{task.fileIds?.length }}</div>
 
 <div class="taskInfoIcon" *ngIf="task.startAt"><img class="imgSvg" src="/assets/svg/boardTask/hourglass-start-solid.svg"> </div>
-<div class="taskInfoText" *ngIf="task.startAt">{{(getRemainingTime(task.startAt).negative ? "- " : "") + getRemainingTime(task.startAt).d + "d " + getRemainingTime(task.startAt).h + "h " + getRemainingTime(task.startAt).m + "m"}}</div>
+<div class="taskInfoText" *ngIf="task.startAt">{{getRemainingTimeText()}}</div>
 
 
 </div>
