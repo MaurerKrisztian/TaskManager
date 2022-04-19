@@ -4,6 +4,8 @@ import {
   IModalData,
   TaskModalComponent,
 } from '../task-modal/task-modal.component';
+import { TaskMangerClientApi } from '../../services/task-manager-client/task-manger-client.api';
+import { ITask } from '../../services/task-manager-client/endpoints/task.endpoints';
 
 @Component({
   selector: 'app-task',
@@ -24,7 +26,10 @@ export class TaskComponent implements OnInit {
 
   files: { downloadLink: string; filename: string }[] = [];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private readonly api: TaskMangerClientApi
+  ) {}
 
   async ngOnInit() {}
 

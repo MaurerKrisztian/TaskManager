@@ -1,12 +1,8 @@
-
-
-<div class="taskContainer" (click) ="openExtendedDialog()"> 
-
-  
-  <div class="labelContainer"> 
+<div class="taskContainer" (click) ="openExtendedDialog()">
+  <div class="labelContainer">
 <div class="taskLabel" >{{task.labels}} </div>
-     
-</div> 
+
+</div>
 
 <div class="task">{{task.title}} </div>
 
@@ -14,22 +10,15 @@
 
 
   <div class="taskInfoIcon">
-    <img class="imgSvg" src="/assets/svg/boardTask/working.svg">  
+    <img class="imgSvg" src="/assets/svg/boardTask/working.svg">
   </div>
   <div class="taskInfoText">1h 49m</div>
- 
-
-
 
 <div class="taskInfoIcon"> <img  class="imgSvg" src="/assets/svg/boardTask/paperclip-solid.svg"> </div>
-<div class="taskInfoText">3</div>
-
-
+<div class="taskInfoText">{{task.fileIds?.length }}</div>
 
 <div class="taskInfoIcon"><img class="imgSvg" src="/assets/svg/boardTask/hourglass-start-solid.svg"> </div>
 <div class="taskInfoText">2d 3h 5m</div>
-
-
 
 
 </div>
