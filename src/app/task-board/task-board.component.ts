@@ -13,15 +13,15 @@ import { Analytics } from '../../services/Analytics';
 })
 export class TaskBoardComponent {
   @Input()
-  // @ts-ignore
+    // @ts-ignore
   board: IBoard;
 
   @Input()
-  // @ts-ignore
+    // @ts-ignore
   dragable: boolean;
 
   @Input()
-  // @ts-ignore
+    // @ts-ignore
   boardEvent: EventEmitter<any>;
 
   // @ts-ignore
@@ -29,11 +29,15 @@ export class TaskBoardComponent {
 
   showCompleted = true;
 
+  title: string;
+
   constructor(
     private readonly api: ApiService,
     public dialog: MatDialog,
     public readonly analytics: Analytics
-  ) {}
+  ) {
+    this.title = '';
+  }
 
   showCompletedChange() {
     this.showCompleted = !this.showCompleted;
@@ -117,6 +121,7 @@ export class TaskBoardComponent {
     });
     this.dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
+      this.title = '';
     });
   }
 
