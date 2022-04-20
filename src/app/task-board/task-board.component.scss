@@ -1,3 +1,5 @@
+$boardBottomAddTaskHeight: 60px;
+
 .board {
   min-width: 310px;
   border-radius: 10px;
@@ -5,9 +7,10 @@
   margin: 11px;
   background-color: #dddddd;
   position: relative;
-  min-height: 150px;
+  min-height: 250px;
   overflow: hidden;
   height: auto;
+  padding-bottom: $boardBottomAddTaskHeight
 }
 
 .board-name {
@@ -113,8 +116,8 @@ input[type=text], select {
   right: 0;
   left: 0;
   width: auto;
-  max-height: 60px;
-  min-height: 60px;
+  max-height: $boardBottomAddTaskHeight;
+  min-height: $boardBottomAddTaskHeight;
   background-color: #11101d;
   justify-content: center;
 }
