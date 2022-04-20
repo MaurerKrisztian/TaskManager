@@ -210,7 +210,6 @@
 }
 .home-section{
   position: relative;
-  background: #E4E9F7;
   height: 100vh;
   left: 260px;
   width: calc(100% - 260px);
@@ -238,8 +237,11 @@
 .bx-menu {
   color: #11101d;
   font-size: 35px;
-  margin: 0 15px;
+  margin: 5px;
   cursor: pointer;
+  background: #dddddd;
+  padding: 5px;
+  border-radius: 15px;
 }
 
 .home-section .home-content .text{
