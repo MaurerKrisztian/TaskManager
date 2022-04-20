@@ -1,24 +1,61 @@
 .board {
-  min-width: 300px;
-  border-style: solid;
-  border-width: 5px;
+  min-width: 310px;
+  border-radius: 10px;
   //width: 400px;
-  padding: 11px;
   margin: 11px;
-  background-image:
-    -webkit-linear-gradient(60deg,rgba(218, 169, 215, 0.637),rgba(128, 174, 235, 0.904));
-
+  background-color: #dddddd;
+  position: relative;
+  min-height: 150px;
+  overflow: hidden;
+  height: auto;
 }
 
 .board-name {
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
   align-content: center;
-  background: -webkit-linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
-  background: -o-linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
-  background: -moz-linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
-  background: linear-gradient(110deg, #fdcd3b 60%, #ffed4b 60%);
-  margin: 11px;
-  padding: 6px;
+  max-height: 60px;
+  min-height: 50px;
+  width: auto;
+  display: block;
+  background-color: #30475e;
+  padding: 3px;
+  color: #cbd1d7;
 }
+
+.board-title{
+  top: 10px;
+  width:100px;
+  left: 20px;
+  bottom: 0;
+  font-weight: lighter;
+  position:absolute;
+  color: #cbd1d7 !important;
+}
+
+.board-icons{
+  top: 10px;
+  width:100px;
+  right:0;
+  bottom: 0;
+  position:absolute;
+  color: #cbd1d7 !important;
+}
+
+border-icons:hover{
+  background: none;
+}
+
+.icon{
+  cursor: pointer;
+  top: 2px;
+  filter: invert(97%) sepia(1%) saturate(2955%) hue-rotate(179deg) brightness(88%) contrast(90%);
+  height: 33px;
+  width: 33px;
+}
+
+
 
 
 .center {
@@ -68,3 +105,45 @@ input[type=text], select {
   box-sizing: border-box;
   background-image: linear-gradient(#44f84a, #19bd07);
 }
+
+.bottomTaskAdd{
+  display: -ms-flex; display: -webkit-flex; display: flex;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: auto;
+  max-height: 60px;
+  min-height: 60px;
+  background-color: #11101d;
+  justify-content: center;
+}
+
+.bottomAddWrapper{
+  position: absolute;
+  width: 100px;
+  bottom: 0;
+  right: 0;
+}
+
+.bottomTaskName{
+  flex: 1;
+  border: none;
+  border-radius: 18px !important;
+  bottom: 1px;
+  position: absolute;
+  left: 12px;
+  max-width: 82%;
+  width: auto;
+  min-width: 90px;
+  float: left;
+}
+
+.bottomAddIcon{
+  top: -15px;
+  flex: 2;
+  @extend .icon;
+  right: 1px;
+  bottom: 0;
+}
+

@@ -1,15 +1,22 @@
 <div class="board resizable" *ngIf="board">
   <div class="board-name">
-    <h2><b> {{board.name}}</b>
+    <h2>
+      <span class="board-title">{{board.name}}</span>
 
-      <b mat-menu-item style="float: right" [matMenuTriggerFor]="menu">***</b>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="deleteBoard()"> delete</button>
-        <button mat-menu-item (click)="showCompletedChange()">show completed</button>
-      </mat-menu>
+      <span class="board-icons">
+       <!-- <span mat-menu-item style="float: right" [matMenuTriggerFor]="menu">***</span>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="deleteBoard()"> delete</button>
+          <button mat-menu-item (click)="showCompletedChange()">show completed</button>
+        </mat-menu> -->
 
-      <img src="assets/svg/add.svg" class="icon" style="float: right" mat-button
-           (click)="openAddTaskDialog(addTaskDialog)">
+        <img mat-menu-item src="../../assets/svg/drop-arrow.svg" class="icon"  style="float: right"
+             [matMenuTriggerFor]="menu" alt="dropdown button for board menu"> <!--(click)="openAddTaskDialog(addTaskDialog)"-->
+         <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="deleteBoard()">Delete Tasks</button>
+          <button mat-menu-item (click)="showCompletedChange()">Show completed</button>
+        </mat-menu>
+      </span>
     </h2>
   </div>
 
@@ -32,13 +39,19 @@
     </div>
 
   </ng-container>
-
+  <div class="bottomTaskAdd">
+    <input class="bottomTaskName" type="text" [(ngModel)]="title"/>
+    <span class="bottomAddWrapper">
+    <img mat-menu-item src="../../assets/svg/add.svg" class="bottomAddIcon" width="100px" style="float: right"
+         alt="add button for new task" (click)="openAddTaskDialog(addTaskDialog)">
+      </span><!---->
+  </div>
 </div>
 
 <ng-template #addTaskDialog>
   <div>
     <h3>Add task </h3>
-    <p>Title*: <input type="text" #titleInput></p>
+    <p>Title*: <input type="text" #titleInput [(ngModel)]="title"></p>
 
     <ejs-richtexteditor #textEditor></ejs-richtexteditor>
     <p>Start at: <input type="datetime-local" #startAtInput></p>
