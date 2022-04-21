@@ -99,7 +99,7 @@ export class TaskComponent implements OnInit {
 
   getRemainingTimeText() {
     const times = this.getRemainingTime(this.task.startAt);
-    return `${times.negative ? '- ' : ''}${times.d}d ${times.h}h ${times.m}m`;
+    return `${times.negative ? 'expired' : `${times.d}d ${times.h}h ${times.m}m`}`;
   }
 
   openExtendedDialog() {
