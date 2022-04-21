@@ -10,7 +10,9 @@
     <p *ngIf="task?.startAt" class="remainingTime">
       Remaining
       time: {{(getRemainingTime(task.startAt).negative ? "- " : "") + getRemainingTime(task.startAt).d + "d " + getRemainingTime(task.startAt).h + "h " + getRemainingTime(task.startAt).m + "m"}}</p>
-    <p><i class="labels">{{task?.labels}}</i></p>
+    <p><ng-container *ngFor="let label of task?.labels">
+      <i class="labels">{{label}}</i>
+    </ng-container></p>
     <ng-container *ngFor="let file of files">
       <p><a [href]="file.downloadLink"> {{file.filename}}</a></p>
     </ng-container>

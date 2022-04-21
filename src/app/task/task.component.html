@@ -1,6 +1,6 @@
 <div class="taskContainer" (click) ="openExtendedDialog()">
-  <div class="labelContainer">
-<div class="taskLabel" >{{task.labels}} </div>
+  <div class="labelContainer" *ngFor="let label of task.labels">
+<span class="taskLabel" >{{label}} </span>
 
 </div>
 

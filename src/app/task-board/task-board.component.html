@@ -55,13 +55,16 @@
 
     <ejs-richtexteditor #textEditor></ejs-richtexteditor>
     <p>Start at: <input type="datetime-local" #startAtInput></p>
-    <p>Label: <input type="text" #labelInput></p>
+    <ng-container *ngFor="let label of labels">
+      <span class="label">{{label}}</span>
+    </ng-container>
+    <p>Label: <input class="labelInput" type="text" #labelInput> <button (click)="addLabel(labelInput.value)"> add </button></p>
     <input type="file"
            multiple
            id="file"
            (change)="handleFileInput($event.target)">
     <button [ngClass]="[analytics.CREATE_TASK, 'addButton']"
-            (click)="addTask({title: titleInput.value, description: textEditor.getHtml(), startAt: startAtInput.value, labels: (labelInput.value && labelInput.value != '')?[labelInput.value]:[]});">
+            (click)="addTask({title: titleInput.value, description: textEditor.getHtml(), startAt: startAtInput.value, labels: labels});">
       add
     </button>
   </div>

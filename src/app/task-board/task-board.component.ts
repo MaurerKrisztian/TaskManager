@@ -131,4 +131,9 @@ export class TaskBoardComponent {
   handleFileInput(event: any) {
     this.tmpFiles = event.files;
   }
+
+  labels: string[] = [];
+  addLabel(value: string) {
+    this.labels.push(value);
+  }
 }

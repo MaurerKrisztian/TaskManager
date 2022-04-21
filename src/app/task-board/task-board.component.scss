@@ -150,3 +150,14 @@ input[type=text], select {
   bottom: 0;
 }
 
+.label {
+  background: #30475e;
+  border-radius: 15px;
+  padding: 7px;
+  color: #dddddd;
+}
+
+.labelInput {
+  width: 160px !important;
+  margin: 11px !important;
+}
