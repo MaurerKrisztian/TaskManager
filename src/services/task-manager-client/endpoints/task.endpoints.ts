@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { IWorkSession } from './workedtime.endpoints';
 
 export interface ITask {
-  _id?: string;
+  _id: string;
 
   title: string;
 

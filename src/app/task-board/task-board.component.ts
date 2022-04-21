@@ -50,7 +50,7 @@ export class TaskBoardComponent {
     }
   }
 
-  async createBoardTask(task: ITask) {
+  async createBoardTask(task: Omit<ITask, '_id'>) {
     await this.api.post(ApiService.ENDPOINTS.tasks, task).toPromise();
     this.boardEvent.emit('rerender');
   }

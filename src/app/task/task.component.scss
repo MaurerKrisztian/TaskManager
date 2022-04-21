@@ -27,7 +27,7 @@ max-height: 20px;
 background-color: #f05454;
 background-image:
     linear-gradient(
-      to right, 
+      to right,
       hsl(0, 91%, 59%), #f05454
     );
 border-radius: 15px;
@@ -48,16 +48,18 @@ font-size: 17px;
 
 /* TASK INFO START */
 .taskInfoIcon{
- 
   width: 20px;
   height: 20px;
-
 }
 
 .imgSvg{
   width: 100%;
   height: 100%;
   filter: invert(100%) sepia(5%) saturate(7500%) hue-rotate(274deg) brightness(105%) contrast(116%);
+}
+
+.sessionStartedIndicator {
+  color: #f05454;
 }
 
 .taskInfoContainer{

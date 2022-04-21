@@ -36,6 +36,18 @@ export class TaskComponent implements OnInit {
 
   async ngOnInit() {
     this.workedTime = await this.getWorkedTime();
+    this.isWorkSessionStarted = await this.getIsWorkSessionStarted();
+    this.boardEvent.subscribe(async () => {
+      this.workedTime = await this.getWorkedTime();
+      this.isWorkSessionStarted = await this.getIsWorkSessionStarted();
+    });
+  }
+
+  async getIsWorkSessionStarted() {
+    const activeSessison = await this.api.workedTimes.getActiveWorkSession(
+      this.task._id
+    );
+    return activeSessison?.length > 0;
   }
 
   // todo calculate with api
