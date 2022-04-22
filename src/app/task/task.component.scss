@@ -15,9 +15,7 @@ margin: 15px;
 
 /* LABEL START */
 .labelContainer{
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-gap: 3px;
+ 
 }
 
 .taskLabel{
@@ -33,6 +31,7 @@ background-image:
 border-radius: 15px;
 font-size: 11px;
 padding: 3px;
+margin-left: 3px;
 }
 /* LABEL END */
 
