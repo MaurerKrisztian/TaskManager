@@ -1,78 +1,39 @@
 import { Component, OnInit } from '@angular/core';
-import {IChartData} from "../../charts/charts.component";
+import { IChartData } from '../../charts/charts.component';
+import { TaskMangerClientApi } from '../../../services/task-manager-client/task-manger-client.api';
+import { ILabel } from '../../../services/task-manager-client/endpoints/label.endpoints';
 
 @Component({
   selector: 'app-label-chart',
   templateUrl: './label-chart.component.html',
-  styleUrls: ['./label-chart.component.scss']
+  styleUrls: ['./label-chart.component.scss'],
 })
 export class LabelChartComponent implements OnInit {
+  constructor(private readonly api: TaskMangerClientApi) {}
 
+  labels: ILabel[] = [];
 
+  async ngOnInit() {
+    this.multi = [];
+    this.labels = await this.api.label.getAll();
 
-  ngOnInit(): void {
-    // setInterval(() => {
-    //   this.multi = [...this.multi, {
-    //     name: 'USA',
-    //     series: [
-    //       {
-    //         name: '2010',
-    //         value: 1870000,
-    //       },
-    //       {
-    //         name: '2011',
-    //         value: 8270000,
-    //       },
-    //     ],
-    //   }];
-    //
-    //
-    // }, 1000);
+    for (const label of this.labels) {
+      const usageCount = (await this.api.task.getTaskByLabel(label.name)).length;
+
+      const chartData: IChartData = {
+        name: label.name,
+        series: [
+          {
+            name: 'usage',
+            value: usageCount,
+          },
+        ],
+      };
+      this.multi = [...this.multi, chartData];
+    }
   }
 
-  multi: IChartData[] = [
-    {
-      name: 'Germany',
-      series: [
-        {
-          name: '2010',
-          value: 7300000,
-        },
-        {
-          name: '2011',
-          value: 8940000,
-        },
-      ],
-    },
-
-    {
-      name: 'USA',
-      series: [
-        {
-          name: '2010',
-          value: 7870000,
-        },
-        {
-          name: '2011',
-          value: 8270000,
-        },
-      ],
-    },
-
-    {
-      name: 'France',
-      series: [
-        {
-          name: '2010',
-          value: 5000002,
-        },
-        {
-          name: '2011',
-          value: 5800000,
-        },
-      ],
-    },
-  ];
+  multi: IChartData[] = [];
   view: [number, number] = [700, 400];
 
   // options
@@ -82,9 +43,9 @@ export class LabelChartComponent implements OnInit {
   showLegend = true;
   legendPosition: any = 'below';
   showXAxisLabel = true;
-  yAxisLabel: any = 'Country';
+  yAxisLabel: any = 'Labels';
   showYAxisLabel = true;
-  xAxisLabel = 'Population';
+  xAxisLabel = 'Current usage count';
 
   colorScheme: any = {
     domain: ['#5AA454', '#C7B42C', '#AAAAAA'],
@@ -102,5 +63,4 @@ export class LabelChartComponent implements OnInit {
   onDeactivate(data: any): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
-
 }

@@ -46,6 +46,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { BarChartModule, NgxChartsModule } from '@swimlane/ngx-charts';
 import { LabelChartComponent } from './analytics/label-chart/label-chart.component';
 import { WorkedTimeChartComponent } from './analytics/worked-time-chart/worked-time-chart.component';
+import {LabelEndpoints} from "../services/task-manager-client/endpoints/label.endpoints";
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { WorkedTimeChartComponent } from './analytics/worked-time-chart/worked-t
     UserEndpoints,
     WorkedtimeEndpoints,
     EmailEndpoints,
+    LabelEndpoints,
     SchedulesEndpoints,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],

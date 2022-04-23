@@ -31,4 +31,7 @@ export class TaskEndpoints extends RESTEndpoints<ITask> {
   async getBoardTask(boardId: string): Promise<ITask> {
     return this.api.get(`${this.endpoint}/${boardId}`).toPromise();
   }
+  async getTaskByLabel(labelName: string): Promise<ITask[]> {
+    return this.api.get(`${this.endpoint}/label/${labelName}`).toPromise();
+  }
 }
