@@ -42,6 +42,10 @@ import { DailyEmailComponent } from './daily-email/daily-email.component';
 import { Analytics } from '../services/Analytics';
 import { SchedulesEndpoints } from '../services/task-manager-client/endpoints/schedules.endpoints';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
+import { ChartsComponent } from './charts/charts.component';
+import { BarChartModule, NgxChartsModule } from '@swimlane/ngx-charts';
+import { LabelChartComponent } from './analytics/label-chart/label-chart.component';
+import { WorkedTimeChartComponent } from './analytics/worked-time-chart/worked-time-chart.component';
 
 @NgModule({
   declarations: [
@@ -58,8 +62,12 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
     TaskModalComponent,
     DailyEmailComponent,
     ComingSoonComponent,
+    ChartsComponent,
+    LabelChartComponent,
+    WorkedTimeChartComponent,
   ],
   imports: [
+    NgxChartsModule,
     RichTextEditorAllModule,
     BrowserModule,
     AppRoutingModule,
@@ -72,6 +80,7 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
     MatMenuModule,
     CommonModule,
     FormsModule,
+    BarChartModule,
   ],
   providers: [
     AuthService,

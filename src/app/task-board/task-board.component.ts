@@ -13,15 +13,15 @@ import { Analytics } from '../../services/Analytics';
 })
 export class TaskBoardComponent {
   @Input()
-    // @ts-ignore
+  // @ts-ignore
   board: IBoard;
 
   @Input()
-    // @ts-ignore
+  // @ts-ignore
   dragable: boolean;
 
   @Input()
-    // @ts-ignore
+  // @ts-ignore
   boardEvent: EventEmitter<any>;
 
   // @ts-ignore

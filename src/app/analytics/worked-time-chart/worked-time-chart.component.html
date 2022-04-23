@@ -1,0 +1,28 @@
+<p>Worked times chart</p>
+
+<select class='select-option'
+        #mySelect
+        (change)='onOptionsSelected(mySelect.value)'>
+  <option class='option'
+          *ngFor='let option of selectOption'
+          [value]="option">{{option}}</option>
+</select>
+
+<ngx-charts-area-chart
+  [view]="view"
+  [scheme]="colorScheme"
+  [legend]="legend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxis]="xAxis"
+  [yAxis]="yAxis"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [timeline]="timeline"
+  [results]="multi"
+  (select)="onSelect($event)">
+</ngx-charts-area-chart>
+
+<div *ngFor="let data of multi[0].series">
+  {{data.name | date: 'yyyy-MM-dd hh:mm'}} - {{data.value.toFixed(4)}} hours
+</div>

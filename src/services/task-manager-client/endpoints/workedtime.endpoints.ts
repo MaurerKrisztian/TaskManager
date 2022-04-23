@@ -19,6 +19,12 @@ export class WorkedtimeEndpoints {
     return this.api.post(`${this.endpoint}/start`, startData).toPromise();
   }
 
+  workedDaysAggregation(groupedBy: groupedByType): Promise<any[]> {
+    return this.api
+      .get(`${this.endpoint}/chart/workeddays?groupedBy=${groupedBy}`)
+      .toPromise();
+  }
+
   end(taskId: string, body: { end: Date }) {
     return this.api.post(`${this.endpoint}/end/${taskId}`, body).toPromise();
   }
@@ -31,3 +37,4 @@ export class WorkedtimeEndpoints {
     return this.api.get(`${this.endpoint}/activeWorkSession/${id}`).toPromise();
   }
 }
+export type groupedByType = 'hour'| 'day' | 'month';
