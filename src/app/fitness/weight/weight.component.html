@@ -1,0 +1,21 @@
+
+<h1>Weight tracker</h1>
+<input type="number" #weightInput> <button (click)="addWeight(weightInput.value)">add</button>
+<ngx-charts-area-chart
+  [view]="view"
+  [scheme]="colorScheme"
+  [legend]="legend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxis]="xAxis"
+  [yAxis]="yAxis"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [timeline]="timeline"
+  [results]="multi"
+  (select)="onSelect($event)">
+</ngx-charts-area-chart>
+
+<div class="weight-log">
+  <p  *ngFor="let weight of weights"> {{weight.date | date}} - {{weight.weight}} kg  <button (click)="deleteWeight(weight)">delete</button></p>
+</div>

@@ -8,7 +8,8 @@ import { FileEndpoints } from './endpoints/file.endpoints';
 import { WorkedtimeEndpoints } from './endpoints/workedtime.endpoints';
 import { EmailEndpoints } from './endpoints/email.endpoints';
 import { SchedulesEndpoints } from './endpoints/schedules.endpoints';
-import {LabelEndpoints} from "./endpoints/label.endpoints";
+import { LabelEndpoints } from './endpoints/label.endpoints';
+import { WeightEndpoints } from './endpoints/weight.endpoints';
 
 //todo
 @Injectable()
@@ -23,6 +24,7 @@ export class TaskMangerClientApi {
     readonly workedTimes: WorkedtimeEndpoints,
     readonly auth: AuthEndpoints,
     readonly schedules: SchedulesEndpoints,
-    readonly label: LabelEndpoints
+    readonly label: LabelEndpoints,
+    readonly weight: WeightEndpoints
   ) {}
 }
