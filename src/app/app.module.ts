@@ -49,6 +49,7 @@ import { WorkedTimeChartComponent } from './analytics/worked-time-chart/worked-t
 import { LabelEndpoints } from '../services/task-manager-client/endpoints/label.endpoints';
 import { WeightComponent } from './fitness/weight/weight.component';
 import { WeightEndpoints } from '../services/task-manager-client/endpoints/weight.endpoints';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { WeightEndpoints } from '../services/task-manager-client/endpoints/weigh
     LabelChartComponent,
     WorkedTimeChartComponent,
     WeightComponent,
+    LandingPageComponent,
   ],
   imports: [
     NgxChartsModule,
