@@ -8,6 +8,7 @@ import { NotfoundComponent } from './elements/notfound/notfound.component';
 import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { ChartsComponent } from './charts/charts.component';
 import { WeightComponent } from './fitness/weight/weight.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
   { path: 'taskboards', component: DashboardComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'soon', component: ComingSoonComponent },
   { path: 'chart', component: ChartsComponent },
   { path: 'weight', component: WeightComponent },
+  { path: 'landing', component: LandingPageComponent },
   {
     path: '**',
     component: NotfoundComponent,
