@@ -1,0 +1,27 @@
+<h1>Macros</h1>
+
+Protein: <input type="number" #protein [value]="macros[0]?.protein">
+Carbohydrates: <input type="number" #carbohydrates [value]="macros[0]?.carbohydrates">
+Fat: <input type="number" #fat [value]="macros[0]?.fat">
+
+<button (click)="createMacro({protein: protein.valueAsNumber || 0, carbohydrates: carbohydrates.valueAsNumber || 0, fat: fat.valueAsNumber || 0})">create</button>
+
+<ngx-charts-area-chart
+  [view]="view"
+  [scheme]="colorScheme"
+  [legend]="legend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxis]="xAxis"
+  [yAxis]="yAxis"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel"
+  [timeline]="timeline"
+  [results]="multi"
+  (select)="onSelect($event)">
+</ngx-charts-area-chart>
+
+
+<div class="log">
+  <p  *ngFor="let macro of macros"> {{macro.date | date}} - protein: {{macro.protein}}g  carbohydrates: {{macro.carbohydrates}}g  fat: {{macro.fat}}  <button (click)="remove(macro._id || '')">delete</button></p>
+</div>

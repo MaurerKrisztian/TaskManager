@@ -49,6 +49,8 @@ import { WorkedTimeChartComponent } from './analytics/worked-time-chart/worked-t
 import { LabelEndpoints } from '../services/task-manager-client/endpoints/label.endpoints';
 import { WeightComponent } from './fitness/weight/weight.component';
 import { WeightEndpoints } from '../services/task-manager-client/endpoints/weight.endpoints';
+import { MacrosComponent } from './fitness/macros/macros.component';
+import { FoodMacrosEndpoints } from '../services/task-manager-client/endpoints/food-macros.endpoints';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,7 @@ import { WeightEndpoints } from '../services/task-manager-client/endpoints/weigh
     LabelChartComponent,
     WorkedTimeChartComponent,
     WeightComponent,
+    MacrosComponent,
   ],
   imports: [
     NgxChartsModule,
@@ -105,6 +108,7 @@ import { WeightEndpoints } from '../services/task-manager-client/endpoints/weigh
     EmailEndpoints,
     LabelEndpoints,
     WeightEndpoints,
+    FoodMacrosEndpoints,
     SchedulesEndpoints,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
