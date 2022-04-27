@@ -58,7 +58,7 @@
         <li><a class="link_name" [routerLink]="'soon'">History</a></li>
       </ul>
     </li>
-    <li>
+    <li *ngIf="auth.isAuth()">
       <div class="iocn-link">
         <a>
           <em class='bx bx-food-menu'></em>
