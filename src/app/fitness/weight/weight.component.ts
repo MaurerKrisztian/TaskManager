@@ -19,8 +19,11 @@ export class WeightComponent implements OnInit {
   }
 
   async addWeight(value: string) {
-    await this.api.weight.create({ weight: Number.parseFloat(value) });
-    this.ngOnInit()
+    await this.api.weight.create({
+      weight: Number.parseFloat(value),
+      date: new Date(),
+    });
+    this.ngOnInit();
   }
 
   multi: IChartData[] = [];
@@ -67,6 +70,6 @@ export class WeightComponent implements OnInit {
 
   async deleteWeight(weight: IWeight) {
     await this.api.weight.deleteById(weight._id);
-    this.ngOnInit()
+    this.ngOnInit();
   }
 }
