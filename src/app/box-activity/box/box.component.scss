@@ -1,0 +1,18 @@
+.box {
+  width: 20px;
+  height: 20px;
+  margin: 4px;
+  display: inline-block;
+}
+
+.not-done{
+  background: grey;
+}
+
+.done {
+  background: green;
+}
+
+.skipped {
+  background: red;
+}
