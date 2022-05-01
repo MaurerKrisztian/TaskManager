@@ -40,11 +40,7 @@ export class BoxTableComponent implements OnInit {
       const boxDate = new Date(new Date().getTime() - this.dayInMs * i);
       const foundBox = this.boxStatuses.find((status) => {
         const date = new Date(status.date);
-        return (
-          boxDate.getFullYear() == date.getFullYear() &&
-          boxDate.getMonth() == date.getMonth() &&
-          boxDate.getDate() == date.getDate()
-        );
+        return this.isDateOnTheSameDay(boxDate, date);
       });
       if (foundBox) {
         this.boxes.push({
@@ -61,5 +57,13 @@ export class BoxTableComponent implements OnInit {
       }
       currnetDate.setTime(currnetDate.getTime() - 86_400_000);
     }
+  }
+
+  isDateOnTheSameDay(date1: Date, date2: Date) {
+    return (
+      date1.getFullYear() == date2.getFullYear() &&
+      date1.getMonth() == date2.getMonth() &&
+      date1.getDate() == date2.getDate()
+    );
   }
 }

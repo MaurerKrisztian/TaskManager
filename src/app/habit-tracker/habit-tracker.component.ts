@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskMangerClientApi } from '../../services/task-manager-client/task-manger-client.api';
-import {IHabitDayStatus} from "../../services/task-manager-client/endpoints/habit-day-status.endpoints";
 
 export interface IHabit {
   name: string;
