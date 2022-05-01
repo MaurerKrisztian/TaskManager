@@ -9,7 +9,8 @@ import { ComingSoonComponent } from './coming-soon/coming-soon.component';
 import { ChartsComponent } from './charts/charts.component';
 import { WeightComponent } from './fitness/weight/weight.component';
 import { MacrosComponent } from './fitness/macros/macros.component';
-import {BoxTableComponent} from "./box-activity/box-table/box-table.component";
+import { BoxTableComponent } from './box-activity/box-table/box-table.component';
+import { HabitTrackerComponent } from './habit-tracker/habit-tracker.component';
 
 const routes: Routes = [
   { path: 'taskboards', component: DashboardComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'weight', component: WeightComponent },
   { path: 'food-macros', component: MacrosComponent },
   { path: 'box-activity', component: BoxTableComponent },
+  { path: 'habit', component: HabitTrackerComponent },
   {
     path: '**',
     component: NotfoundComponent,

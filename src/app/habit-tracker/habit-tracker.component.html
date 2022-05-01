@@ -1,0 +1,9 @@
+<input type="text" #habitName> <button (click)="createHabit(habitName.value)">Add</button>
+
+
+<div class="habitContainer" *ngFor="let habit of habits">
+  <div>{{habit.name}}</div> <button (click)="doneToday(habit._id)">Done Today</button>
+  <div>{{habit?.description}}</div>
+  <app-box-table [startDate]="habit.startDate" [numberOfBox]="66"  [habit]="habit"></app-box-table>
+  <button (click)="delete(habit._id)">delete</button>
+</div>

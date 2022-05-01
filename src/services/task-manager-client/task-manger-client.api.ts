@@ -10,7 +10,9 @@ import { EmailEndpoints } from './endpoints/email.endpoints';
 import { SchedulesEndpoints } from './endpoints/schedules.endpoints';
 import { LabelEndpoints } from './endpoints/label.endpoints';
 import { WeightEndpoints } from './endpoints/weight.endpoints';
-import {FoodMacrosEndpoints} from "./endpoints/food-macros.endpoints";
+import { FoodMacrosEndpoints } from './endpoints/food-macros.endpoints';
+import { HabitEndpoints } from './endpoints/habit.endpoints';
+import { HabitDayStatusEndpoints } from './endpoints/habit-day-status.endpoints';
 
 //todo
 @Injectable()
@@ -27,6 +29,8 @@ export class TaskMangerClientApi {
     readonly schedules: SchedulesEndpoints,
     readonly label: LabelEndpoints,
     readonly weight: WeightEndpoints,
-    readonly foodMacros: FoodMacrosEndpoints
+    readonly foodMacros: FoodMacrosEndpoints,
+    readonly habit: HabitEndpoints,
+    readonly habitDayStatus: HabitDayStatusEndpoints
   ) {}
 }

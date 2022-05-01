@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export interface IBoxContent {
   hoverText: string;
   date: Date;
-  state?: 'not-done' | 'done' | 'skipped';
+  state?: 'not-done' | 'done' | 'skipped' | string;
 }
 
 @Component({
@@ -31,7 +31,7 @@ export class BoxComponent implements OnInit {
       this.stateTextMap[this.contetnt.state]
     } \n ${
       this.contetnt.hoverText
-    } \n ${this.contetnt.date.toLocaleDateString()}`;
+    } \n ${new Date(this.contetnt.date).toLocaleDateString()}`;
   }
 
   constructor() {}

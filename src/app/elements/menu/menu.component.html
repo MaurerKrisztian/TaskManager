@@ -94,6 +94,15 @@
         <li><a class="link_name" [routerLink]="'soon'">Setting</a></li>
       </ul>
     </li>
+    <li *ngIf="auth.isAuth()">
+      <a [routerLink]="'habit'">
+        <em class='bx bx-cog' ></em>
+        <span class="link_name">Habit</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a class="link_name" [routerLink]="'soon'">Habit</a></li>
+      </ul>
+    </li>
     <li *ngIf="!auth.isAuth()">
       <a [routerLink]="'login'">
         <em class='bx bx-cog' ></em>

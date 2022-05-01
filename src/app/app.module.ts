@@ -53,6 +53,9 @@ import { MacrosComponent } from './fitness/macros/macros.component';
 import { FoodMacrosEndpoints } from '../services/task-manager-client/endpoints/food-macros.endpoints';
 import { BoxComponent } from './box-activity/box/box.component';
 import { BoxTableComponent } from './box-activity/box-table/box-table.component';
+import { HabitTrackerComponent } from './habit-tracker/habit-tracker.component';
+import { HabitEndpoints } from '../services/task-manager-client/endpoints/habit.endpoints';
+import { HabitDayStatusEndpoints } from '../services/task-manager-client/endpoints/habit-day-status.endpoints';
 
 @NgModule({
   declarations: [
@@ -76,6 +79,7 @@ import { BoxTableComponent } from './box-activity/box-table/box-table.component'
     MacrosComponent,
     BoxComponent,
     BoxTableComponent,
+    HabitTrackerComponent,
   ],
   imports: [
     NgxChartsModule,
@@ -114,6 +118,8 @@ import { BoxTableComponent } from './box-activity/box-table/box-table.component'
     WeightEndpoints,
     FoodMacrosEndpoints,
     SchedulesEndpoints,
+    HabitEndpoints,
+    HabitDayStatusEndpoints,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent],
