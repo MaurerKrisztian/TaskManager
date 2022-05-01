@@ -40,7 +40,7 @@ export class HabitTrackerComponent implements OnInit {
       date: new Date(),
       status: 'done',
       habitId: _id,
-      note: note || '',
+      note: note || ' ',
     });
     this.ngOnInit();
   }
