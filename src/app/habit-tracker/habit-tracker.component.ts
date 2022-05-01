@@ -36,12 +36,12 @@ export class HabitTrackerComponent implements OnInit {
     return this.api.habit.getAll() || [];
   }
 
-  doneToday(_id: string) {
+  doneToday(_id: string, note: string) {
     this.api.habitDayStatus.create({
       date: new Date(),
       status: 'done',
       habitId: _id,
-      note: 'test note',
+      note: note || '',
     });
     this.ngOnInit();
   }

@@ -2,7 +2,7 @@
 
 
 <div class="habitContainer" *ngFor="let habit of habits">
-  <div>{{habit.name}}</div> <button (click)="doneToday(habit._id)">Done Today</button>
+  <h2>{{habit.name}}</h2> Note: <input #note><button (click)="doneToday(habit._id, note.value)">Done Today</button>
   <div>{{habit?.description}}</div>
   <app-box-table [startDate]="habit.startDate" [numberOfBox]="66"  [habit]="habit"></app-box-table>
   <button (click)="delete(habit._id)">delete</button>
