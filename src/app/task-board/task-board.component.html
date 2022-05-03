@@ -58,7 +58,17 @@
     <ng-container *ngFor="let label of labels">
       <span class="label">{{label}} <a class="remove-label" (click)="removeLabel(label)">X</a></span>
     </ng-container>
+    <select class='select-option'
+            #labelSelect
+            (change)='labelSelection(labelSelect.value)'>
+      <option disabled selected value> -- Select labels -- </option>
+      <option class='option'
+              *ngFor='let option of allLabels'
+              [value]="option.name">{{option.name}}</option>
+    </select>
     <p>Label: <input class="labelInput" type="text" #labelInput> <button (click)="addLabel(labelInput.value)"> add </button></p>
+
+
     <input type="file"
            multiple
            id="file"

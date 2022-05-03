@@ -1,17 +1,19 @@
-import { Component, EventEmitter, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../services/auth.service';
 import { IBoard } from '../../services/task-manager-client/endpoints/board.endpoints';
 import { ITask } from '../../services/task-manager-client/endpoints/task.endpoints';
 import { Analytics } from '../../services/Analytics';
+import { TaskMangerClientApi } from '../../services/task-manager-client/task-manger-client.api';
+import { ILabel } from '../../services/task-manager-client/endpoints/label.endpoints';
 
 @Component({
   selector: 'app-task-board',
   templateUrl: './task-board.component.html',
   styleUrls: ['./task-board.component.scss'],
 })
-export class TaskBoardComponent {
+export class TaskBoardComponent implements OnInit {
   @Input()
   // @ts-ignore
   board: IBoard;
@@ -30,13 +32,19 @@ export class TaskBoardComponent {
   showCompleted = true;
 
   title: string;
+  allLabels: ILabel[] = [];
 
   constructor(
     private readonly api: ApiService,
+    private readonly taskApi: TaskMangerClientApi,
     public dialog: MatDialog,
     public readonly analytics: Analytics
   ) {
     this.title = '';
+  }
+
+  async ngOnInit() {
+    this.allLabels = await this.taskApi.label.getAll();
   }
 
   showCompletedChange() {
@@ -113,7 +121,7 @@ export class TaskBoardComponent {
   }
 
   openAddTaskDialog(template: any) {
-    this.labels = []
+    this.labels = [];
     this.dialogRef = this.dialog.open(template, {
       width: '80%',
       maxWidth: '80%',
@@ -142,5 +150,9 @@ export class TaskBoardComponent {
     this.labels = this.labels.filter((label1) => {
       return label1 != label;
     });
+  }
+
+  labelSelection(value: string) {
+    this.labels.push(value);
   }
 }
