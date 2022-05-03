@@ -12,6 +12,10 @@ $boardBottomAddTaskHeight: 60px;
   height: auto;
   padding-bottom: $boardBottomAddTaskHeight
 }
+.remove-label{
+  background: red;
+  border-radius: 25px;
+}
 
 .board-name {
   position: relative;

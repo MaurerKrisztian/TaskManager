@@ -113,6 +113,7 @@ export class TaskBoardComponent {
   }
 
   openAddTaskDialog(template: any) {
+    this.labels = []
     this.dialogRef = this.dialog.open(template, {
       width: '80%',
       maxWidth: '80%',
@@ -135,5 +136,11 @@ export class TaskBoardComponent {
   labels: string[] = [];
   addLabel(value: string) {
     this.labels.push(value);
+  }
+
+  removeLabel(label: string) {
+    this.labels = this.labels.filter((label1) => {
+      return label1 != label;
+    });
   }
 }
