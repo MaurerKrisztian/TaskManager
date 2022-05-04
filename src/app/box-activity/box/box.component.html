@@ -1,1 +1,27 @@
-<span [title]="getDisplayText()" [ngClass]="['box', contetnt.state]">{{contetnt.date.getDate()}}</span>
+<span [title]="getDisplayText()" (click)="openDayPopup(boxContentTemplate, contetnt)" [ngClass]="['box', contetnt.state]">{{contetnt.date.getDate()}}</span>
+
+
+
+<ng-template #boxContentTemplate let-data>
+  <h2>{{contetnt.date | date}}</h2>
+  <div [ngClass]="['popup-state',contetnt.state]" >{{data.status}}</div>
+  <h4>{{data.note}}</h4>
+  <button (click)="dialogRef.close();openDayPopup(boxContentEditTemplate, contetnt)">edit</button>
+</ng-template>
+
+
+
+<ng-template #boxContentEditTemplate let-data>
+  <h2>{{contetnt.date | date}}</h2>
+  <div [ngClass]="['popup-state',contetnt.state]" >{{data.status}}</div>
+
+  <select class='select-option'
+          #mySelect>
+    <option class='option'
+            *ngFor='let option of ["done","not-done","skipped"]'
+            [value]="option">{{option}}</option>
+  </select>
+
+  <input type="text" [value]="data.note" #noteInput>
+  <button (click)="editDay({id: data._id, status: mySelect.value, note: noteInput.value})">apply</button>
+</ng-template>

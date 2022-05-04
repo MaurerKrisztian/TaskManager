@@ -44,6 +44,7 @@ export class BoxTableComponent implements OnInit {
       });
       if (foundBox) {
         this.boxes.push({
+          id: foundBox._id,
           hoverText: foundBox.note,
           date: new Date(boxDate),
           state: foundBox.status,

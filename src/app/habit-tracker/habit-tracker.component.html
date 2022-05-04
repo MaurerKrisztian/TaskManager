@@ -2,7 +2,10 @@
 
 
 <div class="habitContainer" *ngFor="let habit of habits">
-  <h2 [title]="'started: ' + habit.startDate.toLocaleString()">{{habit.name}}</h2> Note: <input #note><button (click)="doneToday(habit._id, note.value)">Done Today</button>
+  <h2 [title]="'started: ' + habit.startDate.toLocaleString()">{{habit.name}}</h2>
+  Note: <input #note>
+  <input type="date" name="trip-start" #date>
+  <button (click)="doneToday(habit._id, note.value, date.value)">Done Today</button>
   <div>{{habit?.description}}</div>
   <app-box-table [startDate]="habit.startDate" [numberOfBox]="66"  [habit]="habit"></app-box-table>
   <button (click)="delete(habit._id)">delete</button>
