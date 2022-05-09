@@ -16,6 +16,10 @@ export interface IBoxContent {
 })
 export class BoxComponent implements OnInit {
   @Input()
+  // @ts-ignore
+  habitId: string;
+
+  @Input()
   contetnt: IBoxContent = {
     hoverText: '',
     date: new Date(),
@@ -55,6 +59,15 @@ export class BoxComponent implements OnInit {
         // disableClose: true,
         data: day,
       });
+    } else {
+      const day = await this.api.habitDayStatus.create({
+        status: this.contetnt.state,
+        date: new Date(this.contetnt.date),
+        habitId: this.habitId,
+        note: ' ',
+      });
+      this.contetnt.id = day._id;
+      this.openDayPopup(template, contetnt)
     }
   }
 
