@@ -43,6 +43,16 @@
     <h3>Edit task </h3>
     <p>Title*: <input type="text" #titleInput [value]="task.title"></p>
 
+
+    <select class='select-option'
+            #boardSelect
+            (change)='boardSelection(boardSelect.value)'>
+      <option disabled selected value> {{getTaskBoardName() || 'none'}} </option>
+      <option class='option'
+              *ngFor='let board of boardRefs'
+              [value]="board.id">{{board.name}}</option>
+    </select>
+
     <ejs-richtexteditor #textEditor [(value)]="task.description"></ejs-richtexteditor>
     <p>Start at: <input type="datetime-local" #startAtInput [value]="task?.startAt ? dateToValue(task?.startAt) : undefined"></p>
     <p>Label: <input type="text" #labelInput [value]="task.labels"></p>
@@ -52,7 +62,7 @@
            (change)="handleFileInput($event.target)">
 
     <button class="addButton"
-            (click)="saveTask({title: titleInput.value, description: textEditor.getHtml(), startAt: startAtInput.value, labels: (labelInput.value && labelInput.value != '')?[labelInput.value]:[]});">
+            (click)="saveTask({boardId: boardSelect.value, title: titleInput.value, description: textEditor.getHtml(), startAt: startAtInput.value, labels: (labelInput.value && labelInput.value != '')?[labelInput.value]:[]});">
       save
     </button>
   </div>

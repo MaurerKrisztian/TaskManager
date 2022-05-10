@@ -21,6 +21,8 @@ export class TaskModalComponent implements OnInit {
   // @ts-ignore
   task: ITask;
 
+  boardRefs: { id: string; name: string }[] = [];
+
   constructor(
     public dialogRef: MatDialogRef<TaskModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: IModalData,
@@ -37,6 +39,7 @@ export class TaskModalComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.boardRefs = (await this.apiClient.board.getAll()) as any;
     await this.getTask(this.data.taskId || '');
     this.data.boardEvent.subscribe(async () => {
       this.task = await this.getTask(this.data.taskId || '');
@@ -180,6 +183,7 @@ export class TaskModalComponent implements OnInit {
     startAt?: string;
     labels: string[];
     fileIds?: string[];
+    boardId?: string;
   }) {
     task.fileIds = await this.apiClient.file.uploadFiles(this.tmpFiles);
     task.fileIds?.push(...(this.task.fileIds || []));
@@ -191,6 +195,7 @@ export class TaskModalComponent implements OnInit {
       startAt: task.startAt,
       labels: task.labels,
       fileIds: task.fileIds,
+      boardId: task?.boardId,
     });
     this.data.boardEvent.emit('edit');
     this.enableEdit = false;
@@ -198,5 +203,15 @@ export class TaskModalComponent implements OnInit {
 
   toggleSessions() {
     this.isSessionToggled = !this.isSessionToggled;
+  }
+
+  boardSelection(value: string) {
+    console.log(value);
+  }
+
+  getTaskBoardName() {
+    return this.boardRefs.find((ref) => {
+      return ref.id == this.task?.boardId;
+    })?.name;
   }
 }
