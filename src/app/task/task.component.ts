@@ -7,6 +7,7 @@ import {
 import { TaskMangerClientApi } from '../../services/task-manager-client/task-manger-client.api';
 import { ITask } from '../../services/task-manager-client/endpoints/task.endpoints';
 import { IWorkSession } from '../../services/task-manager-client/endpoints/workedtime.endpoints';
+import { ILabel } from '../../services/task-manager-client/endpoints/label.endpoints';
 
 @Component({
   selector: 'app-task',
@@ -24,6 +25,7 @@ export class TaskComponent implements OnInit {
   @Input('boardEvent')
   // @ts-ignore
   boardEvent: EventEmitter<any>;
+  labels: ILabel[] = [];
 
   files: { downloadLink: string; filename: string }[] = [];
 
@@ -35,6 +37,14 @@ export class TaskComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    // todo populate task in api
+    const allLabel = (await this.api.label.getAll()) || [];
+
+    this.labels = (this.task.labels || []).map((label) => {
+      return allLabel.find((labelB) => {
+        return labelB.name == label;
+      }) as ILabel;
+    });
     this.workedTime = await this.getWorkedTime();
     this.isWorkSessionStarted = await this.getIsWorkSessionStarted();
     this.boardEvent.subscribe(async () => {

@@ -1,6 +1,9 @@
 <div class="taskContainer" (click) ="openExtendedDialog()">
   <div class="labelContainer" >
-<span class="taskLabel" *ngFor="let label of task.labels" >{{label}} </span>
+<span *ngFor="let label of labels" >
+<!--  {{label?.name}}-->
+  <app-label *ngIf="label" [label]="label"></app-label>
+</span>
 
 </div>
 

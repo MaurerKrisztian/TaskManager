@@ -1,6 +1,15 @@
-.label {
-  background: #30475e;
-  border-radius: 15px;
-  padding: 7px;
+.label{
+  text-align: center;
   color: #dddddd;
+  max-height: 20px;
+  background-color: #f05454;
+  background-image:
+    linear-gradient(
+        to right,
+        hsl(0, 91%, 59%), #f05454
+    );
+  border-radius: 15px;
+  font-size: 11px;
+  padding: 3px;
+  margin-left: 3px;
 }
