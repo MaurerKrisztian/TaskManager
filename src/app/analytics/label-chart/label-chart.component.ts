@@ -16,9 +16,11 @@ export class LabelChartComponent implements OnInit {
   async ngOnInit() {
     this.multi = [];
     this.labels = await this.api.label.getAll();
-
     for (const label of this.labels) {
-      const usageCount = (await this.api.task.getTaskByLabel(label.name)).length;
+      // todo get all in once
+      const usageCount = (await this.api.task.getTaskByLabel(label.name))
+        .length;
+      if (usageCount == 0) continue;
 
       const chartData: IChartData = {
         name: label.name,
