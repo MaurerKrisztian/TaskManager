@@ -23,6 +23,15 @@
       </ul>
     </li>
     <li *ngIf="auth.isAuth()">
+      <a [routerLink]="'labels'">
+        <em class='bx bx-label' ></em>
+        <span class="link_name">Labels</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a [routerLink]="'labels'">Labels</a></li>
+      </ul>
+    </li>
+    <li *ngIf="auth.isAuth()">
       <a>
         <em class='bx bx-envelope' ></em>
         <app-daily-email class="link_name"></app-daily-email>

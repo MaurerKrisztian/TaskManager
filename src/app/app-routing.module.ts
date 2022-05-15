@@ -11,6 +11,7 @@ import { WeightComponent } from './fitness/weight/weight.component';
 import { MacrosComponent } from './fitness/macros/macros.component';
 import { BoxTableComponent } from './box-activity/box-table/box-table.component';
 import { HabitTrackerComponent } from './habit-tracker/habit-tracker.component';
+import {LabelEditorComponent} from "./label-editor/label-editor.component";
 
 const routes: Routes = [
   { path: 'taskboards', component: DashboardComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'food-macros', component: MacrosComponent },
   { path: 'box-activity', component: BoxTableComponent },
   { path: 'habit', component: HabitTrackerComponent },
+  { path: 'labels', component: LabelEditorComponent },
   {
     path: '**',
     component: NotfoundComponent,

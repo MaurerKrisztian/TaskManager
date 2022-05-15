@@ -1,0 +1,10 @@
+<div *ngFor="let label of labels" class="label-container">
+  <div><app-label [label]="label"></app-label></div>
+  <input type="text" #name [value]="label.name">
+
+  <input type="text" #description [value]="label.description">
+
+  <input type="color" #color [value]="label.color">
+  <button (click)="update({name: name.value, description: description.value, color: color.value}, label._id)">update</button>
+  <button (click)="remove(label._id)">remove</button>
+</div>

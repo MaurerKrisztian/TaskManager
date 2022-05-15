@@ -56,6 +56,8 @@ import { BoxTableComponent } from './box-activity/box-table/box-table.component'
 import { HabitTrackerComponent } from './habit-tracker/habit-tracker.component';
 import { HabitEndpoints } from '../services/task-manager-client/endpoints/habit.endpoints';
 import { HabitDayStatusEndpoints } from '../services/task-manager-client/endpoints/habit-day-status.endpoints';
+import { LabelEditorComponent } from './label-editor/label-editor.component';
+import { LabelComponent } from './label/label.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,8 @@ import { HabitDayStatusEndpoints } from '../services/task-manager-client/endpoin
     BoxComponent,
     BoxTableComponent,
     HabitTrackerComponent,
+    LabelEditorComponent,
+    LabelComponent,
   ],
   imports: [
     NgxChartsModule,
