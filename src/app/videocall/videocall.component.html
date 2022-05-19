@@ -1,0 +1,18 @@
+<h2>Meeting</h2>
+
+<p>
+  roomName: <input type="text" #roomName>
+</p>
+<p>members1 email: <input type="email" #email></p>
+<p>members1 name: <input type="text" #name></p>
+
+<button (click)="createRoom({name: roomName.value}, [{email: email.value, name: name.value}])">create</button>
+
+<div>
+  Rooms:
+  <div *ngFor="let room of rooms">
+    {{room.name}} <a [href]="room.url" target="_blank">{{room.url}}</a> {{room.created_at | date}}
+    <!--  {{room | json}}-->
+  </div>
+
+</div>

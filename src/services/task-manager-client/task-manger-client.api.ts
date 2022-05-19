@@ -13,6 +13,7 @@ import { WeightEndpoints } from './endpoints/weight.endpoints';
 import { FoodMacrosEndpoints } from './endpoints/food-macros.endpoints';
 import { HabitEndpoints } from './endpoints/habit.endpoints';
 import { HabitDayStatusEndpoints } from './endpoints/habit-day-status.endpoints';
+import {VideoCall} from "./endpoints/videocall.endpoints";
 
 //todo
 @Injectable()
@@ -31,6 +32,7 @@ export class TaskMangerClientApi {
     readonly weight: WeightEndpoints,
     readonly foodMacros: FoodMacrosEndpoints,
     readonly habit: HabitEndpoints,
-    readonly habitDayStatus: HabitDayStatusEndpoints
+    readonly habitDayStatus: HabitDayStatusEndpoints,
+    readonly videoCall: VideoCall
   ) {}
 }

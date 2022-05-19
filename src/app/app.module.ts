@@ -58,6 +58,8 @@ import { HabitEndpoints } from '../services/task-manager-client/endpoints/habit.
 import { HabitDayStatusEndpoints } from '../services/task-manager-client/endpoints/habit-day-status.endpoints';
 import { LabelEditorComponent } from './label-editor/label-editor.component';
 import { LabelComponent } from './label/label.component';
+import { VideocallComponent } from './videocall/videocall.component';
+import {VideoCall} from "../services/task-manager-client/endpoints/videocall.endpoints";
 
 @NgModule({
   declarations: [
@@ -84,6 +86,7 @@ import { LabelComponent } from './label/label.component';
     HabitTrackerComponent,
     LabelEditorComponent,
     LabelComponent,
+    VideocallComponent,
   ],
   imports: [
     NgxChartsModule,
@@ -123,6 +126,7 @@ import { LabelComponent } from './label/label.component';
     FoodMacrosEndpoints,
     SchedulesEndpoints,
     HabitEndpoints,
+    VideoCall,
     HabitDayStatusEndpoints,
     { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],

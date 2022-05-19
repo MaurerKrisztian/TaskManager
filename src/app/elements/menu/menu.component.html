@@ -31,6 +31,17 @@
         <li><a [routerLink]="'labels'">Labels</a></li>
       </ul>
     </li>
+
+    <li *ngIf="auth.isAuth()">
+      <a [routerLink]="'meeting'">
+        <em class='bx bx-label' ></em>
+        <span class="link_name">Meeting</span>
+      </a>
+      <ul class="sub-menu blank">
+        <li><a [routerLink]="'meeting'">Meeting</a></li>
+      </ul>
+    </li>
+
     <li *ngIf="auth.isAuth()">
       <a>
         <em class='bx bx-envelope' ></em>
