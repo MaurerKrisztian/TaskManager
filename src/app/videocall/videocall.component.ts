@@ -24,7 +24,13 @@ export class VideocallComponent implements OnInit {
     const me = (await this.auth.getCurrentUser()).username;
     members.push({ email: me, name: me });
     const res = await this.api.videoCall.create({
-      room: roomOptions,
+      room: {
+        ...roomOptions,
+        properties: {
+          enable_chat: true,
+          enable_screenshare: true,
+        },
+      },
       members: members,
     });
     this.rooms.push(res);
