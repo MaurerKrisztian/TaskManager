@@ -1,10 +1,11 @@
-<h2>Meeting</h2>
 
-<p class="room-name">
-  roomName: <input type="text" #roomName>
-</p>
+
+<div class="room-name">
+<h2>Meeting</h2>
+</div>
 
 <div class="members">
+    Room name: <input type="text" #roomName>
   <h4>Invite members:</h4>
   <p> name: <input type="text" #name></p>
   <p> email: <input type="email" #email></p>
@@ -12,23 +13,26 @@
 
   <div class="member-list">
     Meeting Members:
+    <p *ngIf="members?.length == 0"><i>-- currently no member will be invited --</i></p>
     <div *ngFor="let member of members">
       {{member.name}} - {{member.email}} <button (click)="removeMember(member)">remove</button>
     </div>
 
   </div>
 
+  <p class="info">(i) Every member will get an email with the room link.</p>
+
+  <button (click)="createRoom({name: roomName.value}, members)" class="create-btn">Create meeting</button>
 </div>
 
 
 
-<button (click)="createRoom({name: roomName.value}, members)">create</button>
 
 <div class="rooms">
-  Rooms:
+  <h4>Rooms:</h4>
+  <p *ngIf="rooms?.length == 0"> <i>-- Currently you don't have room --</i></p>
   <div *ngFor="let room of rooms">
     {{room.name}} <a [href]="room.url" target="_blank">{{room.url}}</a> {{room.created_at | date}}
-    <!--  {{room | json}}-->
   </div>
 
 </div>
