@@ -35,7 +35,7 @@ export class HabitTrackerComponent implements OnInit {
     return this.api.habit.getAll() || [];
   }
 
-  doneToday(_id: string, note: string, date: string) {
+  doneToday(_id: string, note: string, date?: string) {
     this.api.habitDayStatus.create({
       date: date ? new Date(date) : new Date(),
       status: 'done',
