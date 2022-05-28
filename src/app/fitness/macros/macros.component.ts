@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskMangerClientApi } from '../../../services/task-manager-client/task-manger-client.api';
 import { IFoodMacros } from '../../../services/task-manager-client/endpoints/food-macros.endpoints';
-import {IChartData} from "../../charts/charts.component";
-import {IWeight} from "../../../services/task-manager-client/endpoints/weight.endpoints";
+import { IChartData } from '../../charts/charts.component';
 
 @Component({
   selector: 'app-macros',
@@ -10,8 +9,7 @@ import {IWeight} from "../../../services/task-manager-client/endpoints/weight.en
   styleUrls: ['./macros.component.scss'],
 })
 export class MacrosComponent implements OnInit {
-
-  macros:IFoodMacros[] = []
+  macros: IFoodMacros[] = [];
 
   constructor(private readonly api: TaskMangerClientApi) {}
 
@@ -24,7 +22,7 @@ export class MacrosComponent implements OnInit {
     macros: Omit<IFoodMacros, 'userId' | 'createdAt' | 'date'>
   ) {
     await this.api.foodMacros.create({ ...macros, date: new Date() });
-    this.ngOnInit()
+    this.ngOnInit();
   }
 
   async getMacros() {
@@ -33,10 +31,8 @@ export class MacrosComponent implements OnInit {
 
   async remove(_id: any) {
     await this.api.foodMacros.deleteById(_id);
-    this.ngOnInit()
+    this.ngOnInit();
   }
-
-
 
   async addWeight(value: string) {
     await this.api.weight.create({

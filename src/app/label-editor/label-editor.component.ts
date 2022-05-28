@@ -26,6 +26,6 @@ export class LabelEditorComponent implements OnInit {
 
   async remove(_id: string) {
     await this.api.label.deleteById(_id);
-    this.ngOnInit()
+    this.ngOnInit();
   }
 }

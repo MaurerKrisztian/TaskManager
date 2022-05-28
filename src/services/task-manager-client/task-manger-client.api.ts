@@ -13,7 +13,7 @@ import { WeightEndpoints } from './endpoints/weight.endpoints';
 import { FoodMacrosEndpoints } from './endpoints/food-macros.endpoints';
 import { HabitEndpoints } from './endpoints/habit.endpoints';
 import { HabitDayStatusEndpoints } from './endpoints/habit-day-status.endpoints';
-import {VideoCall} from "./endpoints/videocall.endpoints";
+import { VideoCall } from './endpoints/videocall.endpoints';
 
 //todo
 @Injectable()

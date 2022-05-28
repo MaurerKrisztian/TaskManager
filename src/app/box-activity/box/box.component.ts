@@ -67,7 +67,7 @@ export class BoxComponent implements OnInit {
         note: ' ',
       });
       this.contetnt.id = day._id;
-      this.openDayPopup(template, contetnt)
+      this.openDayPopup(template, contetnt);
     }
   }
 

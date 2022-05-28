@@ -17,6 +17,5 @@ export class LabelComponent implements OnInit {
 
   constructor(private readonly api: TaskMangerClientApi) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

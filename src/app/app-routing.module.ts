@@ -11,8 +11,8 @@ import { WeightComponent } from './fitness/weight/weight.component';
 import { MacrosComponent } from './fitness/macros/macros.component';
 import { BoxTableComponent } from './box-activity/box-table/box-table.component';
 import { HabitTrackerComponent } from './habit-tracker/habit-tracker.component';
-import {LabelEditorComponent} from "./label-editor/label-editor.component";
-import {VideocallComponent} from "./videocall/videocall.component";
+import { LabelEditorComponent } from './label-editor/label-editor.component';
+import { VideocallComponent } from './videocall/videocall.component';
 
 const routes: Routes = [
   { path: 'taskboards', component: DashboardComponent },

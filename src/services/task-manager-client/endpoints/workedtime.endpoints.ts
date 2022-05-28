@@ -37,4 +37,4 @@ export class WorkedtimeEndpoints {
     return this.api.get(`${this.endpoint}/activeWorkSession/${id}`).toPromise();
   }
 }
-export type groupedByType = 'hour'| 'day' | 'month';
+export type groupedByType = 'hour' | 'day' | 'month';

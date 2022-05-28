@@ -59,7 +59,7 @@ import { HabitDayStatusEndpoints } from '../services/task-manager-client/endpoin
 import { LabelEditorComponent } from './label-editor/label-editor.component';
 import { LabelComponent } from './label/label.component';
 import { VideocallComponent } from './videocall/videocall.component';
-import {VideoCall} from "../services/task-manager-client/endpoints/videocall.endpoints";
+import { VideoCall } from '../services/task-manager-client/endpoints/videocall.endpoints';
 
 @NgModule({
   declarations: [

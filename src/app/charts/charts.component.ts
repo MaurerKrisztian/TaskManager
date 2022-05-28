@@ -14,27 +14,7 @@ export interface IChartData {
   styleUrls: ['./charts.component.scss'],
 })
 export class ChartsComponent implements OnInit {
-
-
-  ngOnInit(): void {
-    // setInterval(() => {
-    //   this.multi = [...this.multi, {
-    //     name: 'USA',
-    //     series: [
-    //       {
-    //         name: '2010',
-    //         value: 1870000,
-    //       },
-    //       {
-    //         name: '2011',
-    //         value: 8270000,
-    //       },
-    //     ],
-    //   }];
-    //
-    //
-    // }, 1000);
-  }
+  ngOnInit(): void {}
 
   multi: IChartData[] = [
     {
