@@ -1,11 +1,20 @@
+@import 'src/shared.scss';
+
 $boardBottomAddTaskHeight: 60px;
+
+.addTaskDialog {
+//background: $primary-blue;
+//  color: $primary-grey;
+//  border-radius: 25px;
+//  padding: 20px;
+}
 
 .board {
   min-width: 310px;
   border-radius: 10px;
   //width: 400px;
   margin: 11px;
-  background-color: #dddddd;
+  background-color: $primary-grey;
   position: relative;
   min-height: 250px;
   overflow: hidden;
@@ -26,7 +35,7 @@ $boardBottomAddTaskHeight: 60px;
   min-height: 50px;
   width: auto;
   display: block;
-  background-color: #30475e;
+  background-color: $primary-blue;
   padding: 3px;
   color: #cbd1d7;
 }
@@ -86,6 +95,7 @@ textarea {
 
 
 .addButton {
+  border-radius: 25px;
   width: 100%;
   background-color: #04AA6D;
   border: none;
@@ -155,10 +165,10 @@ input[type=text], select {
 }
 
 .label {
-  background: #30475e;
+  background: $primary-blue;
   border-radius: 15px;
   padding: 7px;
-  color: #dddddd;
+  color: $primary-grey;
 }
 
 .labelInput {

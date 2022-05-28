@@ -1,6 +1,8 @@
+@import "src/shared.scss";
+
 .weight-log {
   height: 200px;
   overflow: scroll;
-  background: #dddddd;
+  background: $primary-grey;
   width: 300px;
 }

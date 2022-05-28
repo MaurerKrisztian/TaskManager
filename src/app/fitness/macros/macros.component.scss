@@ -1,7 +1,9 @@
+@import "src/shared.scss";
+
 .log {
   height: 200px;
   overflow: scroll;
-  background: #dddddd;
+  background: $primary-grey;
   width: 700px;
   margin: 50px;
 }

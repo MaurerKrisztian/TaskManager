@@ -1,5 +1,7 @@
+@import "src/shared.scss";
+
 .habitContainer {
-  background: #dddddd;
+  background: $primary-grey;
   padding: 5px;
   margin: 10px;
   border-radius: 15px;

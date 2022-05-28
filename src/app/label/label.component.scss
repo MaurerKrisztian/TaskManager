@@ -1,6 +1,8 @@
+@import "src/shared.scss";
+
 .label{
   text-align: center;
-  color: #dddddd;
+  color: $primary-grey;
   max-height: 20px;
   background-color: #f05454;
   background-image:

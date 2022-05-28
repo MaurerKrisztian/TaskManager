@@ -1,5 +1,7 @@
+@import "src/shared.scss";
+
 .room-name {
-  background: #dddddd;
+  background: $primary-grey;
   padding: 20px;
   margin: 20px;
   width: auto;
@@ -7,7 +9,7 @@
 }
 
 .members {
-  background: #dddddd;
+  background: $primary-grey;
   padding: 20px;
   margin: 20px;
   width: auto;

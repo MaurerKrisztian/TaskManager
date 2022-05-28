@@ -49,11 +49,11 @@
 </div>
 
 <ng-template #addTaskDialog>
-  <div>
+  <div class="addTaskDialog">
     <h3>Add task </h3>
-    <p>Title*: <input type="text" #titleInput [(ngModel)]="title"></p>
+    <p><input placeholder="Title*" type="text" #titleInput [(ngModel)]="title"></p>
 
-    <ejs-richtexteditor #textEditor></ejs-richtexteditor>
+    <ejs-richtexteditor #textEditor placeholder="Description" ></ejs-richtexteditor>
     <p>Start at: <input type="datetime-local" #startAtInput></p>
     <ng-container *ngFor="let label of labels">
       <span class="label">{{label}} <a class="remove-label" (click)="removeLabel(label)">X</a></span>
@@ -66,7 +66,7 @@
               *ngFor='let option of allLabels'
               [value]="option.name">{{option.name}}</option>
     </select>
-    <p>Label: <input class="labelInput" type="text" #labelInput> <button (click)="addLabel(labelInput.value)"> add </button></p>
+    <p><input placeholder="New label name" class="labelInput" type="text" #labelInput> <button (click)="addLabel(labelInput.value)"> add </button></p>
 
 
     <input type="file"
